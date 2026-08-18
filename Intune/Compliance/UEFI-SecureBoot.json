@@ -1,0 +1,18 @@
+{
+    "Rules":[ 
+        { 
+           "SettingName":"UEFISecureBOOT",
+           "Operator":"IsEquals",
+           "DataType":"Boolean",
+           "Operand":true,
+           "MoreInfoUrl":"https://docs.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-secure-boot",
+           "RemediationStrings":[ 
+              { 
+                 "Language":"en_US",
+                 "Title":"UEFI and Secureboot needs to be enabled correctly.",
+                 "Description": "UEFI And Secure Boot needs to be correctly enabled. Please refer to the link above."
+              }
+           ]
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "triggers": {
+      "Recurrence": {
+        "type": "Recurrence",
+        "recurrence": {
+          "frequency": "Minute",
+          "interval": 5
+        }
+      }
+    },
+    "actions": {
+      "Get_Alerts": {
+        "runAfter": {},
+        "type": "Http",
+        "inputs": {
+          "uri": "https://graph.microsoft.com/v1.0/security/alerts",
+          "method": "GET",
+          "headers": {
+            "Content-Type": "application/json"
+          },
+          "authentication": {
+            "type": "ManagedServiceIdentity",
+            "audience": "https://graph.microsoft.com"
+          }
+        }
+      },
+      "Filter_Alerts": {
+        "type": "Foreach",
+        "foreach": "@body('Get_Alerts')?['value']",
+        "runAfter": {
+          "Get_Alerts": [
+            "Succeeded"
+          ]
+        },
+        "actions": {
+          "Extract_UPNs": {
+            "type": "Compose",
+            "inputs": "@union(createArray(item()?['userPrincipalName']), select(item()?['userStates'], 'userPrincipalName'))"
+          }
+        }
+      }
+    },
+    "outputs": {}
+  },
+  "parameters": {}
+}

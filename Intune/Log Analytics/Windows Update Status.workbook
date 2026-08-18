@@ -1,0 +1,369 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "\n## Windows Update Status\n---"
+      },
+      "name": "text - 2"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSUpdateStatus\r\n| project TimeGenerated, ComputerID, OSSecurityUpdateStatus\r\n| summarize dcount(ComputerID) by TimeGenerated, OSSecurityUpdateStatus",
+        "size": 0,
+        "title": "Security Updates Last 30 Days",
+        "timeContext": {
+          "durationMs": 2592000000
+        },
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "visualization": "areachart",
+        "graphSettings": {
+          "type": 0,
+          "topContent": {
+            "columnMatch": "OSQualityUpdateStatus",
+            "formatter": 1
+          },
+          "centerContent": {
+            "columnMatch": "dcount_Computer",
+            "formatter": 1,
+            "numberFormat": {
+              "unit": 17,
+              "options": {
+                "maximumSignificantDigits": 3,
+                "maximumFractionDigits": 2
+              }
+            }
+          }
+        },
+        "chartSettings": {
+          "xAxis": "TimeGenerated",
+          "yAxis": [
+            "dcount_ComputerID"
+          ],
+          "showMetrics": false,
+          "showLegend": true,
+          "seriesLabelSettings": [
+            {
+              "seriesName": "Not Up-to-date",
+              "color": "red"
+            },
+            {
+              "seriesName": "Up-to-date",
+              "color": "green"
+            }
+          ]
+        }
+      },
+      "name": "Security Updates Last 30 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  == \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(30d) .. now())\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Security Update Status 0-30 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Security Update Status 0-30 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  == \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(60d) .. ago(31d))\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Security Update Status 31-60 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Security Update Status 31-60 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  == \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(90d) .. ago(61d))\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Security Update Status 61-90 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Security Update Status 61-90 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  == \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(120d) .. ago(91d))\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Security Update Status 91-120 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Security Update Status 91-120 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSUpdateStatus\r\n| project TimeGenerated, ComputerID, OSQualityUpdateStatus\r\n| summarize dcount(ComputerID) by TimeGenerated, OSQualityUpdateStatus",
+        "size": 0,
+        "title": "Quality Updates Last 30 Days",
+        "timeContext": {
+          "durationMs": 2592000000
+        },
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces",
+        "visualization": "areachart",
+        "graphSettings": {
+          "type": 0,
+          "topContent": {
+            "columnMatch": "OSQualityUpdateStatus",
+            "formatter": 1
+          },
+          "centerContent": {
+            "columnMatch": "dcount_Computer",
+            "formatter": 1,
+            "numberFormat": {
+              "unit": 17,
+              "options": {
+                "maximumSignificantDigits": 3,
+                "maximumFractionDigits": 2
+              }
+            }
+          }
+        },
+        "chartSettings": {
+          "xAxis": "TimeGenerated",
+          "yAxis": [
+            "dcount_ComputerID"
+          ],
+          "showMetrics": false,
+          "showLegend": true,
+          "seriesLabelSettings": [
+            {
+              "seriesName": "Not Up-to-date",
+              "color": "red"
+            },
+            {
+              "seriesName": "Up-to-date",
+              "color": "green"
+            }
+          ]
+        }
+      },
+      "name": "Quality Updates Last 30 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  != \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(30d) .. now())\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Non Security Update Status 0-30 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Non Security Update Status 0-30 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  != \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(60d) .. ago(31d))\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Non Security Update Status 31-60 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Non Security Update Status 31-60 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  != \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(90d) .. ago(61d))\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Non Security Update Status 61-90 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Non Security Update Status 61-90 Days"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Quality\" and UpdateClassification  != \"Security\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where UpdateReleasedDate between (ago(120d) .. ago(91d))\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Non Security Update Status 91-120 Days",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Non Security Update Status 91-120 Days"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "title": "Feature Update Status",
+        "items": [
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "WaaSUpdateStatus\r\n| summarize arg_max(TimeGenerated, *) by ComputerID\r\n| summarize dcount(ComputerID) by OSFeatureUpdateStatus",
+              "size": 3,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "visualization": "piechart",
+              "chartSettings": {
+                "seriesLabelSettings": [
+                  {
+                    "seriesName": "Up-to-date",
+                    "color": "green"
+                  },
+                  {
+                    "seriesName": "Not Up-to-date",
+                    "color": "blue"
+                  },
+                  {
+                    "seriesName": "Out of Support",
+                    "color": "red"
+                  }
+                ]
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 0",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "WaaSUpdateStatus\r\n| summarize arg_max(TimeGenerated, *) by ComputerID\r\n| summarize dcount(ComputerID) by OSVersion",
+              "size": 3,
+              "queryType": 0,
+              "resourceType": "microsoft.operationalinsights/workspaces",
+              "visualization": "tiles",
+              "tileSettings": {
+                "titleContent": {
+                  "columnMatch": "OSVersion",
+                  "formatter": 1
+                },
+                "leftContent": {
+                  "columnMatch": "dcount_ComputerID",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "palette": "auto"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                },
+                "showBorder": false,
+                "sortCriteriaField": "dcount_ComputerID",
+                "sortOrderField": 2
+              },
+              "graphSettings": {
+                "type": 0,
+                "topContent": {
+                  "columnMatch": "OSVersion",
+                  "formatter": 1
+                },
+                "centerContent": {
+                  "columnMatch": "dcount_ComputerID",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                }
+              },
+              "chartSettings": {
+                "seriesLabelSettings": [
+                  {
+                    "seriesName": "21H1",
+                    "label": "Windows 10 21H1"
+                  },
+                  {
+                    "seriesName": "20H2",
+                    "label": "Windows 10 20H2"
+                  },
+                  {
+                    "seriesName": "2004",
+                    "label": "Windows 10 2004"
+                  },
+                  {
+                    "seriesName": "Other",
+                    "label": "Other"
+                  },
+                  {
+                    "seriesName": "1909",
+                    "label": "Windows 10 1909"
+                  },
+                  {
+                    "seriesName": "1803",
+                    "label": "Windows 10 1803"
+                  }
+                ]
+              },
+              "mapSettings": {
+                "locInfo": "LatLong",
+                "sizeSettings": "dcount_ComputerID",
+                "sizeAggregation": "Sum",
+                "legendMetric": "dcount_ComputerID",
+                "legendAggregation": "Sum",
+                "itemColorSettings": {
+                  "type": "heatmap",
+                  "colorAggregation": "Sum",
+                  "nodeColorField": "dcount_ComputerID",
+                  "heatmapPalette": "greenRed"
+                }
+              }
+            },
+            "customWidth": "50",
+            "name": "query - 1",
+            "styleSettings": {
+              "maxWidth": "50"
+            }
+          }
+        ]
+      },
+      "name": "Feature Update Status"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "WaaSDeploymentStatus\r\n| where  UpdateCategory == \"Feature\" and UpdateClassification  == \"Upgrade\"\r\n| where  isnotempty(UpdateReleasedDate)\r\n| where isnotempty(ComputerID)\r\n| extend  ReleaseName = strcat(OSVersion, ' - ', ReleaseName, ' - ', format_datetime(UpdateReleasedDate, 'yyyy-MM-dd'))\r\n| summarize arg_max(TimeGenerated, *) by ComputerID, TargetBuild\r\n| summarize  Total = count(),\r\n            Success = countif(DeploymentStatus == 'Update completed'),\r\n            Fails = countif(DeploymentStatus == 'Failed'),\r\n            Unknown = countif(DeploymentStatus == 'Unknown'),\r\n            ['In Progress'] = countif(DeploymentStatus == 'In progress'),\r\n            ['Progress stalled'] = countif(DeploymentStatus == 'Progress stalled')\r\n        by ReleaseName\r\n| extend  SuccessRate = (Success * 100 / Total)\r\n| order by ReleaseName",
+        "size": 3,
+        "title": "Feature Update Status",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "Feature Update Status"
+    }
+  ],
+  "fallbackResourceIds": [
+    "/subscriptions/d462c91e-192e-406b-a47e-faa9b237ed6d/resourceGroups/Rg-General-Klient/providers/Microsoft.OperationalInsights/workspaces/Law-General-Klient"
+  ],
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}

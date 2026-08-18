@@ -1,0 +1,61 @@
+{
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {},
+      "triggers": {
+        "Recurrence_Trigger": {
+          "type": "Recurrence",
+          "recurrence": {
+            "frequency": "Minute",
+            "interval": 5
+          }
+        }
+      },
+      "actions": {
+        "Get_Alerts": {
+          "type": "Http",
+          "inputs": {
+            "method": "GET",
+            "uri": "https://graph.microsoft.com/v1.0/security/alerts?$filter=category%20eq%20'Identity'%20and%20severity%20eq%20'High'",
+            "authentication": {
+              "type": "ManagedServiceIdentity",
+              "audience": "https://graph.microsoft.com"
+            },
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          "runAfter": {}
+        },
+        "Filter_Alerts": {
+          "type": "Foreach",
+          "foreach": "@body('Get_Alerts')?['value']",
+          "actions": {
+            "HTTP_Revoke_Token": {
+              "type": "Http",
+              "inputs": {
+                "method": "POST",
+                "uri": "https://graph.microsoft.com/v1.0/users/@{items('Filter_Alerts')?['userPrincipalName']}/revokeSignInSessions",
+                "authentication": {
+                  "type": "ManagedServiceIdentity",
+                  "audience": "https://graph.microsoft.com"
+                },
+                "headers": {
+                  "Content-Type": "application/json"
+                }
+              }
+            }
+          },
+          "runAfter": {
+            "Get_Alerts": [
+              "Succeeded"
+            ]
+          }
+        }
+      },
+      "outputs": {}
+    },
+    "parameters": {}
+  }
+  

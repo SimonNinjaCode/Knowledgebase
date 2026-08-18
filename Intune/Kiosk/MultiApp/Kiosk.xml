@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AssignedAccessConfiguration
+    xmlns="http://schemas.microsoft.com/AssignedAccess/2017/config"
+    xmlns:rs5="http://schemas.microsoft.com/AssignedAccess/201810/config"
+    xmlns:v5="http://schemas.microsoft.com/AssignedAccess/2022/config">
+  <Profiles>
+    <Profile Id="{2A2094F7-910E-4760-97A4-431987272C33}">
+      <AllAppsList>
+        <AllowedApps>
+          <App AppUserModelId="Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"/>
+          <App AppUserModelId="Microsoft.Windows.Photos_8wekyb3d8bbwe!App"/>
+          <App AppUserModelId="Microsoft.BingWeather_8wekyb3d8bbwe!App"/>
+          <App DesktopAppPath="%windir%\explorer.exe"/>
+          <App DesktopAppPath="%ProgramFiles%\Windows NT\Accessories\wordpad.exe"/>
+          <App DesktopAppPath="%windir%\system32\cmd.exe"/>
+          <App DesktopAppPath="%ProgramFiles(x86)%\Windows Media Player\wmplayer.exe"/>
+        </AllowedApps>
+      </AllAppsList>
+      <v5:StartPins>
+        <![CDATA[
+        {
+          "pinnedList": [
+            {"packageAppId": "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App"},
+            {"packageAppId": "Microsoft.Windows.Photos_8wekyb3d8bbwe!App"},
+            {"packageAppId": "Microsoft.BingWeather_8wekyb3d8bbwe!App"},
+            {"desktopAppLink": "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\Command Prompt.lnk"},
+            {"desktopAppLink": "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Admin Tools\\Event Viewer.lnk"},
+            {"desktopAppLink": "%APPDATA%\\Microsoft\\Windows\\Start Menu\\Programs\\Windows PowerShell\\Windows PowerShell.lnk"}
+          ],
+          "desktopApps":[
+            "%windir%\\system32\\notepad.exe",
+            "%windir%\\explorer.exe"
+          ]
+        }
+        ]]>
+      </v5:StartPins>
+      <Taskbar ShowTaskbar="true"/>
+    </Profile>
+  </Profiles>
+  <Configs>
+    <Config>
+      <AutoLogonAccount rs5:DisplayName="MA Kiosk" />
+      <DefaultProfile Id="{2A2094F7-910E-4760-97A4-431987272C33}" />
+    </Config>
+  </Configs>
+</AssignedAccessConfiguration>

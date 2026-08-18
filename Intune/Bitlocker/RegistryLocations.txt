@@ -1,0 +1,3 @@
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\Providers<GUID>\default\Device\BitLocker
+Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\current\device\BitLocker
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FVE

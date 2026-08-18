@@ -1,0 +1,23 @@
+Regedit -m
+Dir *.cpl & dir *.msc
+SystemPropertiesRemote.exe
+Compmgmt.msc /computer:COMPUTERNAME
+Gpedit.msc /gpcomputer:"\\COMPUTERNAME"
+Timeout /t 10
+
+# Control Panel
+Network: Ncpa.cpl 
+Users and Groups: Lusrmgr.msc 
+Resolution: Desk.cpl 
+Device Manager: HdwWiz.cpl 
+System Properties: sysdm.cpl 
+Certificates Local Computer: certlm.msc
+DiskManagement: diskmgmt.msc
+Printers: Control printers
+
+#Windows Update 
+ms-settings:windowsupdate
+ms-settings:windowsupdate-action
+
+dsregcmd /status 
+systemreset -factoryreset

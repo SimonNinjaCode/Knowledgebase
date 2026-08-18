@@ -1,0 +1,17 @@
+<Configuration>
+    <Add OfficeClientEdition="32" Channel="Monthly">
+        <Product ID="O365ProPlusRetail">
+            <Language ID="sv-se"/>
+            <ExcludeApp ID="Lync"/>
+            <ExcludeApp ID="Groove"/>
+            <ExcludeApp ID="Access"/>
+            <ExcludeApp ID="Publisher"/>
+        </Product>
+    </Add>
+    <Updates Enabled="TRUE" Channel="Monthly"/>
+    <Display Level="None" AcceptEULA="TRUE"/>
+    <Logging Level="Standard" Path="C:\"/>
+    <Property Name="FORCEAPPSHUTDOWN" Value="FALSE"/>
+    <Property Name="SharedComputerLicensing" Value="0"/>
+    <Property Name="PinIconsToTaskbar" Value="TRUE"/>
+</Configuration>

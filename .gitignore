@@ -1,0 +1,58 @@
+# Operating system metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Editor and IDE state
+.vscode/
+.idea/
+*.code-workspace
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*~
+*.swp
+*.swo
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pfx
+*.p12
+*.key
+
+# Logs, test results, and temporary output
+*.log
+*.tmp
+*.temp
+*.bak
+*.cache
+coverage/
+TestResults/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# PowerShell module and analysis output
+PSScriptAnalyzerSettings.local.psd1
+
+# Common dependency and build directories
+node_modules/
+bin/
+obj/
+dist/
+build/
+out/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Office temporary files
+~$*

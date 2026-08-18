@@ -1,0 +1,18 @@
+{
+    "Rules":[ 
+        { 
+           "SettingName":"KeyProtectorType",
+           "Operator":"IsEquals",
+           "DataType":"int64",
+           "Operand":4,
+           "MoreInfoUrl":"https://learn.microsoft.com/en-us/microsoft-desktop-optimization-pack/mbam-v2/using-your-pin-or-password#changing-your-pin-or-password",
+           "RemediationStrings":[ 
+              { 
+                 "Language":"en_US",
+                 "Title":"PIN for Bitlocker needs to be enabled correctly.",
+                 "Description": "PIN for Bitlocker needs to be correctly enabled. Please refer to the link above."
+              }
+           ]
+        }
+    ]
+}

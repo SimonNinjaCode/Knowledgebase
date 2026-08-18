@@ -1,0 +1,46 @@
+{
+    "Rules":[ 
+        { 
+           "SettingName":"BiosVersion",
+           "Operator":"GreaterEquals",
+           "DataType":"Version",
+           "Operand":"2.3",
+           "MoreInfoUrl":"https://bing.com",
+           "RemediationStrings":[ 
+              { 
+                 "Language":"en_US",
+                 "Title":"BIOS Version needs to be upgraded to at least 2.3. Value discovered was {ActualValue}.",
+                 "Description": "BIOS must be updated. Please refer to the link above"
+              }
+           ]
+        },
+        { 
+           "SettingName":"TPMChipPresent",
+           "Operator":"IsEquals",
+           "DataType":"Boolean",
+           "Operand":true,
+           "MoreInfoUrl":"https://bing.com",
+           "RemediationStrings":[ 
+              { 
+                 "Language": "en_US",
+                 "Title": "TPM chip must be enabled.",
+                 "Description": "TPM chip must be enabled. Please refer to the link above"
+              }
+           ]
+        },
+        { 
+           "SettingName":"ModelName",
+           "Operator":"IsEquals",
+           "DataType":"String",
+           "Operand":"Inspiron",
+           "MoreInfoUrl":"https://bing.com",
+           "RemediationStrings":[ 
+              { 
+                 "Language": "en_US",
+                 "Title": "Only Inspiron is supported.",
+                 "Description": "Only desktop model Inspiron is allowed."
+              }
+           ]
+        }
+     ]
+    }
