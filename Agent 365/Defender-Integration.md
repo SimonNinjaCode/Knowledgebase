@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/defender-xdr/security-for-ai/ai-agent-detection-protection
 last_verified: 2026-08-19
+ms_learn_updated: 2026-08-07
 status: current
 ---
 
@@ -10,7 +11,7 @@ status: current
 
 Microsoft Defender provides detection, real-time blocking, and investigation capabilities for AI agents managed through Microsoft Agent 365. It integrates with Work IQ MCP to evaluate agent-initiated tool invocations before execution.
 
-> **Note:** Starting July 1, 2026, an Agent 365 subscription is required to use agent protection and visibility capabilities. The Defender for Cloud Apps onboarding requirement is temporary and will be integrated into the Agent 365 product experience.
+> **Note:** Starting July 1, 2026, an Agent 365 subscription is required to use agent protection and visibility capabilities. Real-time protection (RTP) has been split into a separate article — see [Protect AI agents in real time](https://learn.microsoft.com/defender-xdr/security-for-ai/ai-agent-real-time-protection).
 
 ## Capabilities
 
@@ -60,6 +61,29 @@ When Defender blocks an action, the alert includes:
 - Tool and action details
 
 All alerts integrate into the standard Defender XDR incident queue for investigation.
+
+## Advanced Hunting
+
+Microsoft Defender surfaces AI agent alerts in the unified incident queue and provides Advanced Hunting tables for investigation:
+
+| Table | Description |
+|---|---|
+| AlertInfo | Alert metadata from near-real-time detections |
+| CloudAppEvents | Agent 365 observability data — actions, tool invocations, data access |
+| AgentsInfo | Agent inventory — identity, platform, ownership, metadata |
+| AlertEvidence | Entities and artifacts associated with alerts |
+| BehaviorInfo | Real-time protection audit and block events |
+| BehaviorEntities | Entities associated with behaviors |
+
+## Threat Types Detected
+
+- Jailbreak attempts
+- Indirect prompt injection (XPIA)
+- Malicious content propagation
+- Secret and credential leakage
+- Evasion techniques
+- LLM reconnaissance
+- Suspicious user or IP access
 
 ## Related Documentation
 

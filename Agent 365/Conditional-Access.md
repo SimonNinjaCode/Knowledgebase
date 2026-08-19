@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/entra/identity/conditional-access/agent-id
 last_verified: 2026-08-19
+ms_learn_updated: 2026-07-01
 status: current
 ---
 

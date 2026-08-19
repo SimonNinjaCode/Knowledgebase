@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents
 last_verified: 2026-08-19
+ms_learn_updated: 2026-06-15
 status: current
 ---
 
@@ -39,7 +40,7 @@ Global Secure Access for agents provides network security controls for Microsoft
 | Agent ID platform | Any Microsoft Entra (free) |
 | Agent 365 integration | Microsoft Agent 365 (M365 E7) |
 | Conditional Access for agents | Microsoft Entra ID P1 |
-| Network controls for agents | Microsoft Entra Internet Access (included in Entra Suite or standalone) |
+| Network controls for agents | Microsoft Entra Internet Access (included in Entra Suite or standalone). Agent 365 is included with M365 E7 and available as add-on to E5/A5/Business Premium |
 
 ## Getting Started
 

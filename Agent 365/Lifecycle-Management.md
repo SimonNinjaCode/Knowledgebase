@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/microsoft-365/admin/manage/agent-actions
 last_verified: 2026-08-19
+ms_learn_updated: 2026-08-18
 status: current
 ---
 
@@ -18,7 +19,8 @@ The Microsoft 365 admin center provides governance and lifecycle management for 
 | **Uninstall** | Remove a previously installed agent from users/groups |
 | **Block / Unblock** | Restrict or restore access to an agent across the organization |
 | **Delete** | Permanently remove an agent and all associated files from the inventory |
-| **Assign new owner** | Transfer ownership of ownerless or active agents |
+| **Start / Stop** | Start or stop underlying Azure infrastructure for Foundry agents (requires Azure AI Owner role) |
+| **Assign new owner** | Transfer ownership of ownerless or active agents (Agent Builder and Copilot Studio only) |
 | **Publish to store** | Make a requested agent available via the Agent Store |
 | **Reject submission** | Prevent a requested agent from becoming available |
 

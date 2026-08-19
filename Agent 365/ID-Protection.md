@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/entra/id-protection/concept-risky-agents
 last_verified: 2026-08-19
+ms_learn_updated: 2026-06-17
 status: current
 ---
 
@@ -31,14 +32,20 @@ Microsoft Entra ID Protection automatically detects and responds to identity-bas
 
 ## Risk Detections
 
-All risk detections for risky agents are currently **offline** (not real-time).
+All risk detections for risky agents are currently **offline** (not real-time). In OBO flows, risky activity is attributed to the **user**, not the agent.
 
-| Detection | Type | Description |
-|---|---|---|
-| Unfamiliar resource access | Offline | Agent targeted resources outside its normal pattern — may indicate an attacker trying to access sensitive resources beyond the agent's intended scope |
-| Sign-in spike | Offline | Agent made significantly more sign-ins than its usual frequency — may indicate automated attack or toolkit usage |
-| Failed access attempt | Offline | Agent attempted access to unauthorized resources — may indicate token replay against resources the agent shouldn't reach |
-| Sign-in by risky user | Offline | Agent signed in on behalf of a user flagged as risky — may indicate a compromised user leveraging agent access |
+| Detection | Type | riskEventType | Description |
+|---|---|---|---|
+| Confirmed compromised | Admin | adminConfirmedAgentCompromised | Admin manually confirmed agent is compromised |
+| Early life malicious activity | Offline | earlyLifeMaliciousActivity | Newly created agent immediately exhibited multiple suspicious patterns |
+| Entra Directory Reconnaissance | Offline | entraDirectoryReconnaissance | Agent performed suspicious reconnaissance or high-risk directory operations |
+| Failed access attempt | Offline | failedAccessAttempt | Agent attempted access to unauthorized resources — possible token replay |
+| Microsoft Entra threat intelligence | Offline | threatIntelligenceAccount | Activity consistent with known attack patterns from internal/external threat intel |
+| Sign-in spike | Offline | signInSpike | Significantly more sign-ins than usual — possible automation or toolkit |
+| Suspicious credential usage | Offline | suspiciousCredentialUsage | New credentials added to agent blueprints and then actually used |
+| Unfamiliar resource access | Offline | unfamiliarResourceAccess | Agent targeted resources outside its normal pattern |
+
+**Learning Mode** automatically suppresses behavioral alerts for agents lacking sufficient activity history, preventing false positives during onboarding. A parallel detection runs to catch genuinely malicious early-life behavior.
 
 ## How It Works
 
@@ -55,6 +62,15 @@ Use agent risk level as a condition in Conditional Access policies:
 - **Block** agents flagged as high risk
 - **Require re-evaluation** for agents with medium risk
 - **Allow** agents with no detected risk
+
+## Graph API
+
+Query risky agents programmatically:
+
+- `riskyAgents` — list of flagged agents
+- `agentRiskDetections` — detection events
+
+Risk data can be exported via diagnostic settings to Log Analytics, storage accounts, Event Hub, or SIEM solutions.
 
 ## Related Documentation
 

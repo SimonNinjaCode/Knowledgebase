@@ -1,7 +1,8 @@
 ---
 source: https://learn.microsoft.com/microsoft-agent-365/admin/graph-api
 last_verified: 2026-08-19
-status: preview
+ms_learn_updated: 2026-08-04
+status: current
 ---
 
 # Agent Graph API

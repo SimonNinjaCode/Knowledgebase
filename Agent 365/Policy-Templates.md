@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-template
 last_verified: 2026-08-19
+ms_learn_updated: 2026-08-04
 status: current
 ---
 
@@ -29,14 +30,19 @@ Microsoft provides default policies that apply to all agents in the tenant. Some
 | Access control for sites and OneDrive | Site-level access control for agents | SharePoint Online |
 | Content permissions insights | Report on content permission exposure to agents | SharePoint Online |
 | AI real-time protection | Detect and block suspicious agent activity during runtime | Defender |
+| Advanced hunting | Alerts on agent activity; investigate suspicious events with Advanced Hunting | Defender |
 
 ### Custom Templates
 
-Create custom templates to:
+Custom templates extend governance with Entra policies applied per agent. Available custom policies:
 
-- Combine specific policies for different agent classifications
-- Apply stricter controls to agents handling confidential data
-- Define separate governance profiles for different business units
+| Policy | Description |
+|---|---|
+| Conditional Access | CA policies scoped to specific agent identities |
+| Access packages | Govern agent access rights through entitlement management |
+| Custom security attributes | Assign org-specific metadata for fine-grained access control |
+
+> **Note:** Custom template prerequisites: policies must be created in Entra first. AI admin needs Attribute Assignment Administrator role for custom security attributes.
 
 ## Template Operations
 

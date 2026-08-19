@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/microsoft-365/admin/manage/agent-map
 last_verified: 2026-08-19
+ms_learn_updated: 2026-08-18
 status: current
 ---
 

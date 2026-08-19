@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/microsoft-365/admin/manage/manage-tools-for-agent
 last_verified: 2026-08-19
+ms_learn_updated: 2026-07-30
 status: current
 ---
 
@@ -57,13 +58,29 @@ Organizations can register their own remote MCP servers with Agent 365 for centr
 - Centralized visibility into all tools (Microsoft + custom) in one registry
 - Consistent security policy enforcement across all MCP servers
 
+## BYO MCP Server Workflow
+
+The developer-to-admin flow for Bring Your Own MCP servers:
+
+1. **Developer registers** server via Agent 365 CLI (`a365 develop-mcp register-external-mcp-server`)
+2. **Admin reviews** in admin center under **Tools** > **Requests** tab
+3. **Admin approves** and grants Microsoft Entra permissions
+4. **Server becomes available** in Copilot Studio, VS Code, Claude Code, GitHub Copilot CLI
+5. **Security team monitors** via Defender Advanced Hunting (`CloudAppEvents` table)
+
+Supported auth types: NoAuth, APIKey (Header/Query), ExternalOAuth, EntraOAuth.
+
+## Plugins and Skills
+
+In addition to MCP servers, admins can upload and manage plugins (API-based integrations) and skills through the same Tools interface. Actions include install/uninstall, block/unblock, and delete.
+
 ## Requests Tab
 
-Use the **Requests** tab to review and approve tool requests from users. This provides a governed workflow for expanding the tool ecosystem:
+Use the **Requests** tab to review and approve tool requests from developers. This provides a governed workflow for expanding the tool ecosystem:
 
-1. User requests a new tool
+1. Developer registers a tool (e.g., BYO MCP server)
 2. Admin reviews the request in the Requests tab
-3. Admin approves or rejects
+3. Admin approves or rejects, then grants Entra consent
 4. Approved tools appear in the Registry
 
 ## Related Documentation

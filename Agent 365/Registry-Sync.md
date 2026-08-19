@@ -1,6 +1,7 @@
 ---
 source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry
 last_verified: 2026-08-19
+ms_learn_updated: 2026-08-12
 status: preview
 ---
 
@@ -16,12 +17,16 @@ Registry Sync enables administrators to connect external AI agent environments a
 
 | Platform | Authentication |
 |---|---|
-| Amazon Bedrock | AWS credentials (IAM) |
-| Google Vertex AI | GCP service account |
-| Salesforce Agentforce | OAuth / API token |
-| Databricks Genie | Databricks PAT |
+| Amazon Bedrock | AWS IAM access key + secret key |
+| Google Vertex AI | GCP service account key |
+| Salesforce Agentforce | OAuth (connected app) |
+| Databricks Genie | Service principal client ID + secret |
+| Anthropic Claude Managed Agents | Workspace-scoped API key (preview) |
+| Oracle Generative AI Agents | OCI API key + service user |
 
 Microsoft is actively expanding platform support.
+
+> **Note:** The feature has been renamed from "Registry Sync" to "Connected platforms" in the admin center UI.
 
 ## Capabilities
 
