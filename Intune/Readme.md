@@ -1,3 +1,9 @@
+---
+last_verified: 2026-08-18
+status: current
+source: https://learn.microsoft.com/intune/fundamentals/planning-guide
+---
+
 # Microsoft Intune
 
 **Microsoft Intune** is Microsoft’s cloud-based endpoint management solution, enabling organizations to manage devices, apps, and compliance policies across platforms. It integrates deeply with Microsoft 365, Entra ID, Defender for Endpoint, and Purview to support Zero Trust principles and modern device lifecycle management.
@@ -54,10 +60,15 @@
 
 | Platform | Enrollment Methods |
 |----------|---------------------|
-| **Windows** | Autopilot, Automatic, Manual |
+| **Windows** | Windows Autopilot device preparation, Windows Autopilot, automatic enrollment, manual enrollment |
 | **macOS** | Company Portal, Apple Business Manager (ABM) |
 | **iOS/iPadOS** | Company Portal, Apple School/Business Manager |
 | **Android** | Android Enterprise (work profile, fully managed), Zero Touch, KME |
+| **Linux** | Supported Ubuntu LTS and Red Hat Enterprise Linux enrollment scenarios |
+
+Use enrollment-time grouping where supported to place new devices into a static
+Microsoft Entra security group during enrollment. This reduces the delay before
+required applications and policies are known and delivered.
 
 ---
 
@@ -73,10 +84,14 @@
 
 ## 📘 Documentation & Resources
 
-- [Microsoft Intune Documentation](https://learn.microsoft.com/en-us/mem/intune/)
-- [Security Baselines](https://learn.microsoft.com/en-us/mem/intune/protect/security-baselines)
-- [Endpoint Analytics](https://learn.microsoft.com/en-us/mem/analytics/)
-- [Intune and Defender for Endpoint Integration](https://learn.microsoft.com/en-us/mem/intune/protect/windows-defender-integration)
+- [Microsoft Intune documentation](https://learn.microsoft.com/intune/)
+- [Microsoft Intune planning guide](https://learn.microsoft.com/intune/fundamentals/planning-guide)
+- [Windows deployment guide](https://learn.microsoft.com/intune/fundamentals/platform-guide-windows)
+- [Security baselines](https://learn.microsoft.com/intune/device-security/security-baselines/)
+- [Endpoint analytics](https://learn.microsoft.com/intune/analytics/)
+- [Windows Autopilot device preparation](https://learn.microsoft.com/autopilot/device-preparation/overview)
+- [Enrollment-time grouping](https://learn.microsoft.com/intune/device-enrollment/setup-time-grouping)
+- [Intune and Defender for Endpoint integration](https://learn.microsoft.com/intune/device-security/microsoft-defender-endpoint-integration)
 - [Conditional Access Overview](https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview)
 
 ---

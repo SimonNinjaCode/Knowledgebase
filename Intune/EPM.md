@@ -1,15 +1,30 @@
+---
+last_verified: 2026-08-18
+status: current
+source: https://learn.microsoft.com/intune/epm/deployment-planning
+---
+
 # Endpoint Privilege Management
 
 ## Requirements
 - Microsoft Entra joined or Microsoft Entra hybrid joined
-- Microsoft Intune Enrollment
+- Microsoft Intune enrollment or Microsoft Configuration Manager co-management
+  (no workload requirement)
 - Supported Operating Systems:
-  - Windows 11, version 22H2 (22621.1344 or later) with KB5022913
-  - Windows 11, version 21H2 (22000.1761 or later) with KB5023774
-  - Windows 10, version 22H2 (19045.2788 or later) with KB5023773
-  - Windows 10, version 21H2 (19044.2788 or later) with KB5023773
-  - Windows 10, version 20H2 (19042.2788 or later) with KB5023773 
+  - Windows 11, version 24H2
+  - Windows 11, version 23H2 (22631.2506 or later) with KB5031455
+  - Windows 11, version 22H2 (22621.2215 or later) with KB5029351
+  - Windows 11, version 21H2 (22000.2713 or later) with KB5034121
+  - Windows 10, version 22H2 (19045.3393 or later) with KB5030211
+  - Windows 10, version 21H2 (19044.3393 or later) with KB5030211
+- Supported virtual platforms: Azure Virtual Desktop single-session VMs and
+  Windows 365
+- 64-bit operating systems only, including Arm64
 - Clear line of sight (without SSL-Inspection) to the required endpoints
+
+> Windows 10 reached end of support on October 14, 2025. It remains an allowed
+> Intune platform, but eligible feature behavior isn't guaranteed. Treat Windows
+> 10 EPM support as transitional and maintain a Windows 11 migration plan.
 
 ## Permission Requirements
 Endpoint Privilege Management Policy Authoring:
@@ -24,10 +39,10 @@ Endpoint Privilege Management Policy Authoring:
 
 | Role | Required Permissions |
 |------|---------------------|
-| Endpoint Administrator | ✅ |
-| Endpoint Privilege Reader | - View Reports<br/>- Read |
-| Endpoint Security Manager | - View Reports<br/>- Read<br/>- Create<br/>- Update<br/>- Delete<br/>- Assign |
-| Read Only Operator | - View Reports<br/>- Read<br/>- Create<br/>- Update<br/>- Delete<br/>- Assign |
+| Endpoint Privilege Manager | All policy-authoring and elevation-request rights |
+| Endpoint Privilege Reader | View reports, read policies, and view elevation requests |
+| Endpoint Security Manager | All policy-authoring and elevation-request rights |
+| Read Only Operator | View reports, read policies, and view elevation requests |
 
 ## EPM Settings & Concepts
 
@@ -42,6 +57,11 @@ Endpoint Privilege Management Policy Authoring:
 | Disabling and deprovisioning | Once the device has received an elevation settings policy requiring EPM to be disabled, Intune immediately disables the client-side components. EPM will remove the EPM component after a period of seven days. The delay is to ensure temporary or accidental changes in policy or assignments don't result in mass de-provisioning/re-provisioning events that might have a substantial impact on business operations. |
 | Managed elevation | Any elevation that Endpoint Privilege Management facilitates. Managed elevations include all elevations that EPM ends up facilitating for the standard user. This could include elevations that happen as the result of an elevation rule or as part of default elevation action. |
 | Unmanaged elevation | All file elevations that happen without use of Endpoint Privilege Management. These elevations can happen when a user with administrative rights uses the Windows default action of Run as administrator. |
+
+Current rule behaviors also include **elevate as current user**, **deny**, and
+**support approved**. Prefer virtual-account elevation when application
+compatibility allows it; elevating as the current user has a broader attack
+surface because the elevated process inherits the user's context.
 
 ## Commands
 
@@ -78,3 +98,7 @@ Get-FileAttributes -Filepath C:\Windows\System32\cmd.exe
 - Elevation report
 - Managed elevations report
 - Elevation report by applications
+
+## Source
+
+- [Plan and prepare for Endpoint Privilege Management deployment](https://learn.microsoft.com/intune/epm/deployment-planning)

@@ -8,7 +8,7 @@ A comprehensive knowledge base for Microsoft security and cloud technologies, co
 
 - **[Defender XDR](./Defender%20XDR/)** - Extended detection and response across endpoints, identities, email, and cloud apps
 - **[Sentinel](./Sentinel/)** - Cloud-native SIEM and SOAR platform
-- **[Entra](./Entra/)** - Identity and access management (formerly Azure AD)
+- **[Entra](./Entra/)** - Identity and access management, including E7 Entra Suite (Internet/Private Access, Verified ID, Governance)
 - **[Purview](./Purview/)** - Information protection and compliance
 
 ### Endpoint & Device Management
@@ -16,16 +16,21 @@ A comprehensive knowledge base for Microsoft security and cloud technologies, co
 - **[Intune](./Intune/)** - Cloud-based endpoint management and mobile device management
 - **[Windows](./Windows/)** - Windows security features, controls, and hardening guidance
 
+### AI & Copilot
+
+- **[Microsoft 365 Copilot](./Microsoft%20365%20Copilot/)** - Copilot Premium features: Cowork, Model Choice, Copilot in Office apps, Studio, Agents (M365 E7)
+- **[Agent 365](./Agent%20365/)** - Agent identity, governance, security, and lifecycle management across Purview, Entra, and Defender (M365 E7)
+- **[Security Copilot](./Security%20Copilot/)** - AI-powered security analysis and response
+- **[Generative AI](./Generative%20AI/)** - AI agents, prompts, and automation
+
 ### Cloud & Automation
 
 - **[Azure](./Azure/)** - Azure automation, functions, and cloud services
-- **[Security Copilot](./Security%20Copilot/)** - AI-powered security analysis and response
 
 ### Intelligence & Strategy
 
 - **[Threat Intelligence](./Threat%20Intelligence/)** - Security research, threat reports, and attack analysis
-- **[Strategy](./Strategy/)** - Cybersecurity frameworks and reference architectures
-- **[Generative AI](./Generative%20AI/)** - AI agents, prompts, and automation
+- **[Strategy](./Strategy/)** - Cybersecurity frameworks, reference architectures, and [M365 E7 overview](./Strategy/m365-e7-overview.md)
 
 ## Key Resources
 
