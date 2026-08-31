@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 | Subject | Product(s) | Status | Additional Information |
 | :--- | :--- | :--- | :--- |
 | **1. Centralized Control Plane for AI Agent Governance** | **Microsoft Agent 365** | Available (Frontier program) | Extends the existing infrastructure for managing users to govern AI agents responsibly and at scale. Integrates leading security solutions: Microsoft Defender, Microsoft Entra, and Microsoft Purview to protect agents. Provides a **Registry** for a complete view of all agents, including unauthorized "shadow agents," supporting access control. |

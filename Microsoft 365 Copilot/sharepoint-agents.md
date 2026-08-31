@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-SPAG-001"
 title: "Page not found &#8211; Microsoft Adoption"

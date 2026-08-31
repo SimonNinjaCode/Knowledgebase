@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # AI in the Cybersecurity Landscape
 
 ## Introduction

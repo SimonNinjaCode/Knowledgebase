@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # ENISA Threat Landscape 2024
 ## Cybersecurity Threat Statistics and Trends July 2023 - June 2024
 

@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-ACT-001"
 title: "Introducing Microsoft Copilot actions, new agents, and tools to empower IT"

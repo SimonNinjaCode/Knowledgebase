@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 source: https://learn.microsoft.com/microsoft-365/admin/manage/manage-tools-for-agent
 last_verified: 2026-08-19
 ms_learn_updated: 2026-07-30

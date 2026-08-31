@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-PLANNER-001"
 title: "Create a new plan with Copilot in Planner (preview) | Microsoft Support"

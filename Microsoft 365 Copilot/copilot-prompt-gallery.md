@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-PG-001"
 title: "Understand Prompt Gallery in Copilot"

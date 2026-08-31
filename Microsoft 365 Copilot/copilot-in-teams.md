@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-TEAMS-001"
 title: "Catch up on meetings with Microsoft 365 Copilot in Teams | Microsoft Support"

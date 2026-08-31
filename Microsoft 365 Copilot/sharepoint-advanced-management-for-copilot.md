@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-SPAM-001"
 title: "SharePoint Advanced Management overview - SharePoint in Microsoft 365"

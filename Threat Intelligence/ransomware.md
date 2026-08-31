@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Ransomware Guidance
 
 ## Overview

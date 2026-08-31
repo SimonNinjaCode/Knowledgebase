@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 source: https://learn.microsoft.com/microsoft-agent-365/admin/monitor-agents
 last_verified: 2026-08-19
 ms_learn_updated: 2026-08-04

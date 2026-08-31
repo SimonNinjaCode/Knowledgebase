@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Cybersecurity in the Union 2024
 
 ENISA – State of Cybersecurity in the Union Report 2024

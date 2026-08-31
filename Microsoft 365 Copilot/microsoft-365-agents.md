@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-M365A-001"
 title: "Agents in Microsoft 365 &#8211; Microsoft Adoption"

@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-WORD-001"
 title: "Draft and add content with Copilot in Word - Microsoft Support"

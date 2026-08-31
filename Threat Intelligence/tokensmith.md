@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # TokenSmith – Bypassing Intune Compliant Device
 
 **Proof of Concept (PoC)** developed by JUMPSEC Labs, which leverages a tool called TokenSmith to bypass this requirement.

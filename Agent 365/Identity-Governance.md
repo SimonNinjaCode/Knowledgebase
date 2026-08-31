@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 source: https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview
 last_verified: 2026-08-19
 ms_learn_updated: 2026-06-24

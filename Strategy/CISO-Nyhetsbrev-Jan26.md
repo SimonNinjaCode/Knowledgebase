@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # AI och NIS2: Januari 2026 blev en dyr månad att missa
 
 Den 15 januari 2026 trädde cybersäkerhetslagen i kraft. Samma månad började EU AI Act:s huvudsakliga bestämmelser gälla. Och någonstans mitt i allt detta sitter du, som CISO, och ska få ihop ett säkerhetsarbete som faktiskt håller ihop.

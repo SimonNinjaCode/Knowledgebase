@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Midnight Blizzard
 
 ## Threat Overview

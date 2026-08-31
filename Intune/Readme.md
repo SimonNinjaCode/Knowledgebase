@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 last_verified: 2026-08-18
 status: current
 source: https://learn.microsoft.com/intune/fundamentals/planning-guide

@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Device Code Phishing Campaign
 
 **Category: Phishing / Social Engineering**

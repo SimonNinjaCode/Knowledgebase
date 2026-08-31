@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 title: "Device & Endpoint Protection — M365 E7"
 created: 2026-05-30

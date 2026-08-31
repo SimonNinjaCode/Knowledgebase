@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-STUDIO-001"
 title: "Priser för Microsoft 365 Copilot – AI-agenter | Copilot Studio"

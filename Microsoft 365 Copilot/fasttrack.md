@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-FT-001"
 title: "Your request has been blocked. This could be

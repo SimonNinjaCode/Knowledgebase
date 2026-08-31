@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-TUNE-001"
 title: "Customize Microsoft 365 Copilot with Copilot Tuning (early access preview)"

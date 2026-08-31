@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Secure Future Initiative
 
 ## Introduction

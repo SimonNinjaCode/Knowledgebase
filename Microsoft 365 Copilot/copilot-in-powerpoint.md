@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-PPT-001"
 title: "Create a new presentation with Copilot in PowerPoint - Microsoft Support"

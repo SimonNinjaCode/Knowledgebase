@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-LOOP-001"
 title: "Frequently asked questions about Copilot in Loop | Microsoft Support"

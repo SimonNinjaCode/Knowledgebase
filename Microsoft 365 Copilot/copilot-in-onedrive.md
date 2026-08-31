@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-ONEDRIVE-001"
 title: "Get started with Copilot in OneDrive - Microsoft Support"

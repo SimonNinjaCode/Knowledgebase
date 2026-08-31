@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Offensive Security Tools
 
 A curated list of useful tools for security research, analysis, and offensive testing.

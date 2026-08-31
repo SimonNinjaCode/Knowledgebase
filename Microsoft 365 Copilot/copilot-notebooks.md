@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-NOTE-001"
 title: "Get started with Microsoft 365 Copilot Notebooks | Microsoft Support"

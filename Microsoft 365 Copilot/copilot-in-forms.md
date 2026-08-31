@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-FORMS-001"
 title: "Welcome to Copilot in Forms | Microsoft Support"

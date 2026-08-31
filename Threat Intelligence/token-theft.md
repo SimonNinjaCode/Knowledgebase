@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Token Theft Protection
 
 ### Authentication Methods Security Comparison

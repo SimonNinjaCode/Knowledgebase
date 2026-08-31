@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-CW-001"
 title: "Copilot Cowork: A new way of getting work done"

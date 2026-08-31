@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-EXCEL-001"
 title: "Get started with Copilot in Excel - Microsoft Support"

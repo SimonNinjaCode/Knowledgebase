@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 audit_date: 2026-08-18
 scope: Intune
 status: active

@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # 🛡️ Digital Defense Report 2024
 
 ## 📊 Cybersecurity Signals Analyzed

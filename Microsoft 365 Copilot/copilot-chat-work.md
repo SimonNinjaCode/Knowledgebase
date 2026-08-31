@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-CHAT-001"
 title: "How Copilot Chat works with and without a Microsoft 365 Copilot license | Microsoft Support"

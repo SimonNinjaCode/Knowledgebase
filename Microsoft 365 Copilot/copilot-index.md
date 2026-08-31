@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 title: "Microsoft 365 Copilot — Index"
 created: 2026-05-30

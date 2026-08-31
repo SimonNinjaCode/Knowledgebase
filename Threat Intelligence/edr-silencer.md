@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # EDR Silencers
 
 ## Introduction

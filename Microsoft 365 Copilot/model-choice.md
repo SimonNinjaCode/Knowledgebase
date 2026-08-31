@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-MC-001"
 title: "Expanding model choice in Microsoft 365 Copilot"

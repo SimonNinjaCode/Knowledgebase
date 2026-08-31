@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Knowledgebase
 
 A comprehensive knowledge base for Microsoft security and cloud technologies, covering implementation guides, security best practices, and threat intelligence.

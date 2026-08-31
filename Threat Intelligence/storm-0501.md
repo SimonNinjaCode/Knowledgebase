@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Threat Report Summary: Storm-0501
 
 ## Key Findings

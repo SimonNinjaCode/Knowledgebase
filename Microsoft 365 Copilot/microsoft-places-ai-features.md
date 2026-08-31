@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-PLACES-001"
 title: "Microsoft Places overview - Microsoft Places"

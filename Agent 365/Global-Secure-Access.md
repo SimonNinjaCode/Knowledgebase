@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 source: https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents
 last_verified: 2026-08-19
 ms_learn_updated: 2026-06-15

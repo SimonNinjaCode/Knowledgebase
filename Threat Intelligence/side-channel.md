@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Side-Channel Attack FIDO2
 ### YubiKey 5 Series (Infineon's Cryptographic Library)
 

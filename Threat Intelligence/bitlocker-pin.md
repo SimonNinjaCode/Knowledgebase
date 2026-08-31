@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # Bypassing Windows Disk Encryption
 
 ## Bitlocker - Windows Disk Encryption Bypass

@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 title: "Enterprise AI Governance — Multi-Model Security"
 created: 2026-05-30

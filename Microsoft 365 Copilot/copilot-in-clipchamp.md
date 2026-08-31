@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-CLIP-001"
 title: "Ask questions &amp; get summaries of any video with Microsoft Copilot in the Clipchamp player | Microsoft Support"

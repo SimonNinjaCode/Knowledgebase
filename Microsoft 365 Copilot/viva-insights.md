@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-VIVA-001"
 title: "Introduction to Viva Insights"

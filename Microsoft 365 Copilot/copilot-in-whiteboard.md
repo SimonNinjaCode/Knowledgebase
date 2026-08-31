@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-WB-001"
 title: "Whiteboard help &amp; learning"

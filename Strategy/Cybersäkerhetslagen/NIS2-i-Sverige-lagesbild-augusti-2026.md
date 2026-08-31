@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # NIS2 i Sverige — Aktuell lägesbild augusti 2026
 
 Under 2026 har NIS2 gått från något svenska organisationer förbereder sig inför till ett regelverk som gäller. Den svenska cybersäkerhetslagen (2025:1506) trädde i kraft den 15 januari 2026 och innebär nya och skärpta krav för ett stort antal företag, kommuner, regioner och myndigheter.

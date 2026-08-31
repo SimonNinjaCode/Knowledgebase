@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-ONENOTE-001"
 title: "Summarize your OneNote notes with Microsoft 365 Copilot - Microsoft Support"

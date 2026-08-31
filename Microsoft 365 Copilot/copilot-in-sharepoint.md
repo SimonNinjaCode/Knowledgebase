@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-SP-001"
 title: "Microsoft 365 Copilot in SharePoint help &amp; learning - Microsoft Support"

@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-OUTLOOK-001"
 title: "Chat with Copilot in Outlook - Microsoft Support"

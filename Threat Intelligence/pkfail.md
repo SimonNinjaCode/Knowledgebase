@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # PKfail Vulnerability
 
 A significant security issue in the UEFI ecosystem, affecting hundreds of device models due to untrusted Platform Keys (PK) used in Secure Boot.

@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 title: "DSPM for AI — Data Security Posture Management"
 created: 2026-05-30

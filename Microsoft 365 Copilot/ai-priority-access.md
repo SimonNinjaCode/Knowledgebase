@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-PA-001"
 title: "Standard versus priority access to features in Microsoft 365 Copilot Chat | Microsoft Support"

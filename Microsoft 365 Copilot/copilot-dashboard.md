@@ -1,4 +1,6 @@
 ---
+layout:
+  width: wide
 domain: m365-e7
 id: "M365-COP-DASH-001"
 title: "Connect to the Microsoft Copilot Dashboard for Microsoft 365 customers"

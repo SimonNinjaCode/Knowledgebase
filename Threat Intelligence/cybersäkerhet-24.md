@@ -1,3 +1,8 @@
+---
+layout:
+  width: wide
+---
+
 # 🇸🇪 Cybersäkerhet i Sverige 2024
 
 Cybersecurity is a shared responsibility requiring both governmental and organizational efforts.  
