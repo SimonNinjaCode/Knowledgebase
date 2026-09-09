@@ -19,7 +19,7 @@
 
 ## Defender XDR
 
-### 01-Defender-XDR
+### Microsoft Defender XDR
 
 - [Microsoft Defender XDR - Overview](<Defender XDR/01-Defender-XDR/01-Overview.md>)
 - [Microsoft Defender XDR - High-Level Design](<Defender XDR/01-Defender-XDR/02-High-Level-Design.md>)
@@ -37,7 +37,7 @@
 - [Security Operations Schedule](<Defender XDR/01-Defender-XDR/14-Security-Operations-Schedule.md>)
 - [Threat Hunting Process](<Defender XDR/01-Defender-XDR/15-Threat-Hunting.md>)
 
-### 02-Defender-for-Endpoint
+### Microsoft Defender for Endpoint
 
 - [Microsoft Defender for Endpoint - Overview](<Defender XDR/02-Defender-for-Endpoint/01-Overview.md>)
 - [Microsoft Defender for Endpoint - High-Level Design](<Defender XDR/02-Defender-for-Endpoint/02-High-Level-Design.md>)
@@ -45,21 +45,21 @@
 - [Microsoft Defender for Endpoint - Capabilities](<Defender XDR/02-Defender-for-Endpoint/04-Capabilities.md>)
 - [Reverse Shell](<Defender XDR/02-Defender-for-Endpoint/04.2-Security-testing-macos.md>)
 
-### 03-Defender-for-Identity
+### Microsoft Defender for Identity
 
 - [Microsoft Defender for Identity - Overview](<Defender XDR/03-Defender-for-Identity/01-Overview.md>)
 - [Microsoft Defender for Identity - High-Level Design](<Defender XDR/03-Defender-for-Identity/02-High-Level-Design.md>)
 - [Microsoft Defender for Identity - Low-Level Design](<Defender XDR/03-Defender-for-Identity/03-Low-Level-Design.md>)
 - [Microsoft Defender for Identity - Capabilities](<Defender XDR/03-Defender-for-Identity/04-Capabilities.md>)
 
-### 04-Defender-for-Office-365
+### Microsoft Defender for Office 365
 
 - [Microsoft Defender for Office 365 - Overview](<Defender XDR/04-Defender-for-Office-365/01-Overview.md>)
 - [Microsoft Defender for Office 365 - High-Level Design](<Defender XDR/04-Defender-for-Office-365/02-High-Level-Design.md>)
 - [Microsoft Defender for Office 365 - Low-Level Design](<Defender XDR/04-Defender-for-Office-365/03-Low-Level-Design.md>)
 - [Microsoft Defender for Office 365 - Capabilities](<Defender XDR/04-Defender-for-Office-365/04-Capabilities.md>)
 
-### 05-Defender-for-Cloud-Apps
+### Microsoft Defender for Cloud Apps
 
 - [Microsoft Defender for Cloud Apps - Overview](<Defender XDR/05-Defender-for-Cloud-Apps/01-Overview.md>)
 - [Microsoft Defender for Cloud Apps - High-Level Design](<Defender XDR/05-Defender-for-Cloud-Apps/02-High-Level-Design.md>)
