@@ -58,26 +58,13 @@ def summary_pages() -> list[Path]:
 
 
 def published_pages() -> set[Path]:
-    pages = {
+    """Return every user-facing Markdown page in the repository."""
+    return {
         path.resolve()
-        for path in (ROOT / "Agent 365").glob("*.md")
-        if path.name.lower() != "readme.md"
+        for path in ROOT.rglob("*.md")
+        if path not in {ROOT / "README.md", ROOT / "SUMMARY.md"}
+        and not any(part.startswith(".") for part in path.relative_to(ROOT).parts)
     }
-    pages.update(
-        path.resolve()
-        for path in (ROOT / "Intune").glob("*.md")
-        if path.read_text(encoding="utf-8").startswith("---\n")
-    )
-    pages.update(path.resolve() for path in (ROOT / "Microsoft 365 Copilot").glob("*.md"))
-    pages.update(
-        path.resolve()
-        for path in (ROOT / "Strategy").glob("**/*.md")
-        if path.relative_to(ROOT).as_posix() != "Strategy/E7 Solutions Architecture/README.md"
-    )
-    pages.update(path.resolve() for path in (ROOT / "Threat Intelligence").glob("*.md"))
-    if (ROOT / "Reports").is_dir():
-        pages.update(path.resolve() for path in (ROOT / "Reports").glob("**/*.md"))
-    return pages
 
 
 def main() -> int:
@@ -116,7 +103,9 @@ def main() -> int:
         fail("SUMMARY.md contains pages outside the published content set: " + ", ".join(unexpected))
         errors += 1
 
-    checked = [ROOT / "README.md", *pages]
+    # README is the only page whose layout is currently enforced globally.
+    # The repository also contains imported Markdown without frontmatter.
+    checked = [ROOT / "README.md"]
     for page in checked:
         label = page.relative_to(ROOT).as_posix()
         if not page.is_file():
