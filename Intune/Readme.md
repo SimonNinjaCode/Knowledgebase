@@ -93,6 +93,7 @@ required applications and policies are known and delivered.
 - [Endpoint analytics](https://learn.microsoft.com/intune/analytics/)
 - [Windows Autopilot device preparation](https://learn.microsoft.com/autopilot/device-preparation/overview)
 - [Enrollment-time grouping](https://learn.microsoft.com/intune/device-enrollment/setup-time-grouping)
+- [Windows Autopatch](Windows%20Autopatch.md)
 - [Intune and Defender for Endpoint integration](https://learn.microsoft.com/intune/device-security/microsoft-defender-endpoint-integration)
 - [Conditional Access Overview](https://learn.microsoft.com/en-us/entra/identity/conditional-access/overview)
 
