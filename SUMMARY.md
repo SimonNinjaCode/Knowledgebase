@@ -2,20 +2,28 @@
 
 ## Agent 365
 
+
+
+<!-- reports:notebooklm-digest -->
+- [NotebookLM digest 2026-09-21](Reports/NotebookLM%20Digest/notebooklm-digest-2026-09-21.md)
 - [Agent Map](<Agent 365/Agent-Map.md>)
-- [Conditional Access for Agent Identities](<Agent 365/Conditional-Access.md>)
-- [Defender Integration for AI Agents](<Agent 365/Defender-Integration.md>)
-- [Global Secure Access for AI Agents](<Agent 365/Global-Secure-Access.md>)
-- [Agent Graph API](<Agent 365/Graph-API.md>)
-- [ID Protection for Agent Identities](<Agent 365/ID-Protection.md>)
-- [Agent Identity Governance](<Agent 365/Identity-Governance.md>)
-- [Agent Lifecycle Management](<Agent 365/Lifecycle-Management.md>)
-- [Agent Observability](<Agent 365/Observability.md>)
-- [Agent Policy Templates](<Agent 365/Policy-Templates.md>)
-- [Purview Data Security and Compliance for AI Agents](<Agent 365/Purview-AI-Compliance.md>)
-- [Agent 365](<Agent 365/README.md>)
-- [Agent Registry Sync](<Agent 365/Registry-Sync.md>)
-- [Agent Tool Controls](<Agent 365/Tool-Controls.md>)
+- [Windows Autopatch](<Intune/Windows Autopatch.md>)
+- [Cybersecurity Report — 2026-09-14](<Reports/Cybersecurity/CybersecurityReport-2026-09-14.md>)
+- [Threat Intelligence Report — 2026-09-21](<Reports/Threat Intelligence Digest/ThreatIntelligenceReport-2026-09-21.md>)
+- [Windows Update brief — 2026-09-15](<Reports/Windows Update/windows-update-brief-2026-09-15.md>)
+- [Conditional Access för agentidentiteter](<Agent 365/Conditional-Access.md>)
+- [Defender för AI-agenter](<Agent 365/Defender-Integration.md>)
+- [Global Secure Access för Copilot Studio-agenter](<Agent 365/Global-Secure-Access.md>)
+- [Graph API för Agent 365-registret](<Agent 365/Graph-API.md>)
+- [ID Protection för agentidentiteter](<Agent 365/ID-Protection.md>)
+- [Identity governance för agenter](<Agent 365/Identity-Governance.md>)
+- [Agentlivscykel och avveckling](<Agent 365/Lifecycle-Management.md>)
+- [Observability för agenter](<Agent 365/Observability.md>)
+- [Policytemplates för agenter](<Agent 365/Policy-Templates.md>)
+- [Purview: datasäkerhet och compliance för AI-agenter](<Agent 365/Purview-AI-Compliance.md>)
+- [Microsoft Agent 365](<Agent 365/README.md>)
+- [Anslutna plattformar: agentregistersynk](<Agent 365/Registry-Sync.md>)
+- [Verktygskontroller för agenter](<Agent 365/Tool-Controls.md>)
 
 ## Defender XDR
 
@@ -188,13 +196,13 @@
 - [Catch up on meetings with Microsoft 365 Copilot in Teams | Microsoft Support](<Microsoft 365 Copilot/copilot-in-teams.md>)
 - [Whiteboard help &amp; learning](<Microsoft 365 Copilot/copilot-in-whiteboard.md>)
 - [Draft and add content with Copilot in Word - Microsoft Support](<Microsoft 365 Copilot/copilot-in-word.md>)
-- [Microsoft 365 Copilot — Index](<Microsoft 365 Copilot/copilot-index.md>)
+- [Microsoft 365 Copilot: säkerhet och governance](<Microsoft 365 Copilot/copilot-index.md>)
 - [Get started with Microsoft 365 Copilot Notebooks | Microsoft Support](<Microsoft 365 Copilot/copilot-notebooks.md>)
 - [Understand Prompt Gallery in Copilot](<Microsoft 365 Copilot/copilot-prompt-gallery.md>)
 - [Microsoft 365 Copilot Search](<Microsoft 365 Copilot/copilot-search.md>)
-- [Priser för Microsoft 365 Copilot – AI-agenter | Copilot Studio](<Microsoft 365 Copilot/copilot-studio-for-microsoft-365.md>)
+- [Copilot Studio: säkerhet och governance](<Microsoft 365 Copilot/copilot-studio-for-microsoft-365.md>)
 - [Customize Microsoft 365 Copilot with Copilot Tuning (early access preview)](<Microsoft 365 Copilot/copilot-tuning-preview.md>)
-- [## Översikt](<Microsoft 365 Copilot/fasttrack.md>)
+- [FastTrack för Microsoft Copilot: säker utrullning](<Microsoft 365 Copilot/fasttrack.md>)
 - [Microsoft 365 Copilot connectors overview](<Microsoft 365 Copilot/graph-and-connector-access.md>)
 - [Microsoft Teams Premium licensing - Microsoft Teams](<Microsoft 365 Copilot/intelligent-recap.md>)
 - [Agents in Microsoft 365 &#8211; Microsoft Adoption](<Microsoft 365 Copilot/microsoft-365-agents.md>)
@@ -237,7 +245,7 @@
 ## Strategy
 
 - [AI och NIS2: Januari 2026 blev en dyr månad att missa](<Strategy/CISO-Nyhetsbrev-Jan26.md>)
-- [Microsoft 365 E7 — Översikt](<Strategy/m365-e7-overview.md>)
+- [Microsoft 365 E7: säkerhet och governance](<Strategy/m365-e7-overview.md>)
 
 ### Cybersäkerhetslagen
 
@@ -245,12 +253,12 @@
 
 ### E7 Solutions Architecture
 
-- [M365 E7 — Solutions Architecture](<Strategy/E7 Solutions Architecture/README.md>)
-- [Data Security & Protection](<Strategy/E7 Solutions Architecture/data-security.md>)
-- [Device & Endpoint Protection](<Strategy/E7 Solutions Architecture/device-protection.md>)
-- [DSPM for AI — Data Security Posture Management](<Strategy/E7 Solutions Architecture/dspm-ai.md>)
-- [Enterprise AI Governance — Multi-Model Security](<Strategy/E7 Solutions Architecture/enterprise-ai-governance.md>)
-- [Identity Protection & Zero Trust](<Strategy/E7 Solutions Architecture/identity-protection.md>)
+- [Microsoft 365 E7: lösningsarkitektur](<Strategy/E7 Solutions Architecture/README.md>)
+- [Datasäkerhet och skydd i Microsoft 365 E7](<Strategy/E7 Solutions Architecture/data-security.md>)
+- [Enhets- och endpointskydd i Microsoft 365 E7](<Strategy/E7 Solutions Architecture/device-protection.md>)
+- [DSPM for AI: datasäkerhetsstatus](<Strategy/E7 Solutions Architecture/dspm-ai.md>)
+- [Enterprise AI-governance: Microsoft 365 och extern AI](<Strategy/E7 Solutions Architecture/enterprise-ai-governance.md>)
+- [Identitetsskydd och Zero Trust i Microsoft 365 E7](<Strategy/E7 Solutions Architecture/identity-protection.md>)
 
 ## Threat Intelligence
 
