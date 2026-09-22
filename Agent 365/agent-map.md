@@ -1,66 +1,61 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/microsoft-365/admin/manage/agent-map
-last_verified: 2026-08-19
-ms_learn_updated: 2026-08-18
+domain: agent-365
+title: "Agent Map"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [security, platform, compliance, ciso]
+tags: ["#agent-365", "#agent-map", "#inventory", "#agent-governance"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-map
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/overview
 ---
 
 # Agent Map
 
-## Overview
+Agent Map ger en visuell vy över agentinventeringen i Microsoft 365 admin
+center. Använd den för att hitta agent-sprawl, saknade ägare och plattformar
+som behöver olika styrning. Det är en inventeringsvy, inte ett bevis på att en
+agent är säker eller att dess dataåtkomst är korrekt.
 
-Agent Map provides a visual inventory of AI agents in the tenant, grouping agents by platform. It complements the list-based Agent Registry with a scalable, visual approach for environments with large numbers of agents.
+## Användning
 
-## Access Requirements
+1. Öppna **Agents** i Microsoft 365 admin center och välj **All agents** och
+   **Map** när funktionen finns i tenantens vy.
+2. Filtrera på tillgängliga metadata, till exempel status, publisher, plattform,
+   kanal eller datakälla.
+3. Öppna agentens detaljer och kontrollera identitet, ägare, åtkomst, verktyg
+   och publiceringsstatus.
+4. Exportera eller dokumentera fynd med åtgärdsägare och slutdatum.
 
-| Requirement | Details |
-|---|---|
-| License | M365 E7 (Agent 365) |
-| Role | Global Administrator or AI Administrator |
+Microsoft Learn anger att Agent Map är tillgänglig för Copilot-administratörer
+med E7 (Agent 365)-licens och rollen Global Administrator eller AI Administrator.
+Usage/observability-filter är begränsade av tenantens storlek. **Single Agent
+Map** är markerad som Preview och bygger på Agent 365-observability.
 
-## Navigation
+## Governancefrågor
 
-1. Sign in to the Microsoft 365 admin center
-2. Select **Agents** > **All Agents** > **Map**
+- Finns varje agent i ett godkänt användningsfall?
+- Har varje autonom agent ägare, sponsor och återkallningsplan?
+- Kan inventoryposten kopplas till Entra-identitet, Purview-data och audit?
+- Vilka registrerade agenter saknar telemetry, owner eller aktuell review?
+- Vilka tredjepartsplattformar ligger utanför Agent Maps täckning?
 
-## Capabilities
+Funktioner, filter, roller och licensförutsättningar kan ändras. Bekräfta dem i
+den aktuella adminvyn och Microsoft Learn innan en procedur blir standard.
 
-| Feature | Description |
-|---|---|
-| Platform clustering | Agents grouped by creation platform (Copilot Studio, Azure Foundry, third-party) |
-| Built-in filters | Filter by Status, Publisher type, Platform, Channel, Data source, or Usage |
-| Key metrics | High-level counters and agent-level indicators at a glance |
-| Agent drill-down | Review publisher, type, platform, version, and connectivity for individual agents |
-| Dependency visualization | View relationships and interactions between agents |
+## Relaterade knowledgebase-sidor
 
-> **Note:** Usage filtering is supported via Agent 365 observability data for tenants with fewer than 4,000 agents.
+- [Agent observability](Observability.md)
+- [Agent registry sync](Registry-Sync.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
+- [Agent identity governance](Identity-Governance.md)
 
-## Available Filters
+## Microsoft Learn
 
-| Filter | Options |
-|---|---|
-| Status | Available, Blocked, Ownerless |
-| Publisher type | Microsoft, Third-party, Custom |
-| Platform | Copilot Studio, Azure Foundry, etc. |
-| Channel | Teams, Outlook, SharePoint, etc. |
-| Data source | SharePoint, Graph, Custom connectors |
-| Usage | Active, Inactive, Never used |
-
-## Use Cases
-
-- **Spot ownerless agents** — filter to "Ownerless" and assign sponsors
-- **Audit by platform** — identify agent sprawl across creation platforms
-- **Track adoption** — use usage filters to find inactive agents for retirement
-- **Dependency mapping** — understand agent-to-agent interactions before making changes
-
-## Related Documentation
-
-- [Lifecycle Management](Lifecycle-Management.md) — Install, block, delete agents
-- [Observability](Observability.md) — Agent activity monitoring
-- [Registry Sync](Registry-Sync.md) — Import agents from external platforms
-
-## Source
-
-- [Agent Map in the Microsoft 365 Admin Center — MS Learn](https://learn.microsoft.com/microsoft-365/admin/manage/agent-map)
+- [Agent Map in the Microsoft 365 admin center](https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-map)
+- [Overview of Microsoft Agent 365](https://learn.microsoft.com/en-us/microsoft-agent-365/overview)

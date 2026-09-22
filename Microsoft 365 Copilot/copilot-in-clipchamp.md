@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-CLIP-001"
 title: "Ask questions &amp; get summaries of any video with Microsoft Copilot in the Clipchamp player | Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/office/0b531ea9-2d9d-4830-97e4-2c1b2b8ca31d
 ms-learn: "https://support.microsoft.com/office/0b531ea9-2d9d-4830-97e4-2c1b2b8ca31d"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#apps"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#apps"]
 group: "apps"
 ---
 
@@ -17,7 +22,7 @@ group: "apps"
 
 ## Översikt
 
-Copilot in Clipchamp — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/office/0b531ea9-2d9d-4830-97e4-2c1b2b8ca31d) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/office/0b531ea9-2d9d-4830-97e4-2c1b2b8ca31d).
 
 ## Innehåll
 

@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-VP-001"
 title: "Viva Pulse licensing requirements"
-sources: ["m365maps E7"]
+sources:
+  - https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements
 ms-learn: "https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#platform"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#platform"]
 group: "platform"
 ---
 
@@ -17,7 +22,7 @@ group: "platform"
 
 ## Översikt
 
-Viva Pulse for Copilot — en del av Microsoft 365 E7. Se [Microsoft Learn](https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements).
 
 ## Innehåll
 
@@ -69,8 +74,7 @@ Suggest a fix?
   Last updated on
   2025-11-24
 
-  [1]: # 
-  [2]: https://github.com/MicrosoftDocs/viva/blob/public/Viva/pulse/get-started/licensing-requirements.md /blob//Viva/pulse/get-started/licensing-requirements.md" pr_repo="" pr_branch=""}
+  [1]: #
   [signing in]: # 
   [Employee experience and engagement in Microsoft Viva]: https://www.microsoft.com/microsoft-viva 
   [Workplace Analytics and Employee Feedback]: https://www.microsoft.com/en-us/microsoft-viva/workplace-analytics-and-feedback 

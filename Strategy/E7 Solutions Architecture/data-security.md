@@ -2,68 +2,98 @@
 layout:
   width: wide
 domain: m365-e7
-title: "Data Security & Protection — M365 E7"
-created: 2026-05-30
-updated: 2026-05-30
+title: "Datasäkerhet och skydd i Microsoft 365 E7"
 type: concept
-tags: ["#m365-e7", "#solutions-architecture", "#ciso", "#data-security", "#purview"]
-sources: []
+status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [ciso, security, compliance, data-governance, m365-admin]
+tags: ["#m365-e7", "#data-security", "#purview", "#dlp", "#information-protection"]
+sources:
+  - https://learn.microsoft.com/en-us/purview/ai-m365-copilot
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture-data-protection-auditing
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/configure-secure-governed-data-foundation-microsoft-365-copilot
+  - https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 ---
 
-# Data Security & Protection
+# Datasäkerhet och skydd i Microsoft 365 E7
 
-## Förmågor i E7
+E7 samlar Microsoft 365 Copilot, Agent 365 och Entra Suite med E5:s
+säkerhets- och compliancebas. Dataskyddet måste fortfarande konfigureras per
+datakälla, identitet, klient och agentplattform.
 
-Microsoft 365 E7 ger tre lager av dataskydd som bygger på varandra:
+## Datagränsen
 
-### 1. Information Protection (klassificering + märkning)
-- **Sensitivity labels** — automatisk eller manuell klassificering av dokument baserat på innehåll
-- **Auto-labeling** — AI som upptäcker känslig data (PII, finansiell, IP) och märker dokument i realtid
-- **Analysdriven** — trainable classifiers som lär sig organisationens unika datatyper
+Microsoft 365 Copilot arbetar inom Microsoft 365:s tjänstegräns och använder
+innehåll som den inloggade användaren har behörighet att läsa. Befintliga
+SharePoint-, OneDrive-, Exchange- och Teams-behörigheter är därför den första
+kontrollen. Copilot upphäver inte en användares åtkomst, och en label eller
+kryptering ersätter inte behörighetsgranskning.
 
-### 2. Data Loss Prevention (blockering)
-- **Endpoint DLP** — blockerar på klientnivå: copy-paste, filuppladdning, USB, skärmdump
-- **AI-kanal-DLP** — specifika regler för Copilot-prompter, Claude-uppladdningar, ChatGPT-konversationer
-- **Klientlös DLP** för moln-appar via Defender for Cloud Apps
+För Agent 365 beskriver Microsoft även Purview-kontroller för stödda
+agentscenarier. Kontrollera alltid agentplattform, publiceringsstatus,
+telemetri och aktuell licens innan ett krav skrivs som en garanti.
 
-### 3. DSPM (synlighet + risk)
-- **Data Security Posture Management** — identifierar var känslig data finns, vem som har access, och vilka risker som finns
-- **Shadow AI-identifiering** — upptäcker ohanterade AI-appar som anställda använder
-- **Data map** — visualiserar dataflöden mellan M365, SaaS-appar och AI-tjänster
+## Kontrollkarta
 
-## Vad E7 lägger till jämfört med E5
+| Kontroll | Säkerhetsfråga | Exempel på evidens |
+|---|---|---|
+| Permissions | Kan Copilot eller agenten läsa mer än arbetsuppgiften kräver? | Behörighetsrapport, ägare och åtgärdad oversharing |
+| Sensitivity labels och encryption | Är känsligt innehåll klassificerat och rättigheter testade? | Labelpolicy, skyddad testfil och resultat för VIEW/EXTRACT |
+| DLP | Vad ska varnas, blockeras eller kräva motivering? | Policy, testfall, incident och undantag |
+| Audit | Kan prompt, svar, åtkomst och policyändring följas upp? | Unified audit-logg och bevarandekrav |
+| Retention/eDiscovery | Kan organisationen bevara och hitta relevant AI-innehåll? | Retention policy, case och exporttest |
+| Insider Risk/Communication Compliance | Vilka signaler kräver granskning med rätt process? | Policy, rollseparation och utredningslogg |
+| DSPM | Vilka data- och åtkomstgap ska prioriteras? | Riskrapport, ägare och stängd åtgärd |
 
-| Förmåga | E5 | E7 |
-|---------|----|----|
-| Sensitivity labels | ✅ Grundläggande | ✅ Med auto-labeling + trainable classifiers |
-| Endpoint DLP | ✅ Ja | ✅ Ja (utökad AI-medveten) |
-| DSPM | ❌ Nej | ✅ Fullt DSPM för AI |
-| Shadow AI-detektion | ⚠️ Via Defender | ✅ Inbyggt i Purview DSPM |
-| Agent DLP | ❌ Nej | ✅ DLP för AI-agent-interaktioner |
-| Insider Risk för AI | ❌ Nej | ✅ AI-specifika insider-risk-indikatorer |
+Microsoft Purview dokumenterar stöd för bland annat DSPM, auditing,
+klassificering, labels, encryption, DLP, retention, eDiscovery, Communication
+Compliance och Insider Risk Management för Microsoft 365 Copilot. Agent 365:s
+tjänstebeskrivning listar motsvarande Purview-kapabiliteter för agentstyrning.
 
-## Strategi för CISO: Data-Centric Security
+## DLP och DSPM har olika jobb
 
-I en AI-värld där data rör sig mellan Copilot, Claude och Codex är perimeter-säkerhet meningslös. Lösningen är **data-centric security**:
+| | DLP | DSPM |
+|---|---|---|
+| Fråga | Ska den här handlingen tillåtas? | Var är vår exponering och varför? |
+| Åtgärd | Warn, block, allow with justification eller logga | Prioritera risk och tilldela åtgärd |
+| Bevis | Policyträff, användarval och incident | Riskfynd, ägare, deadline och status |
 
-1. **Klassificera allt** — om data inte har en sensitivity label, behandlas den som högsta risk
-2. **Labeln följer data** — oavsett om den är i OneDrive, uppladdad till Claude, eller inklistrad i ChatGPT
-3. **DLP på varje exit-point** — varje kanal där data kan lämna organisationens kontroll måste ha DLP
-4. **DSPM ger upptäckt** — DSPM hittar gapen innan de blir läckor
+Det här är en operativ modell, inte ett påstående om att varje DSPM-fynd kan
+blockeras automatiskt. Använd båda där de stöds och dokumentera luckorna.
 
-## Video-resurser (curated)
+## Säker grund för Copilot och agenter
 
-| Video | Kanal | Datum | Varför? |
-|-------|-------|-------|---------|
-| [Agent 365 \| Controls for Data Security & Compliance](https://youtu.be/CrAJZy7ne3Q) | Microsoft Mechanics ✓ | Maj 2026 | **Senaste**: Purview-styrning av Agent 365-agenter — krävs för att förstå data-boundary för agenter |
-| [Data security and governance in the age of AI \| BRK251](https://youtu.be/7FpeYx0f1ck) | Microsoft Events | Nov 2025 | 46 min deep-dive från Ignite: hur Purview anpassas för AI-flöden |
-| [Secure Your AI Apps and Agents via Microsoft Purview](https://youtu.be/QiJBK3dqeCs) | Microsoft SLED | Jan 2026 | 49 min med demo — praktisk Purview-konfiguration för AI |
-| [Proactive Security with Microsoft Purview (Myth-Busting)](https://youtu.be/cIz9J_7COh8) | Microsoft SLED | Mar 2026 | Myter om dataskydd i AI-eran — bra för att övertyga ledning |
-| [New Data Security Posture Management \| Microsoft Purview](https://youtu.be/NLfoFpFxhrA) | Microsoft Mechanics ✓ | Nov 2025 | Introduktion till Purview DSPM |
+1. Rensa överdelning i SharePoint, OneDrive, Teams och Exchange.
+2. Definiera informationsklasser, labels, encryption och vem som får ändra
+   eller dekryptera skyddat innehåll.
+3. Skapa DLP- och auditpolicyer för de datakällor och Copilot-/agentscenarier
+   som ingår i scope.
+4. Lägg till retention, eDiscovery, Communication Compliance och Insider Risk
+   där lagkrav och riskbild motiverar det.
+5. Pilotera med skyddade dokument, nekad åtkomst, OBO-flöden, DLP-matchningar
+   och återkallad behörighet.
+6. Följ upp policyundantag, dataexponering, agentåtkomst och release notes.
 
-## Relaterade notes
-- Agent Data Loss Prevention
-- Agent Data Security Posture Management
-- Agent Information Protection Integration
-- Agent Insider Risk Management
-- Copilot Index
+## Gräns mot externa AI-tjänster
+
+Microsoft 365:s Copilot- och Purviewkontroller ska inte beskrivas som en
+automatisk policy för varje extern SaaS-tjänst eller modell. För externa
+AI-tjänster behöver arkitekturen normalt kompletteras med leverantörens
+enterprise-kontroller, Entra-åtkomst, Endpoint DLP, Defender for Cloud Apps,
+nätverkskontroller och avtalskrav. Verifiera stödet för varje kanal; anta inte
+att en sensitivity label ensam stoppar uppladdning eller promptinnehåll.
+
+## Microsoft Learn
+
+- [Purview protections for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/purview/ai-m365-copilot)
+- [Microsoft 365 Copilot architecture: data protection and auditing](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture-data-protection-auditing)
+- [Configure a secure and governed data foundation for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/microsoft-365/copilot/configure-secure-governed-data-foundation-microsoft-365-copilot)
+- [Microsoft Agent 365 service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365)
+
+## Relaterade knowledgebase-sidor
+
+- [Microsoft 365 Copilot: security and governance](../../Microsoft%20365%20Copilot/copilot-index.md)
+- [DSPM for AI](dspm-ai.md)
+- [Enterprise AI Governance](enterprise-ai-governance.md)

@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-LOOP-001"
 title: "Frequently asked questions about Copilot in Loop | Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/office/cdba1c99-3a3f-4f0d-bb1b-8ca62d0bb23d
 ms-learn: "https://support.microsoft.com/office/cdba1c99-3a3f-4f0d-bb1b-8ca62d0bb23d"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#apps"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#apps"]
 group: "apps"
 ---
 
@@ -17,7 +22,7 @@ group: "apps"
 
 ## Översikt
 
-Copilot in Loop — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/office/cdba1c99-3a3f-4f0d-bb1b-8ca62d0bb23d) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/office/cdba1c99-3a3f-4f0d-bb1b-8ca62d0bb23d).
 
 ## Innehåll
 

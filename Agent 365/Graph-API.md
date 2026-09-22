@@ -1,47 +1,54 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/microsoft-agent-365/admin/graph-api
-last_verified: 2026-08-19
-ms_learn_updated: 2026-08-04
+domain: agent-365
+title: "Graph API för Agent 365-registret"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [platform, security, compliance, developers]
+tags: ["#agent-365", "#microsoft-graph", "#agent-registry", "#automation"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/admin/graph-api
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/overview
 ---
 
-# Agent Graph API
+# Graph API för Agent 365-registret
 
-## Overview
+Microsoft dokumenterar Graph API för agentregistret och agentdetaljer. Använd
+API:t för att hämta inventering och metadata till governanceflöden, men
+behandla registret som en källa bland flera. Ett API-resultat visar inte
+automatiskt agentens fulla runtime-, data- eller tool-täckning.
 
-The Agent Graph API provides programmatic access to the Agent 365 registry, enabling administrators to automate bulk agent management, streamline onboarding, and integrate governance into existing workflows.
+## Lämpliga användningar
 
-> **Preview** — These endpoints are currently in preview.
+- Inventeringsrapport med agent, plattform, ägare och status.
+- Kontroll av ownerless eller förändrade poster.
+- Underlag till åtkomst-, lifecycle- och riskgranskning.
+- Koppling till ett internt register med riskacceptans och slutdatum.
 
-## Available Endpoints
+## Säker användning
 
-| Endpoint | Description | Use Case |
-|---|---|---|
-| List packages API | Retrieve a complete list of agents in the tenant | Compliance reporting, inventory audits |
-| Get Copilot package details API | Retrieve detailed metadata for an individual agent | Agent auditing, configuration review |
+1. Använd minsta nödvändiga Graph-behörighet och en separat appidentitet.
+2. Skydda secrets och rotera dem enligt organisationens standard.
+3. Logga läsningar och ändringar av registrydata.
+4. Hantera API-fel, fördröjning och previewstatus som kontrollbegränsningar.
+5. Jämför registrydata med Entra, Purview, Defender och plattformens egna
+   loggar innan en compliancebedömning görs.
 
-## Required Roles
+Endpointnamn, permission scopes och API-status kan ändras. Läs den aktuella
+Graph-referensen innan kod eller automatisering låses.
 
-| Role | Access |
-|---|---|
-| AI Administrator | Full access to agent registry APIs |
-| Global Administrator | Full access to agent registry APIs |
+## Relaterade knowledgebase-sidor
 
-## Use Cases
+- [Agent Map](agent-map.md)
+- [Agent registry sync](Registry-Sync.md)
+- [Agent observability](Observability.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
 
-- **Inventory reporting** — Pull a full agent list for compliance and audit purposes
-- **Bulk management** — Automate onboarding and configuration changes across many agents
-- **Governance integration** — Connect agent registry data to existing IT governance workflows
-- **Automated monitoring** — Build custom alerting on agent inventory changes
+## Microsoft Learn
 
-## Related Documentation
-
-- [Lifecycle Management](Lifecycle-Management.md) — UI-based agent management
-- [Registry Sync](Registry-Sync.md) — Import agents from external platforms
-- [Observability](Observability.md) — Agent activity monitoring
-
-## Source
-
-- [Graph API for Agent Registry — MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/graph-api)
+- [Graph API for Agent 365 registry and agent details](https://learn.microsoft.com/en-us/microsoft-agent-365/admin/graph-api)
+- [Overview of Microsoft Agent 365](https://learn.microsoft.com/en-us/microsoft-agent-365/overview)

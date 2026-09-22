@@ -2,132 +2,92 @@
 layout:
   width: wide
 domain: m365-e7
-title: "Enterprise AI Governance — Multi-Model Security"
-created: 2026-05-30
-updated: 2026-05-30
+title: "Enterprise AI-governance: Microsoft 365 och extern AI"
 type: concept
-tags: ["#m365-e7", "#solutions-architecture", "#ciso", "#ai-governance", "#security"]
-sources: []
+status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [ciso, security, compliance, architecture, procurement]
+tags: ["#m365-e7", "#ai-governance", "#zero-trust", "#data-security", "#third-party-risk"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/security-microsoft-365-copilot
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-controls/security-governance
+  - https://learn.microsoft.com/en-us/purview/ai-m365-copilot
+  - https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 ---
 
-# Enterprise AI Governance — Multi-Model Security
+# Enterprise AI-governance: Microsoft 365 och extern AI
 
-## Problembild
+En organisation kan ha Microsoft 365 Copilot, Copilot Studio, Agent 365 och
+externa AI-tjänster samtidigt. De har olika identiteter, datagränser,
+telemetri, avtalsvillkor och kontrollmöjligheter. Governance måste därför
+beskriva gränserna i stället för att anta en enda universell policy.
 
-Organisationer hamnar snabbt i en **multi-modell-miljö**:
+## Kontrollmodell
 
-| Plattform | Typ | Dataflöde |
-|-----------|-----|-----------|
-| Microsoft 365 Copilot | Inbäddad i M365 | Mail, docs, meetings, SharePoint |
-| Claude Enterprise (Anthropic) | Fristående SaaS | Uppladdade filer, konversationer |
-| ChatGPT Enterprise / Codex (OpenAI) | Fristående SaaS | Kodfiler, dokument, konversationer |
-| Copilot Studio / Agent 365 | Anpassade agenter | Företagsdata via Graph-kopplingar |
+| Lager | Microsoft 365 och stödda agentscenarier | Externa AI-tjänster |
+|---|---|---|
+| Identitet | Entra, Conditional Access, Agent ID och livscykel | SSO, federation, lokal identitet och leverantörens service principals |
+| Data | M365-behörigheter, Purview labels, DLP, audit, retention och eDiscovery | Leverantörens data controls, Endpoint DLP, Cloud Apps och avtalskrav |
+| Agent/verktyg | Agent 365 inventory, policy, tool controls och livscykel där stödet finns | Plattformens registry, API/MCP-behörigheter, secrets och loggar |
+| Hot | Defender-detektion och utredning för dokumenterade scenarier | Leverantörens detektion plus endpoint-, nätverks- och SOC-kontroller |
+| Bevis | Unified audit, Purview och dokumenterad policytestning | Avtal, adminloggar, exporttest och bevarandekrav |
 
-Problemet: **Varje plattform har sin egen data-boundary.** Copilot respekterar M365 DLP. Men Claude och Codex har egna säkerhetslösningar som inte automatiskt lyder Microsofts policyer.
+Microsoft 365 Copilot använder innehåll som den inloggade användaren har rätt
+att läsa och ärver relevanta M365-skydd. Det betyder inte att samma skydd
+automatiskt gäller när en användare kopierar eller laddar upp innehåll till en
+extern tjänst.
 
-## Hur skyddar man data över alla plattformar?
+## Minimimodell för varje AI-tjänst
 
-### 1. Microsoft Purview som övergripande kontrollplan
+Dokumentera följande innan tjänsten tillåts för företagsdata:
 
-Purview fungerar som det **enda policyplanet** för data som lämnar Microsofts ekosystem:
+1. Ägare, användningsfall, dataklasser och berörda användare.
+2. Identitetsflöde, MFA, Conditional Access, service accounts och secrets.
+3. Var prompts, svar, filer, embeddings och auditloggar lagras.
+4. Om leverantören använder data för träning, och vilket avtal eller vilken
+   inställning som styr detta.
+5. DLP-, endpoint-, webbsessions- och nätverkskontroller för den faktiska
+   kanalen.
+6. Incidentkontakt, exportmöjlighet, retention och avvecklingsplan.
 
-- **DLP-policyer** : Identifierar och blockerar känslig data (PII, finansiell, IP) i realtid — även när den skickas till Copilot, Claude eller Codex via webbläsaren
-- **Endpoint DLP** : Fungerar på Windows/Mac oavsett vilken AI-tjänst som används. Fångar copy-paste, filuppladdning och skärmdump
-- **Communication Compliance** : Granskar interaktioner med AI-tjänster för insider-risk och policyöverträdelser
-- **Information Protection** : Automatisk klassificering och märkning av känsliga dokument — följer med data även utanför M365
+Detta är en governance-rekommendation. Leverantörens standardinställning och
+avtal måste verifieras separat och får inte fyllas i från antaganden.
 
-### 2. Entra Conditional Access som portvakt
+## Särskilda risker med agentflöden
 
-Istället för att lita på varje AI-plattforms egen auth:
+- En delegerad agent kan få behörighet i användarens kontext. Testa OBO och
+  skriv ned om Conditional Access utvärderar användaren eller agenten.
+- En autonom agent behöver egen identitet, ägare, sponsor, verktygslista,
+  datakällor och livscykel.
+- MCP- och API-verktyg är nya åtkomstvägar. Tillåt bara definierade verktyg,
+  minimala scopes och roterade credentials.
+- En agentinventering eller ett dashboardvärde är inte bevis på att varje
+  tredjepartsagent har telemetri eller runtime-skydd.
 
-- **Session Control** för alla AI-appar — inklusive Claude Enterprise, ChatGPT, Codex, Copilot
-- **App Control** : Tvinga session label-begränsningar — data klassad som "Confidential" kan inte laddas upp till externa AI-plattformar
-- **Agent ID** : Varje AI-agent (Copilot Studio, anpassade) får en workload-identitet med egna policyer
+## Beslutsgrind
 
-### 3. Data Loss Prevention för AI-kanaler
-
-Purview DLP har AI-specifika regler:
-
-- **Prompts** : Blockera om prompten innehåller känslig data
-- **Responses** : Blockera om AI-svaret exponerar data från känsliga källor
-- **Filuppladdning** : Blockera .docx, .pdf, .md med känslig klassificering från att laddas upp till Claude/Codex
-- **Copy-paste** : Förhindra kopiering från känsliga dokument till AI-webbläsar-gränssnittet
-
-## Specifikt för dokumenttyper
-
-| Filtyp | Risk | Skyddsmekanism |
-|--------|------|-----------------|
-| **DOCX** | Office-filer kan innehålla dold metadata, tracked changes, embedded objects | Purview Information Protection + Endpoint DLP + Sensitivity labels |
-| **PDF** | Mycket vanlig för uppladdning till Claude/Codex. Kan innehålla PII, kontrakt, IP | Purview klassificerar PDF via auto-labeling. DLP stoppar uppladdning |
-| **Markdown (.md)** | Kod-dokumentation, tekniska specar. Lätt att missa som "ofarlig" | Måste ha sensitivity label precis som DOCX/PDF. Policy: inga oklassificerade MD-filer till AI |
-
-## Rekommenderad arkitektur (CISO-nivå)
-
-```
-┌─────────────────────────────────────────────────┐
-│             Microsoft Purview                    │
-│  ┌──────────┬──────────┬──────────────────┐      │
-│  │   DLP    │   DSPM   │ Comm Compliance │      │
-│  └────┬─────┴────┬─────┴────────┬─────────┘      │
-│       │          │               │               │
-│       ▼          ▼               ▼               │
-│  ┌─────────┐ ┌────────┐ ┌──────────────┐        │
-│  │ Endpoint │ │Sensitivity│ │ Auto-labeling│      │
-│  │   DLP   │ │ Labels  │ │              │        │
-│  └─────────┘ └────────┘ └──────────────┘        │
-└─────────────────────┬───────────────────────────┘
-                      │
-          ┌───────────┴───────────┐
-          │                       │
-          ▼                       ▼
-┌──────────────────┐   ┌──────────────────────┐
-│  M365 Copilot    │   │  Claude / Codex /     │
-│  (inneboende     │   │  ChatGPT Enterprise   │
-│   DLP + Purview) │   │  (Endpoint DLP +      │
-│                  │   │   Conditional Access)  │
-└──────────────────┘   └──────────────────────┘
+```text
+Tjänst och användningsfall
+  → data- och identitetsklassning
+  → leverantörs- och avtalsgranskning
+  → kontrolltest för åtkomst, DLP, audit och avveckling
+  → godkänd scope eller blockerad tjänst
+  → återkommande risk- och releasegranskning
 ```
 
-## Nyckelprincip: Data Boundary Expansion
+## Microsoft Learn
 
-Microsofts data boundary slutar vid Copilot + M365. För att täcka Claude och Codex krävs:
+- [Security for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/microsoft-365/copilot/security-microsoft-365-copilot)
+- [Copilot controls: security and governance](https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-controls/security-governance)
+- [Purview protections for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/purview/ai-m365-copilot)
+- [Microsoft Agent 365 service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365)
 
-1. **Endpoint DLP** på alla klienter som når externa AI-plattformar
-2. **Nätverkskontroll** (Entra Internet Access) för att styra AI-trafik via en säker gateway
-3. **Agent ID / Conditional Access** för att blockera ohanterade enheter från AI-plattformar
-4. **Sensitivity labels** som metadata som följer dokumentet — oavsett var det laddas upp
+## Relaterade knowledgebase-sidor
 
-## Kritisk insikt: Model Training & Data Opt-Out
-
-En risk som ofta missas i enterprise-governance: **externa AI-plattformar kan använda din data för model training om du inte explicit optar ut.**
-
-| Plattform | Default | Opt-out | Enterprise-kontroll |
-|-----------|---------|---------|---------------------|
-| ChatGPT Free / Plus | Data används för training | Settings → Data Controls → opt out | ChatGPT Enterprise: ingen training per default |
-| Claude Free / Pro | Data används för training | Account Settings → opt out | Claude Enterprise: ingen training, SOC 2 |
-| Gemini | Data används för training | Workspace Admin Console → AI settings | Google Workspace Enterprise: kan stängas av |
-| Copilot / M365 | Data används **inte** för training | Krävs inget — inbyggt | Microsofts dataskydd är kontrakterat |
-
-**CISO-rekommendation:** Gör en **opt-out audit** av alla AI-plattformar som används i organisationen. Det räcker inte att ha ett enterprise-avtal — du måste verifiera att model training är avstängd per plattform. Videon [Your Data is training their models — disable this in 5 Minutes](https://youtu.be/926XK2glVo4) visar exakt var inställningarna sitter för varje plattform.
-
-## Video-resurser (curated)
-
-| Video | Kanal | Datum | Varför? |
-|-------|-------|-------|---------|
-| [AI Assistants Compared: Claude, ChatGPT Enterprise & Copilot](https://youtu.be/GHY2hGrr-9k) | ECI | Apr 2026 | Direkt jämförelse av alla tre — säkerhet, compliance, funktioner |
-| [Enterprise AI Compliance: Stop Shadow IT \| Copilot vs ChatGPT vs Claude vs Perplexity](https://youtu.be/a9F48jK6Vhs) | Millennium Business Solutions | Okt 2025 | Praktisk: hur man stoppar Shadow AI i multi-modell-miljö |
-| [Is ChatGPT Safe for Work? Enterprise AI Compliance Explained](https://youtu.be/ZvrBNO4VDUk) | CBT Nuggets ✓ | Feb 2026 | 368K subs — compliance-checklista för ChatGPT på jobbet |
-| [Is Your AI Stealing Business Secrets? ChatGPT, Claude & Copilot Privacy](https://youtu.be/b7Mz7ZNLoA8) | Profit Minds | Nov 2025 | 6.11x engagement — hur insider-risk ser ut i AI-era |
-| [Your Data is training their models — disable this in 5 Minutes](https://youtu.be/926XK2glVo4) | WorkModern | Jan 2026 | **Måste-veta**: hur man optar ut från model training på ChatGPT, Claude, Gemini |
-| [Data Security & Compliance for Azure Foundry AI Apps & Agents](https://youtu.be/j3lgwtAOnZU) | Microsoft Security Community | Jan 2026 | Azure Foundry — för utvecklargrupper som rullar egna AI-appar |
-
-## Relaterade notes
-- Agent 365 Index
-- Copilot Index
-- Entra Suite Index
-- Agent Comm Compliance
-- Agent Data Loss Prevention
-- Agent Insider Risk Management
-- Agent Conditional Access Integration
-- Agent Data Security Posture Management
-- Agent ID Protection Integration
+- [Microsoft 365 E7: security and governance overview](../m365-e7-overview.md)
+- [Data security and protection](data-security.md)
+- [Identity Protection & Zero Trust](identity-protection.md)
+- [Microsoft Agent 365](../../Agent%20365/README.md)
+- [Microsoft 365 Copilot: security and governance](../../Microsoft%20365%20Copilot/copilot-index.md)

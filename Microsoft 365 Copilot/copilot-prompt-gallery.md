@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-PG-001"
 title: "Understand Prompt Gallery in Copilot"
-sources: ["m365maps E7"]
+sources:
+  - https://learn.microsoft.com/microsoft-365/copilot/copilot-prompt-gallery
 ms-learn: "https://learn.microsoft.com/microsoft-365/copilot/copilot-prompt-gallery"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#core"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#core"]
 group: "core"
 ---
 
@@ -17,7 +22,7 @@ group: "core"
 
 ## Översikt
 
-Copilot Prompt Gallery — en del av Microsoft 365 E7. Se [Microsoft Learn](https://learn.microsoft.com/microsoft-365/copilot/copilot-prompt-gallery) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://learn.microsoft.com/microsoft-365/copilot/copilot-prompt-gallery).
 
 ## Innehåll
 

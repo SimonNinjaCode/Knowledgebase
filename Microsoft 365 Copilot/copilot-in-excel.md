@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-EXCEL-001"
 title: "Get started with Copilot in Excel - Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/office/d7110502-0334-4b4f-a175-a73abdfc118a
 ms-learn: "https://support.microsoft.com/office/d7110502-0334-4b4f-a175-a73abdfc118a"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#apps"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#apps"]
 group: "apps"
 ---
 
@@ -17,7 +22,7 @@ group: "apps"
 
 ## Översikt
 
-Copilot in Excel — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/office/d7110502-0334-4b4f-a175-a73abdfc118a) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/office/d7110502-0334-4b4f-a175-a73abdfc118a).
 
 ## Innehåll
 

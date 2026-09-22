@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-PLANNER-001"
 title: "Create a new plan with Copilot in Planner (preview) | Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/planner/copilot/create-a-new-plan-with-copilot-in-planner-preview
 ms-learn: "https://support.microsoft.com/planner/copilot/create-a-new-plan-with-copilot-in-planner-preview"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#apps"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#apps"]
 group: "apps"
 ---
 
@@ -17,7 +22,7 @@ group: "apps"
 
 ## Översikt
 
-Copilot in Planner — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/planner/copilot/create-a-new-plan-with-copilot-in-planner-preview) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/planner/copilot/create-a-new-plan-with-copilot-in-planner-preview).
 
 ## Innehåll
 

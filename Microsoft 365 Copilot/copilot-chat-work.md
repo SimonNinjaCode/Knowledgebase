@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-CHAT-001"
 title: "How Copilot Chat works with and without a Microsoft 365 Copilot license | Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/copilot-microsoft365-chat
 ms-learn: "https://support.microsoft.com/copilot-microsoft365-chat"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#core"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#core"]
 group: "core"
 ---
 
@@ -17,7 +22,7 @@ group: "core"
 
 ## Översikt
 
-Copilot Chat (Work) — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/copilot-microsoft365-chat) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/copilot-microsoft365-chat).
 
 ## Innehåll
 
@@ -51,14 +56,14 @@ To use Copilot Chat you need to sign in with your work or school account and ha
 
   Copilot in Outlook              Included                                                                            Included
 
-  Copilot in Microsoft 365 apps   Depends on your [label](what-copilot-license-do-i-have)   Included
+  Copilot in Microsoft 365 apps   Depends on your license   Included
   -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 For additional information about what you have access to with Copilot sign into [Copilot.microsoft.com](https://copilot.microsoft.com/) check what label is assigned to you. 
 
 A label of **Copilot Chat (Basic)**, **M365 Copilot (Basic)**, or **M365 Copilot (Premium)** appears under your name.
 
-This label indicates where you can access Copilot directly. Learn more about labels and what they mean in [What Copilot license do I have](what-copilot-license-do-i-have).
+This label indicates where you can access Copilot directly. Learn more about labels and what they mean in [Microsoft Copilot-licenser](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-licensing).
 
 ### Copilot help for IT admins
 

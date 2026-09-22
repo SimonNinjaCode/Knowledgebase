@@ -1,72 +1,191 @@
 ---
 layout:
   width: wide
-domain: m365-e7
-title: "Microsoft 365 Copilot — Index"
-created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#ai", "#security"]
-sources: ["https://learn.microsoft.com/microsoft-365/copilot/"]
+domain: m365-copilot
+title: "Microsoft 365 Copilot: säkerhet och governance"
+type: index
+status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [ciso, security, compliance, identity, m365-admin]
+tags: ["#microsoft-365-copilot", "#copilot", "#ai-governance", "#purview", "#security"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture-data-protection-auditing
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-controls/security-governance
+  - https://learn.microsoft.com/en-us/purview/ai-m365-copilot
 ---
 
-# Microsoft 365 Copilot — Index
+# Microsoft 365 Copilot: säkerhet och governance
 
-Copilot Premium i E7 inkluderar alla Copilot-kapaciteter samt exklusiva features som Copilot Cowork, Model Choice, AI Priority Access och avancerad AI-governance.
+Microsoft 365 Copilot använder användarens prompt, aktuell M365-kontext och
+data som den inloggade användaren redan har rätt att läsa. Tjänstegränsen ger
+inte tenant-omfattande åtkomst och reparerar inte överdelat innehåll.
 
-## Core Copilot (6)
+Säkerhetsfrågan är därför:
 
-| ID | Funktion | MS Learn |
-|----|----------|----------|
-| M365-COP-CHAT-001 | Copilot Chat (Work) | [Länk](https://support.microsoft.com/copilot-microsoft365-chat) |
-| M365-COP-ACT-001 | Copilot Actions | [Länk](https://www.microsoft.com/en-us/microsoft-365/blog/2024/11/19/introducing-copilot-actions-new-agents-and-tools-to-empower-it-teams/) |
-| M365-COP-PA-001 | AI Priority Access | [Länk](https://support.microsoft.com/topic/12c8d9f8-db32-4f99-8ebe-d8d85879137f) |
-| M365-COP-DASH-001 | Copilot Dashboard | [Länk](https://learn.microsoft.com/viva/insights/org-team-insights/copilot-dashboard) |
-| M365-COP-SEARCH-001 | Copilot Search | [Länk](https://learn.microsoft.com/microsoft-365/copilot/microsoft-365-copilot-search) |
-| M365-COP-PG-001 | Copilot Prompt Gallery | [Länk](https://learn.microsoft.com/microsoft-365/copilot/copilot-prompt-gallery) |
+1. Vilken identitet frågar?
+2. Vilka data får identiteten läsa?
+3. Vilka data får Copilot bearbeta, returnera eller behålla?
+4. Vilka interaktioner och adminhändelser ska upptäckas, granskas och utredas?
 
-## Copilot i Office-appar (12)
+## Säkerhetsgränser
 
-| ID | Funktion | MS Learn |
-|----|----------|----------|
-| M365-COP-EXCEL-001 | Copilot in Excel | [Länk](https://support.microsoft.com/office/d7110502-0334-4b4f-a175-a73abdfc118a) |
-| M365-COP-WORD-001 | Copilot in Word | [Länk](https://support.microsoft.com/copilot-word) |
-| M365-COP-TEAMS-001 | Copilot in Teams | [Länk](https://support.microsoft.com/office/0bf9dd3c-96f7-44e2-8bb8-790bedf066b1) |
-| M365-COP-OUTLOOK-001 | Copilot in Outlook | [Länk](https://support.microsoft.com/copilot-outlook) |
-| M365-COP-PPT-001 | Copilot in PowerPoint | [Länk](https://support.microsoft.com/office/3222ee03-f5a4-4d27-8642-9c387ab4854d) |
-| M365-COP-ONENOTE-001 | Copilot in OneNote | [Länk](https://support.microsoft.com/copilot-onenote) |
-| M365-COP-LOOP-001 | Copilot in Loop | [Länk](https://support.microsoft.com/office/cdba1c99-3a3f-4f0d-bb1b-8ca62d0bb23d) |
-| M365-COP-FORMS-001 | Copilot in Forms | [Länk](https://support.microsoft.com/forms/welcome-to-copilot-in-forms) |
-| M365-COP-ONEDRIVE-001 | Copilot in OneDrive | [Länk](https://support.microsoft.com/office/7fc81e10-e0cf-4da8-af2e-9876a2770e5d) |
-| M365-COP-PLANNER-001 | Copilot in Planner | [Länk](https://support.microsoft.com/planner/copilot/create-a-new-plan-with-copilot-in-planner-preview) |
-| M365-COP-SP-001 | Copilot in SharePoint | [Länk](https://support.microsoft.com/office/44e981e7-dcef-4422-977d-967f3dcfe796) |
-| M365-COP-WB-001 | Copilot in Whiteboard | [Länk](https://support.microsoft.com/whiteboard) |
-| M365-COP-CLIP-001 | Copilot in Clipchamp | [Länk](https://support.microsoft.com/office/0b531ea9-2d9d-4830-97e4-2c1b2b8ca31d) |
+| Gräns | Microsofts dokumentation | Governancekonsekvens |
+|---|---|---|
+| Identitet | Copilot följer M365-identitet, Conditional Access och MFA. | Säkra användare, enhet och session före AI-åtkomst. |
+| Auktorisering | Copilot hämtar bara innehåll som den inloggade användaren får läsa. | SharePoint-, OneDrive-, Exchange-, Teams- och Graph-behörigheter är avgörande. |
+| Dataskydd | Labels, encryption och usage rights gäller i stödda groundingflöden. | `VIEW` och `EXTRACT` behövs för krypterat innehåll. |
+| Tjänstegräns | Kunddata hanteras inom Microsoft Copilots dokumenterade tjänstegräns. | Generalisera inte gränsen till externa modeller, connectors eller agenter. |
+| Compliance | Prompt, svar, refererade filer och labels kan ge audit- och complianceposter. | Definiera retention, åtkomst till bevis och utredning före utrullning. |
+| Output | Copilot genererar sannolikhetsbaserat innehåll som kan vara fel eller ofullständigt. | Mänsklig granskning krävs för viktiga beslut och extern kommunikation. |
 
-## Advanced AI (6)
+Se [Copilot-arkitekturen](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture)
+och [dataskydd och audit](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture-data-protection-auditing).
 
-| ID | Funktion | MS Learn |
-|----|----------|----------|
-| M365-COP-CW-001 | Copilot Cowork (frontier) | [Länk](https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/copilot-cowork-a-new-way-of-getting-work-done/) |
-| M365-COP-NOTE-001 | Copilot Notebooks | [Länk](https://support.microsoft.com/topic/0775e693-11c6-4d80-8aba-fcc81a737a06) |
-| M365-COP-STUDIO-001 | Copilot Studio for Microsoft 365 | [Länk](https://www.microsoft.com/microsoft-365-copilot/pricing/copilot-studio) |
-| M365-COP-TUNE-001 | Copilot Tuning (preview) | [Länk](https://learn.microsoft.com/microsoft-365/copilot/copilot-tuning-process) |
-| M365-COP-MC-001 | Model Choice | [Länk](https://www.microsoft.com/en-us/microsoft-365/blog/2025/09/24/expanding-model-choice-in-microsoft-365-copilot/) |
-| M365-COP-GC-001 | Graph and Connector Access | [Länk](https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector) |
+## Purview-kontroller för Copilot
 
-## Plattform & Management (8)
+Microsoft Purview dokumenterar följande kapabiliteter för Microsoft 365 Copilot
+och Copilot Chat:
 
-| ID | Funktion | MS Learn |
-|----|----------|----------|
-| M365-COP-IR-001 | Intelligent Recap | [Länk](https://learn.microsoft.com/microsoftteams/teams-add-on-licensing/licensing-enhance-teams#intelligent-recap) |
-| M365-COP-M365A-001 | Microsoft 365 Agents | [Länk](https://adoption.microsoft.com/ai-agents/agents-in-microsoft-365/) |
-| M365-COP-SPAM-001 | SharePoint Advanced Management for Copilot | [Länk](https://learn.microsoft.com/sharepoint/advanced-management) |
-| M365-COP-SPAG-001 | SharePoint Agents | [Länk](https://adoption.microsoft.com/sharepoint-agents/) |
-| M365-COP-PLACES-001 | Microsoft Places (AI features) | [Länk](https://learn.microsoft.com/microsoft-365/places/places-overview) |
-| M365-COP-FT-001 | FastTrack | [Länk](https://www.microsoft.com/fasttrack/microsoft-365) |
-| M365-COP-VIVA-001 | Viva Insights | [Länk](https://learn.microsoft.com/viva/insights/introduction) |
-| M365-COP-VP-001 | Viva Pulse for Copilot | [Länk](https://learn.microsoft.com/viva/pulse/get-started/licensing-requirements) |
+| Purview-kapabilitet | Säkerhets- och governanceanvändning |
+|---|---|
+| DSPM och DSPM for AI (classic) | Hitta AI-användning, överdelning och risk; använd rekommendationer där de passar. |
+| Sensitivity labels | Klassificera innehåll och föra skyddskontext till stödda Copilotinteraktioner. |
+| Encryption och usage rights | Hindra användning av krypterat innehåll när rättigheter som `VIEW` eller `EXTRACT` saknas. |
+| DLP | Inspektera och begränsa känsliga prompts, svar och Copilot-relaterade dataplaceringar där policyn stöds. |
+| Audit | Logga Copilotinteraktioner och relaterade händelser i unified audit. |
+| Data classification | Identifiera känslig information i stödda AI-prompts och svar. |
+| Insider Risk Management | Knyta AI-användning till insider-risk-signaler och utredningar. |
+| Communication Compliance | Granska interaktioner mot kommunikationspolicyer där workloaden stöds. |
+| eDiscovery | Bevara, söka och utreda Copilotdata där workload och casebehörighet stöds. |
+| Data Lifecycle Management | Behålla eller radera interaktionsdata enligt beslutade retentionkrav. |
+| Compliance Manager | Följa upp relevanta kontroll- och regelverksmallar. |
 
-## Källa
-- [Microsoft 365 Copilot — Microsoft Learn](https://learn.microsoft.com/microsoft-365/copilot/)
-- [M365 Maps E7](https://m365maps.com/files/Microsoft-365-E7.htm)
+En listad kontroll är inte automatiskt aktiverad, rätt scopead eller tillgänglig
+i varje licens och workload. Verifiera policyplats, roller, actions och
+licens före implementation.
+
+Se [Purview protections for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/purview/ai-m365-copilot)
+och [Purview permissions](https://learn.microsoft.com/en-us/purview/purview-permissions).
+
+## Copilot controls-ramverket
+
+Microsoft delar Copilot controls i tre pelare:
+
+1. **Security and governance:** dataskydd, AI-säkerhet, compliance och privacy.
+2. **Management controls:** tenantinställningar, åtkomst och rollout.
+3. **Measurement and reporting:** användning, adoption, påverkan och risk.
+
+Den här knowledgebasen prioriterar den första pelaren. Adoption och ROI är
+sekundärt till en försvarbar identitets-, data- och compliancegräns.
+
+Se [Copilot controls: security and governance](https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-controls/security-governance).
+
+## Säker utrullning
+
+Det här är en implementationstolkning av Microsofts secure-foundation guidance.
+
+### 1. Scope och ansvar
+
+- Utse service owner, security owner och data owners.
+- Bestäm vilka användare, enheter, workloads och miljöer som ingår i piloten.
+- Definiera tillåtna, begränsade och förbjudna Copilot- och agentfunktioner.
+- Ge varje undantag en beslutsägare och ett slutdatum.
+
+### 2. Rätta datagrunden
+
+- Hitta överdelade SharePoint-sajter, OneDrive-filer och Teams-platser.
+- Granska anonyma länkar, breda grupper, gamla gäster och ownerless sites.
+- Använd labels och encryption där verksamheten behöver en verklig
+  skyddsgräns.
+- Prioritera åtgärder med SharePoint Advanced Management och Purview.
+
+### 3. Konfigurera kontroller
+
+- Kräv stark identitet, Conditional Access och compliant device enligt policy.
+- Aktivera Purview audit och definiera vem som får se prompts, svar och bevis.
+- Konfigurera DLP för stödda Copilot- och Copilot Chat-locations.
+- Definiera retention, eDiscovery, Communication Compliance och Insider Risk.
+- Sätt separata guardrails för agenter, connectors och externa AI-appar.
+
+### 4. Pilota med evidens
+
+- Använd representativa känsliga sajter, användare, appar och enheter.
+- Testa allow och deny, krypterat och label-skyddat innehåll, DLP och audit.
+- Logga falska positiva, saknad telemetri och workloads utan stöd.
+- Ett lyckat svar från Copilot är inte bevis på en säker datamodell.
+
+### 5. Driv och granska
+
+- Följ Copilot security dashboard och dataexponering på fast frekvens.
+- Utred avvikande eller policystridiga interaktioner.
+- Bevaka ändringar i permissions, labels, connectors och agentpublicering.
+- Läs release notes, licensvillkor och workloadstöd inför varje större våg.
+
+Se [Configure a secure and governed foundation for Microsoft Copilot](https://learn.microsoft.com/en-us/microsoft-365/copilot/configure-secure-governed-data-foundation-microsoft-365-copilot).
+
+## Licensorientering
+
+Licensbeslutet är separat från säkerhetsdesignen:
+
+| Prenumeration | Copilotposition |
+|---|---|
+| Microsoft 365 E3 | Microsoft Copilot kan köpas som add-on, med förutsättningar. |
+| Microsoft 365 E5 | Microsoft Copilot kan köpas som add-on; E5 har säkerhets- och compliancebasen. |
+| Microsoft 365 E7 | Microsoft Copilot ingår tillsammans med Entra Suite och Agent 365. |
+| M365 utan Copilot-entitlement | Copilot Chat och agentåtkomst beror på tenant, licens och billingmodell. |
+
+Detta är orientering, inte kontrakt. Kontrollera [Copilot-licenser](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-licensing),
+[service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot)
+och tenantens Product Terms.
+
+## Copilot, agenter och connectors
+
+| Objekt | Primär kontrollplan | Huvudfråga |
+|---|---|---|
+| Microsoft 365 Copilot | M365, Entra, Purview och SharePoint | Får användaren mer data än avsett? |
+| M365 prebuilt/declarative agents | M365 admin center, Copilot och Purview | Vem godkände publicering, knowledge och expiry? |
+| Copilot Studio-agenter | Power Platform, Agent 365, Entra, Purview och Defender | Vilka identiteter, connectors, verktyg och miljöer används? |
+| Synced Copilot connectors | Graph external items och connector permissions | Vad kopieras och indexeras, och bevaras externa ACL? |
+| Federated connectors | Connector- eller MCP-tjänst vid runtime | Vilka data lämnar källan och hur styrs tjänsten? |
+
+Se [Graph och connectors](graph-and-connector-access.md), [M365-agenter](microsoft-365-agents.md),
+[SharePoint-agenter](sharepoint-agents.md) och [Agent 365](../Agent%20365/README.md).
+
+## Governancekarta
+
+| Ämne | Knowledgebase-artikel |
+|---|---|
+| Dataåtkomst och permissions | [Copilotarkitektur och dataskydd](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture-data-protection-auditing) |
+| Begränsa datadiscovery | [Restrict Microsoft 365 Copilot](../Purview/Restrict-M365Copilot.md) |
+| Agentlivscykel | [M365-agenter](microsoft-365-agents.md) och [Agent 365](../Agent%20365/README.md) |
+| Connectors och extern data | [Graph och connectors](graph-and-connector-access.md) |
+| Copilot usage | [Copilot Dashboard](copilot-dashboard.md) |
+
+Appspecifika notes om Word, Excel, Teams och Outlook ligger kvar som
+referensmaterial. De ersätter inte säkerhets- och governancekontrollerna ovan.
+
+## Microsoft Learn
+
+- [Microsoft 365 Copilot documentation](https://learn.microsoft.com/en-us/microsoft-365/copilot/)
+- [Microsoft Copilot architecture](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture)
+- [Data protection and auditing](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-architecture-data-protection-auditing)
+- [Security for Microsoft Copilot](https://learn.microsoft.com/en-us/microsoft-365/copilot/security-microsoft-365-copilot)
+- [Copilot controls: security and governance](https://learn.microsoft.com/en-us/microsoft-365/copilot/copilot-controls/security-governance)
+- [Secure and governed data foundation](https://learn.microsoft.com/en-us/microsoft-365/copilot/configure-secure-governed-data-foundation-microsoft-365-copilot)
+- [Purview protections for Microsoft 365 Copilot](https://learn.microsoft.com/en-us/purview/ai-m365-copilot)
+- [Microsoft Copilot license options](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-licensing)
+- [Microsoft 365 Copilot service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-platform-service-description/microsoft-365-copilot)
+
+## Kontrollfrågor
+
+- Kan varje pilotanvändare bara läsa den data som faktiskt behövs?
+- Vilka SharePoint- och OneDrive-platser är överdelade eller saknar ägare?
+- Vilka labels och encryption rights måste fungera under grounding?
+- Vem får se prompts, svar och utredningsbevis?
+- Vilka DLP-, retention-, eDiscovery-, Communication Compliance- och Insider
+  Risk-policyer är aktiverade, testade och scopeade?
+- Hur godkänns och avvecklas agenter, connectors och externa AI-tjänster?
+- Vad är responsen om Copilot exponerar data genom en gammal behörighet?

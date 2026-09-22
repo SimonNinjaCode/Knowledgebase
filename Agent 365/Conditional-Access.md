@@ -1,78 +1,70 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/entra/identity/conditional-access/agent-id
-last_verified: 2026-08-19
-ms_learn_updated: 2026-07-01
+domain: agent-365
+title: "Conditional Access för agentidentiteter"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [security, identity, platform, compliance]
+tags: ["#agent-365", "#entra", "#conditional-access", "#agent-id", "#zero-trust"]
+sources:
+  - https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id
+  - https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id
 ---
 
-# Conditional Access for Agent Identities
+# Conditional Access för agentidentiteter
 
-## Overview
+Conditional Access kan användas för agentidentiteter i Microsoft Entra. Den
+kontrollerar åtkomst utifrån agentens identitet och definierade signaler, men
+beslutet beror på åtkomstmönster och resurs. En policy för en autonom agent kan
+inte antas gälla på samma sätt för en delegerad OBO-förfrågan.
 
-Conditional Access extends to agent identities in Microsoft Entra, allowing organizations to control how AI agents access corporate resources using the same policy engine that governs user access. It evaluates real-time signals — context, location, and session risk — to allow, block, or limit agent access.
+## Tre designfrågor
 
-## Key Concepts
+1. Är agenten autonom, delegerad eller användarliknande?
+2. Vilken identitet utvärderar resursen: agenten, användaren eller båda?
+3. Vilka attribut, risker, scopes, enhets- och nätverkskrav ska leda till
+   allow, block eller separat granskning?
 
-| Concept | Description |
+Microsoft beskriver blueprint och custom security attributes som sätt att rikta
+policyer mot agentidentiteter. Börja med en liten testgrupp och använd minst
+privilegium; rikta inte en bred blockpolicy mot ett attribut som inte är
+kontrollerat.
+
+## Rekommenderad policystruktur
+
+| Policy | Syfte |
 |---|---|
-| Agent Identity | Per-instance identity with sign-in history, audit trail, and kill switch |
-| Agent Identity Blueprint | Reusable identity template defining configuration and governance model |
-| Agent Sponsor | Human user accountable for the agent's lifecycle and access decisions |
-| Custom Security Attributes | Key-value metadata on agent identities enabling attribute-based CA targeting |
+| Baseline | Blockera eller begränsa oregistrerade och ownerless agenter |
+| Autonom | Kräv godkänd identitet, scopes, nätverk och dataklass |
+| Delegerad | Testa OBO, användarrisk och agentens tillåtna handlingar tillsammans |
+| Privilegierad | Separat kontroll för admin- och känsliga datakällor |
+| Undantag | Tidsbegränsat, ägt och testat undantag med kompensationskontroll |
 
-## Licensing
+Licens- och rollkrav varierar per Conditional Access-, Entra- och Agent 365-
+funktion. Använd aktuell dokumentation och Product Terms i stället för en
+statisk tabell i knowledgebasen.
 
-| Feature | Required License |
-|---|---|
-| Conditional Access for agents | Microsoft Entra ID P1 |
-| ID Protection for agents | Microsoft Entra ID P2 |
-| ID Governance for agents | Microsoft Entra ID P1 |
-| Network controls for agents | Microsoft Entra Internet Access |
+## Testfall
 
-## Attribute-Driven Conditional Access
+- Oregistrerad agent nekas.
+- Högriskagent blockeras eller isoleras enligt incidentprocess.
+- OBO-anrop får förväntat beslut när användaren är högrisk.
+- Blueprint- eller attributändring slår igenom utan oavsiktlig bred åtkomst.
+- Återkallad agentidentitet kan inte fortsätta använda sin gamla token eller
+  sina verktyg.
 
-Individually targeting each agent identity in CA policies does not scale. Use custom security attributes for attribute-based targeting instead.
+## Relaterade knowledgebase-sidor
 
-### Recommended Attribute Schema
+- [ID Protection för agentidentiteter](ID-Protection.md)
+- [Agent identity governance](Identity-Governance.md)
+- [Agent policy templates](Policy-Templates.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
 
-| Attribute | Type | Example Values |
-|---|---|---|
-| AgentClassification | String | Orchestrator, SubAgent, Connector |
-| DataSensitivity | String | Public, Internal, Confidential, Restricted |
-| AgentOrigin | String | Copilot Studio, MicrosoftFoundry, non-Microsoft |
-| ForPublicUse | Boolean | True, False |
+## Microsoft Learn
 
-### How It Works
-
-1. Define custom security attributes in Microsoft Entra ID
-2. Assign attributes to agent identities (and optionally to target resources)
-3. Create CA policies using attribute filters instead of manually selecting agents
-4. Policies automatically apply to current and future agent identities matching the attributes
-
-**Example rule:** "If DataSensitivity = Confidential, then block access" — automatically applies to every agent with that attribute.
-
-## Blueprint-Level Targeting
-
-An alternative to attribute-based targeting: apply CA policies at the agent identity blueprint level. Every agent identity is derived from a blueprint, so targeting the blueprint covers all current and future derived agent identities.
-
-**Note:** Blueprint-level targeting does not cover agents' user accounts — only the agent identities.
-
-## Policy Templates
-
-Microsoft provides built-in CA policy templates for agents:
-
-- Block high-risk agent identities
-- Configure policy for autonomous agent access
-- Configure policy for on-behalf-of agent access
-
-## Related Documentation
-
-- [ID Protection](ID-Protection.md) — Risk detection for agent identities
-- [Identity Governance](Identity-Governance.md) — Lifecycle management for agent identities
-- [Policy Templates](Policy-Templates.md) — Bundled governance policies
-
-## Source
-
-- [Conditional Access for Agent Identities — MS Learn](https://learn.microsoft.com/entra/identity/conditional-access/agent-id)
+- [Conditional Access for agent identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id)
+- [What is Microsoft Entra Agent ID?](https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id)

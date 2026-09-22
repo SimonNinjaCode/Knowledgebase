@@ -1,81 +1,69 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview
-last_verified: 2026-08-19
-ms_learn_updated: 2026-06-24
+domain: agent-365
+title: "Identity governance för agenter"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [identity, security, compliance, platform, ciso]
+tags: ["#agent-365", "#entra", "#identity-governance", "#lifecycle", "#least-privilege"]
+sources:
+  - https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview
+  - https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-license-feature-overview
 ---
 
-# Agent Identity Governance
+# Identity governance för agenter
 
-## Overview
+Microsoft Entra ID Governance kan användas för agentidentiteter genom Agent ID-
+modellen. Governance ska ge en agent samma grunddisciplin som annan
+icke-mänsklig identitet: ägare, sponsor, minsta privilegium, access review,
+lifecycle och revisionsspår.
 
-Microsoft Entra ID Governance extends to agent identities, applying the same lifecycle and access management that governs human identities. Agent identities are accounts in Microsoft Entra ID that provide unique identification and authentication for AI agents.
+## Objekt och ansvar
 
-## Agent Identity Object Model
+Microsoft beskriver blueprint, blueprint principal, agent identity och ett
+eventuellt agent user-objekt. Mappa varje objekt till en konkret plattform,
+ägare och resurs innan åtkomst beviljas. En sponsor ska kunna svara för varför
+agenten finns och när den ska tas bort.
 
-Agent ID introduces four new object types in Microsoft Entra:
+## Governancekontroller
 
-| Object | Description |
-|---|---|
-| Agent Identity Blueprint | Defines configuration and governance model; agents create identities from this |
-| Agent Identity Blueprint Principal | Enables multi-tenant scenarios; brought into resource tenant like a service principal |
-| Agent Identity | Per-instance identity with distinct access rights, sign-in history, and audit trail |
-| Agent User | Optional per-identity user object for delegated access scenarios |
+- **Entitlement Management:** paketera och godkänn agentens åtkomst.
+- **Access Reviews:** ompröva ägare, scopes och datakällor.
+- **Lifecycle Workflows:** automatisera onboarding, ändring och offboarding där
+  arbetsflödet stöds.
+- **Conditional Access:** villkora åtkomst efter agenttyp, attribut och risk.
+- **PIM:** hantera tidsbegränsad privilegierad åtkomst där scenariot stöds.
 
-### Single-Tenant Architecture
+## Licens och scope
 
-```
-Agent Identity Blueprint
-  └── Agent Identity 1 (with optional Agent User)
-  └── Agent Identity 2 (with optional Agent User)
-```
+Entra Agent ID-plattformen är tillgänglig för Entra-kunder. Microsoft anger att
+Microsoft Agent 365 krävs för att utöka Entra-säkerhetsfunktioner till agenter;
+E7 innehåller Agent 365 och Entra Suite. Kontrollera tenantens Product Terms,
+roller och featurestatus i stället för att använda en statisk E5/E7-tabell.
 
-### Multi-Tenant Architecture
+## Kontrolltest
 
-```
-Home Tenant: Agent Identity Blueprint
-  └── Resource Tenant: Agent Identity Blueprint Principal
-        └── Agent Identity 1
-        └── Agent Identity 2
-```
+1. Ny agent saknar sponsor och ska inte nå produktionsdata.
+2. Åtkomstpaket kräver rätt godkännare och har slutdatum.
+3. Access review tar bort en gammal scope och testet visar att åtkomsten
+   verkligen upphör.
+4. Ägarbyte, stop och radering lämnar audit och återkallar credentials.
+5. Delegerad och autonom åtkomst testas var för sig.
 
-## Sponsor Accountability
+## Relaterade knowledgebase-sidor
 
-Every agent identity must have a human sponsor — a user accountable for:
+- [Conditional Access för agentidentiteter](Conditional-Access.md)
+- [ID Protection för agentidentiteter](ID-Protection.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
+- [Agent policy templates](Policy-Templates.md)
 
-- Decisions about the agent's lifecycle (creation, access changes, deactivation)
-- Access review responses
-- Governance oversight
+## Microsoft Learn
 
-Sponsors are assigned after agent identity creation and can be changed as organizational responsibility shifts.
-
-## Governance Capabilities
-
-| Capability | Description |
-|---|---|
-| Access Reviews | Periodic certification that agent access remains appropriate |
-| Entitlement Management | Package-based access assignment for agent identities |
-| Lifecycle Workflows | Automated onboarding/offboarding workflows |
-| PIM (Privileged Identity Management) | Just-in-time elevation for agent identities requiring privileged access |
-
-## Licensing
-
-| Feature | Required License |
-|---|---|
-| Agent ID platform | Any Microsoft Entra (free) |
-| Agent 365 integration | Microsoft Agent 365 (M365 E7) |
-| Conditional Access for agents | Microsoft Entra ID P1 |
-| ID Protection for agents | Microsoft Entra ID P2 |
-| ID Governance for agents | Microsoft Entra ID P1 |
-
-## Related Documentation
-
-- [Conditional Access](Conditional-Access.md) — Access policies for agent identities
-- [ID Protection](ID-Protection.md) — Risk detection for agents
-- [Lifecycle Management](Lifecycle-Management.md) — Admin center agent management
-
-## Source
-
-- [Governing Agent Identities — MS Learn](https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview)
+- [Microsoft Entra ID Governance for agents](https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview)
+- [What is Microsoft Entra Agent ID?](https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id)
+- [Microsoft 365 E3, E5 and E7 feature comparison](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-license-feature-overview)

@@ -1,85 +1,66 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/entra/id-protection/concept-risky-agents
-last_verified: 2026-08-19
-ms_learn_updated: 2026-06-17
+domain: agent-365
+title: "ID Protection för agentidentiteter"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [security, identity, soc, compliance]
+tags: ["#agent-365", "#entra", "#id-protection", "#conditional-access"]
+sources:
+  - https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents
+  - https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id
 ---
 
-# ID Protection for Agent Identities
+# ID Protection för agentidentiteter
 
-## Overview
+Microsoft Entra ID Protection for risky agents is a risk-signal capability for
+agent identities in the Entra Agent ID model. The Microsoft Learn article
+currently describes the agent detections as **offline**. Treat the result as a
+risk input for investigation and Conditional Access, not as a promise of
+real-time prevention.
 
-Microsoft Entra ID Protection automatically detects and responds to identity-based risks on AI agents using the Microsoft Entra Agent ID platform. The system establishes a baseline for each agent's normal activity and continuously monitors for anomalies.
+## Viktiga begränsningar
 
-## Prerequisites
+- Entra Agent ID-plattformen är tillgänglig för Entra-kunder.
+- Microsofts dokumentation markerar den utökade ID Protection-funktionen för
+  agenter som "Starting soon" och anger Agent 365 som förutsättning. Kontrollera
+  aktuell Product Terms, featurestatus och tenantens licens före implementation.
+- I OBO-flöden kan risken tillskrivas användaren eftersom åtkomsten sker i
+  användarens kontext.
+- Detections, roller, API-scheman och previewstatus kan ändras. Verifiera mot
+  Microsoft Learn före produktionssättning.
 
-### Required Roles
+## Riskdetektioner
 
-| Role | Permissions |
-|---|---|
-| Security Administrator | Full access to risky agent reports and configuration |
-| Security Operator | View and act on risky agent reports |
-| Security Reader | Read-only access to risky agent reports |
-| Conditional Access Administrator | Configure policies using agent risk as a condition |
+Microsoft listar bland annat bekräftad kompromettering, tidig skadlig aktivitet,
+Entra directory reconnaissance, misslyckade åtkomstförsök, sign-in spikes,
+suspicious credential usage och ovanlig resursåtkomst. Alla är inte realtids-
+detektioner. Läs den aktuella listan och bygg inte en SLA på ett detektionsnamn.
 
-### Licensing
+## Använd risk i åtkomstbeslut
 
-| Feature | Required License |
-|---|---|
-| Agent ID platform | Any Microsoft Entra (free) |
-| ID Protection for agents | Microsoft Entra ID P2 |
-| Conditional Access for agents | Microsoft Entra ID P1 |
+1. Definiera vilka agentidentiteter och åtkomstmönster som ingår.
+2. Koppla riskfynd till Conditional Access där scenariot stöds.
+3. Testa autonom åtkomst och delegerad OBO-åtkomst separat.
+4. Blockera eller isolera högriskfall enligt en godkänd incidentprocess.
+5. Dokumentera undantag, ägare och hur en agent återställs eller avvecklas.
 
-## Risk Detections
+Ett bra kontrolltest är att visa vilken identitet, riskkälla, policy och
+resurs som ledde till beslutet. Ett grönt resultat betyder inte att agenten är
+ofarlig eller att databehörigheten är minimal.
 
-All risk detections for risky agents are currently **offline** (not real-time). In OBO flows, risky activity is attributed to the **user**, not the agent.
+## Relaterade knowledgebase-sidor
 
-| Detection | Type | riskEventType | Description |
-|---|---|---|---|
-| Confirmed compromised | Admin | adminConfirmedAgentCompromised | Admin manually confirmed agent is compromised |
-| Early life malicious activity | Offline | earlyLifeMaliciousActivity | Newly created agent immediately exhibited multiple suspicious patterns |
-| Entra Directory Reconnaissance | Offline | entraDirectoryReconnaissance | Agent performed suspicious reconnaissance or high-risk directory operations |
-| Failed access attempt | Offline | failedAccessAttempt | Agent attempted access to unauthorized resources — possible token replay |
-| Microsoft Entra threat intelligence | Offline | threatIntelligenceAccount | Activity consistent with known attack patterns from internal/external threat intel |
-| Sign-in spike | Offline | signInSpike | Significantly more sign-ins than usual — possible automation or toolkit |
-| Suspicious credential usage | Offline | suspiciousCredentialUsage | New credentials added to agent blueprints and then actually used |
-| Unfamiliar resource access | Offline | unfamiliarResourceAccess | Agent targeted resources outside its normal pattern |
+- [Conditional Access för agentidentiteter](Conditional-Access.md)
+- [Agent identity governance](Identity-Governance.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
+- [Defender integration](Defender-Integration.md)
 
-**Learning Mode** automatically suppresses behavioral alerts for agents lacking sufficient activity history, preventing false positives during onboarding. A parallel detection runs to catch genuinely malicious early-life behavior.
+## Microsoft Learn
 
-## How It Works
-
-1. Agent identity is created and begins operating normally
-2. ID Protection establishes a behavioral baseline for the agent
-3. Continuous monitoring compares activity against the baseline
-4. Anomalous behavior triggers a risk flag on the agent identity
-5. Risk signals feed into Conditional Access for automated response (e.g., block high-risk agents)
-
-## Integration with Conditional Access
-
-Use agent risk level as a condition in Conditional Access policies:
-
-- **Block** agents flagged as high risk
-- **Require re-evaluation** for agents with medium risk
-- **Allow** agents with no detected risk
-
-## Graph API
-
-Query risky agents programmatically:
-
-- `riskyAgents` — list of flagged agents
-- `agentRiskDetections` — detection events
-
-Risk data can be exported via diagnostic settings to Log Analytics, storage accounts, Event Hub, or SIEM solutions.
-
-## Related Documentation
-
-- [Conditional Access](Conditional-Access.md) — Use agent risk as a CA condition
-- [Identity Governance](Identity-Governance.md) — Sponsor accountability for risky agents
-- [Defender Integration](Defender-Integration.md) — Real-time threat protection
-
-## Source
-
-- [ID Protection for Agents — MS Learn](https://learn.microsoft.com/entra/id-protection/concept-risky-agents)
+- [Risky agents in Microsoft Entra ID Protection](https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents)
+- [Conditional Access for agent identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id)

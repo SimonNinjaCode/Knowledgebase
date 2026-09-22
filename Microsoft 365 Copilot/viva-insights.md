@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-VIVA-001"
 title: "Introduction to Viva Insights"
-sources: ["m365maps E7"]
+sources:
+  - https://learn.microsoft.com/viva/insights/introduction
 ms-learn: "https://learn.microsoft.com/viva/insights/introduction"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#platform"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#platform"]
 group: "platform"
 ---
 
@@ -17,7 +22,7 @@ group: "platform"
 
 ## Översikt
 
-Viva Insights — en del av Microsoft 365 E7. Se [Microsoft Learn](https://learn.microsoft.com/viva/insights/introduction) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://learn.microsoft.com/viva/insights/introduction).
 
 ## Innehåll
 

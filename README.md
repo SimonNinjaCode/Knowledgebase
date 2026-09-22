@@ -5,7 +5,8 @@ layout:
 
 # Knowledgebase
 
-A comprehensive knowledge base for Microsoft security and cloud technologies, covering implementation guides, security best practices, and threat intelligence.
+Knowledgebase för Microsoft security, cloud och AI-governance med implementation,
+kontroll- och incidentmaterial.
 
 ## Contents
 
@@ -23,8 +24,8 @@ A comprehensive knowledge base for Microsoft security and cloud technologies, co
 
 ### AI & Copilot
 
-- **[Microsoft 365 Copilot](./Microsoft%20365%20Copilot/)** - Copilot Premium features: Cowork, Model Choice, Copilot in Office apps, Studio, Agents (M365 E7)
-- **[Agent 365](./Agent%20365/)** - Agent identity, governance, security, and lifecycle management across Purview, Entra, and Defender (M365 E7)
+- **[Microsoft 365 Copilot](./Microsoft%20365%20Copilot/)** - Säkerhet, dataskydd, governance och relevanta adminreferenser för Copilot och agenter
+- **[Agent 365](./Agent%20365/)** - Agentidentitet, governance, säkerhet och livscykel med Purview, Entra och Defender
 - **[Security Copilot](./Security%20Copilot/)** - AI-powered security analysis and response
 - **[Generative AI](./Generative%20AI/)** - AI agents, prompts, and automation
 

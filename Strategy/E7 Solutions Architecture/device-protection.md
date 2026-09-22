@@ -2,112 +2,89 @@
 layout:
   width: wide
 domain: m365-e7
-title: "Device & Endpoint Protection — M365 E7"
-created: 2026-05-30
-updated: 2026-06-17
+title: "Enhets- och endpointskydd i Microsoft 365 E7"
 type: concept
-tags: ["#m365-e7", "#solutions-architecture", "#ciso", "#device", "#defender"]
-sources: []
-corrected: 2026-06-17 — Entra Internet Access och SharePoint Advanced Management är inte E7-specifika; se anmärkning
+status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [ciso, security, endpoint, identity, compliance]
+tags: ["#m365-e7", "#endpoint", "#intune", "#defender", "#conditional-access"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-license-feature-overview
+  - https://learn.microsoft.com/en-us/mem/intune/protect/device-compliance-get-started
+  - https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-device-compliance
+  - https://learn.microsoft.com/en-us/purview/endpoint-dlp-learn-about
 ---
 
-# Device & Endpoint Protection
+# Enhets- och endpointskydd i Microsoft 365 E7
 
-## Rollen i E7
+E7 ersätter inte endpoint-baslinjen. Intune, Defender for Endpoint,
+Conditional Access och Purview Endpoint DLP måste fortfarande vara rätt
+konfigurerade för de plattformar och användare som ingår i scope. E7:s
+licensskillnad är främst att Copilot, Agent 365 och Entra Suite ingår utöver
+E5, inte att varje klientkontroll blir en ny AI-funktion.
 
-I en AI-tät organisation är **slutanvändarens enhet** ofta den svagaste punkten. E7 inkluderar Defender-sviten fullt ut samt utökad endpoint-övervakning specifik för AI-interaktioner.
+## Kontrollkedjan
 
-> **⚠️ Anmärkning om licensjämförelser:** MSLearn publicerar ingen officiell E5 vs E7-jämförelsetabell. Tabellen nedan är en **konceptuell analys** baserad på tillgänglig dokumentation. Flera förmågor som ofta associeras med E7 (Entra Internet Access, SharePoint Advanced Management) är i själva verket separata tillägg eller del av Microsoft Entra Suite — inte E7-exklusiva funktioner. Se källhänvisningarna för varje rad.
-
-## Vad E7 ger utöver E5 för endpoint
-
-| Förmåga | E5 | E7 / Tillägg |
-|---------|----|-------------|
-| Defender for Endpoint P2 | ✅ Ja | ✅ Ja |
-| Defender for Office 365 P2 | ✅ Ja | ✅ Ja |
-| Endpoint DLP för AI | ⚠️ Grundläggande | ✅ Utökad med AI-kanaler |
-| Defender for Cloud Apps | ✅ Ja | ✅ Utökad för agenter |
-| Entra Internet Access (klient) | ❌ Nej | ✅ Ingår i Entra Suite (kräver Entra ID P1) — inte E7-specifik |
-| SharePoint Advanced Management | ❌ Nej | ✅ Separat add-on (SAM Plan 1) eller ingår i M365 Copilot-licens — inte E7-specifik |
-
-## Strategi: Enheten som sista försvarslinje
-
-DLP i molnet stoppar data vid uppladdning till Copilot. **Endpoint DLP** stoppar data som redan är på väg ut:
-
-### 1. Copy-paste-skydd
-När en användare kopierar text från ett klassificerat dokument till Claude eller ChatGPT:
-
-- Endpoint DLP upptäcker att källan har sensitivity label "Confidential"
-- Blockering: meddelande till användaren + logg till compliance
-- Alternativ: allow with justification (audited)
-
-### 2. Filuppladdningskontroll
-När en användare drar en .docx eller .pdf till claude.ai:
-
-- Endpoint DLP läser filens sensitivity label
-- Om Confidential eller högre: blockera uppladdning
-- Om Internal: logga och tillåt
-
-### 3. Skärmdumpskontroll
-- Identifierar när användare tar skärmdump av AI-konversationer
-- Blockera om konversationen innehåller klassificerad data
-
-## AI-klientövervakning
-
-Defender for Endpoint + Defender for Cloud Apps ger synlighet på klientnivå:
-
-| Aktivitet | Detekteras |
-|-----------|-----------|
-| Åtkomst till ChatGPT/Claude från ohanterad enhet | Defender for Cloud Apps |
-| Stor datamängd inklistrad i AI-tjänst | Endpoint DLP |
-| AI-agent som körs lokalt på enheten | Defender for Endpoint (ovanliga processer) |
-| Anslutning till okänd AI-tjänst | Entra Internet Access (AI-gateway) |
-
-## CISO-insikt: Mac-stöd är inte valbart för AI-arbeten
-
-Om din organisation har utvecklare som använder Claude/Codex på Mac (vilket är standard för AI-utveckling) måste **Endpoint DLP på macOS** vara på plats. Defender for Endpoint för Mac har nu fullt DLP-stöd — inklusive copy-paste- och filuppladdningskontroll.
-
-> Videon [Microsoft Defender For Endpoint For Mac OS](https://youtu.be/tqhM4q1Iph8) (Maj 2026, 198K subs) visar hur Mac-kanalen fungerar — inklusive DLP-policyer som appliceras identiskt på Windows och Mac.
-
-**Rekommendation:** Sätt upp en minimum-standard för alla enheter som når AI-plattformar:
-- Intune-ansluten (MDM)
-- Defender healthy (senaste definitioner, EDR aktiv)
-- Endpoint DLP aktiverad
-- Conditional Access som blockerar enheter som inte uppfyller kraven
-
-## Rekommendation: Compliant device som gate
-
-**All AI-åtkomst från icke-compliant devices ska blockeras.**
-
-```
-User → Compliant device (Intune enrolled + Defender healthy)
-  → Conditional Access: kräver compliant device
-  → Entra Internet Access: AI-gateway policy
-  → AI-tjänst: Copilot / Claude / Codex
+```text
+Enhet
+  → Intune compliance och konfigurationskrav
+  → Defender health, EDR och incidenttelemetri
+  → Conditional Access beslutar om åtkomst
+  → Purview Endpoint DLP hanterar valda datautförselkanaler
+  → audit, alert och incidentprocess
 ```
 
-Utan compliant device:
-```
-User → Ohanterad enhet
-  → Conditional Access: BLOCKERA (eller begränsa till readonly)
-  → Inget AI-tillträde
-```
+Conditional Access utvärderar bland annat enhetens compliance. Det gör en
+compliant device till en möjlig spärr, inte till ett bevis på att data eller
+AI-åtkomst är säker.
 
-## Video-resurser (curated)
+## Designbeslut
 
-| Video | Kanal | Datum | Varför? |
-|-------|-------|-------|---------|
-| [M365 E7, Intune and Purview Updates](https://youtu.be/F054yF45tRg) | Cloudy with a Chance of Insights | Mar 2026 | Intune + Purview-updates för AI-enheter |
-| [E7 vs E5: Which Microsoft License Do You Actually Need?](https://youtu.be/XN-gM86tOh0) | CRTL+LOL | Mar 2026 | Licens-jämförelse för endpoint-skillnader |
-| [Microsoft Defender For Endpoint For Mac OS](https://youtu.be/tqhM4q1Iph8) | JOYATRES TECHNOLOGY | Maj 2026 | **Viktig**: Mac-stöd för endpoint DLP |
-| [Data Loss Prevention in Microsoft 365 – Easy Guide](https://youtu.be/VWYeiJ48tQg) | Jonathan Edwards | Jun 2025 | 458K subs, 65.8K views — grundlig DLP-introduktion |
-| [Insights from Microsoft Ignite: Your Kick-Start for 2026](https://youtu.be/ZH0umh1T83U) | water IT Security | Jan 2026 | Strategisk — vad Ignite 2025 betyder för endpoint-säkerhet |
+| Beslut | Fråga att besvara |
+|---|---|
+| Enhetsstatus | Vilka plattformar och compliance-signaler måste vara uppfyllda? |
+| Åtkomst | Ska Copilot, agentportaler och externa AI-tjänster ha samma eller olika policies? |
+| Datautförsel | Vilka copy, paste, filuppladdningar eller webbsessioner ska övervakas eller blockeras? |
+| Telemetri | Vilka Defender-, Intune- och Purview-loggar behöver SOC och compliance? |
+| Undantag | Vem godkänner undantag, hur länge gäller de och vilket test bevisar risken? |
 
-## Relaterade notes
-- Agent Tool Controls
-- Agent Lifecycle Management
-- Entra Suite Index
-- Entra Internet Access
-- Enterprise AI Governance
-- Data Security & Protection
-- Identity Protection & Zero Trust
+## Praktisk baslinje
+
+1. Registrera och hantera stödda klienter med Intune.
+2. Kräv en definierad compliance-nivå för högriskresurser, till exempel
+   agentadministration och känsliga datakällor.
+3. Aktivera Defender-skydd och kontrollera att signaler kommer fram till rätt
+   incidentprocess.
+4. Använd Purview Endpoint DLP där kanalen, operativsystemet och licensen
+   stöds. Testa faktiska webbläsare och applikationer; anta inte identiskt stöd
+   mellan Windows, macOS och mobila plattformar.
+5. Separera läsning av M365-data från uppladdning till externa AI-tjänster.
+   Den senare kräver egen leverantörs-, nätverks- och endpointbedömning.
+6. Mät blockeringar, motiverade tillåtanden, policyundantag och klienter utan
+   telemetri.
+
+## Vad sidan inte lovar
+
+- E7 blockerar inte automatiskt all AI-trafik från en ohanterad enhet.
+- En compliant device stoppar inte en användare som redan har för bred
+  behörighet till SharePoint eller andra datakällor.
+- Endpoint DLP täcker inte automatiskt varje extern modell, webbläsare,
+  terminal eller lokal agent.
+- Entra Internet Access och Entra Private Access är Entra Suite-funktioner;
+  använd dem bara där den aktuella trafikmodellen och dokumentationen stöder
+  scenariot.
+
+## Microsoft Learn
+
+- [Microsoft 365 E3, E5 and E7 feature comparison](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-license-feature-overview)
+- [Get started with device compliance in Intune](https://learn.microsoft.com/en-us/mem/intune/protect/device-compliance-get-started)
+- [Require device compliance with Conditional Access](https://learn.microsoft.com/en-us/entra/identity/conditional-access/policy-all-users-device-compliance)
+- [Learn about Microsoft Purview Endpoint DLP](https://learn.microsoft.com/en-us/purview/endpoint-dlp-learn-about)
+
+## Relaterade knowledgebase-sidor
+
+- [Identity Protection & Zero Trust](identity-protection.md)
+- [Data security and protection](data-security.md)
+- [Enterprise AI Governance](enterprise-ai-governance.md)

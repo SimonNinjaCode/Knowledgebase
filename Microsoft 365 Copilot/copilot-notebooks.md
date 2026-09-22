@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-NOTE-001"
 title: "Get started with Microsoft 365 Copilot Notebooks | Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/topic/0775e693-11c6-4d80-8aba-fcc81a737a06
 ms-learn: "https://support.microsoft.com/topic/0775e693-11c6-4d80-8aba-fcc81a737a06"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#advanced"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#advanced"]
 group: "advanced"
 ---
 
@@ -17,7 +22,7 @@ group: "advanced"
 
 ## Översikt
 
-Copilot Notebooks — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/topic/0775e693-11c6-4d80-8aba-fcc81a737a06) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/topic/0775e693-11c6-4d80-8aba-fcc81a737a06).
 
 ## Innehåll
 
@@ -62,10 +67,7 @@ Some features described in this article are rolling out gradually and may not ye
     ::: TIP
     Tip
 
-    To create subsequent notebooks, select the plus button [
-    ![add](media/add.png)
-
-     next to **Notebooks** on the left side of the screen.
+    To create subsequent notebooks, select the plus button next to **Notebooks** on the left side of the screen.
     :::
 
 2.  Create a name for your notebook.
@@ -74,10 +76,7 @@ Some features described in this article are rolling out gradually and may not ye
 
     - **Filter** -- Select **All**, **Files**, **Meetings**, **Emails**, and **Sites** to filter on the list of suggested references.
     - **Search** -- In the search bar, enter the name of a specific reference, then select it from the list of suggested references.
-    - **Upload** -- Select the **Upload** button [
-      ![upload](media/upload.png)
-
-       and find the file you want to add.
+    - **Upload** -- Select the **Upload** button and find the file you want to add.
     - **OneDrive** -- Select the **OneDrive** icon. In your OneDrive folder, navigate to the file you want, and then select **Add**.
     - **Drag and drop** -- Drop your file into the section, **Drag your files and other content here**.
 
@@ -85,7 +84,7 @@ Some features described in this article are rolling out gradually and may not ye
 
 Tip
 
-Ready to collaborate with others? [Share your notebook](share-a-microsoft-365-copilot-notebook).
+Ready to collaborate with others? See the [Copilot Notebooks documentation](https://support.microsoft.com/topic/0775e693-11c6-4d80-8aba-fcc81a737a06).
 
 ## Start using Copilot Notebooks
 
@@ -93,8 +92,7 @@ Here are some examples to inspire you. Copy, paste, and adapt these for your own
 
 **Organize research for a new project**: You're gathering all relevant materials to kick off planning. Ask:
 
-  [
-  ![Icon depicting a document with sparkles](media/prompt-icon-24x24.png)
+Use the examples in the Microsoft Support article to build prompts for the notebook.
 
 *Se MS Learn för full dokumentation.*
 

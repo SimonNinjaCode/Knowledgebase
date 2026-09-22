@@ -1,268 +1,65 @@
 ---
 layout:
   width: wide
-domain: m365-e7
-id: "M365-COP-STUDIO-001"
-title: "Priser för Microsoft 365 Copilot – AI-agenter | Copilot Studio"
-sources: ["m365maps E7"]
-ms-learn: "https://www.microsoft.com/microsoft-365-copilot/pricing/copilot-studio"
-created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#advanced"]
-group: "advanced"
+domain: m365-copilot
+title: "Copilot Studio: security and governance"
+type: reference
+status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [ciso, security, platform, compliance, power-platform-admin]
+tags: ["#microsoft-365-copilot", "#copilot-studio", "#agent-governance", "#dlp", "#purview"]
+sources:
+  - https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance
+  - https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
 ---
 
-# Priser för Microsoft 365 Copilot – AI-agenter | Copilot Studio
+# Copilot Studio: security and governance
 
-## Översikt
+Copilot Studio har egna säkerhets- och governancekontroller i Power Platform.
+Microsoft Agent 365 kan komplettera med central inventering, agentidentiteter,
+observability och policy för Copilot Studio-agenter. De två kontrollplanen ska
+beskrivas tillsammans, men de är inte samma tjänst.
 
-Copilot Studio for Microsoft 365 — en del av Microsoft 365 E7. Se [Microsoft Learn](https://www.microsoft.com/microsoft-365-copilot/pricing/copilot-studio) för full dokumentation.
+## Kontroller att bedöma
 
-## Innehåll
+- Data policies för autentisering, knowledge sources, connectors, actions,
+  skills, HTTP requests, publiceringskanaler och triggers.
+- Maker- och admin-audit i Purview och Sentinel.
+- Säkerhetsskanning och riskbedömning före publicering.
+- Environment routing och separerade miljöer för utveckling och produktion.
+- Sensitivity labels för SharePoint-källor och user credentials där det stöds.
+- Customer-managed keys (CMK), data residency och kontroll över data movement.
+- Agent 365 för Entra-identitet, Conditional Access, access governance och
+  central observability där organisationen har tjänsten.
 
-Integrera kraftfull generativ AI i ditt arbetsflöde -- på webben, i apparna eller med agenter.
+## Rekommenderad releasegrind
 
-- [][2]
+1. Klassificera användningsfall, datakällor, verktyg och publiceringskanaler.
+2. Lägg restriktiva data policies på miljö- och tenantnivå.
+3. Kör security scan och manuella test för prompt injection, dataexfiltration,
+   felaktiga behörigheter och tool calls.
+4. Kräv ägare, sponsor, loggning och återställningsplan.
+5. Publicera först efter godkänd test, begränsad målgrupp och definierat
+   slutdatum.
+6. Följ upp audit, connector dependencies, policyändringar och användning.
 
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Abonnemang för privatpersoner
-  :::
-  ::::
-  :::::
-  ::::::
+## Viktig begränsning
 
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-- [][3]
+Customer Lockbox täcker inte all utgående telemetri från Copilot Studio.
+Microsoft anger att vissa Purview-audit- och Agent 365-governancehändelser
+hanteras i separata pipelines. Dokumentera därför var revisionsbevis och
+retention faktiskt finns.
 
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Företagsabonnemang
-  :::
-  ::::
-  :::::
-  ::::::
+## Microsoft Learn
 
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-- [][4]
+- [Key concepts: Copilot Studio security and governance](https://learn.microsoft.com/microsoft-copilot-studio/security-and-governance)
+- [Microsoft Agent 365 overview](https://learn.microsoft.com/en-us/microsoft-agent-365/overview)
+- [Microsoft Agent 365 service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365)
 
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Abonnemang för stora företag
-  :::
-  ::::
-  :::::
-  ::::::
+## Relaterade knowledgebase-sidor
 
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-- [][5]
-
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Copilot Studio-abonnemang
-  :::
-  ::::
-  :::::
-  ::::::
-
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-
-![][6]
-
-Integrera kraftfull generativ AI i ditt arbetsflöde -- på webben, i appar eller med agenter.
-
-- [][7]
-
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Abonnemang för privatpersoner
-  :::
-  ::::
-  :::::
-  ::::::
-
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-- [][3]
-
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Företagsabonnemang
-  :::
-  ::::
-  :::::
-  ::::::
-
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-- [][8]
-
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Abonnemang för stora företag
-  :::
-  ::::
-  :::::
-  ::::::
-
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-- [][5]
-
-  :::::::::::: tab__item
-  ::::::::::: tabs__tab-item--content
-  :::::::::: 
-  ::::::::: 
-  :::::: 
-  ::::: 
-  :::: mb-0
-  ::: 
-  Copilot Studio-abonnemang
-  :::
-  ::::
-  :::::
-  ::::::
-
-  :::: list-item__trailing
-  ::: 
-  [ ]
-  :::
-  ::::
-  :::::::::
-  ::::::::::
-  :::::::::::
-  ::::::::::::
-
-![][9]
-
-PRISER
-
-## Hitta det rätta Copilot Studio-abonnemanget för dina behov
-
-Microsoft 365 Copilot innehåller verktyg för att bygga agenter som kan användas internt i din organisation. Om du vill publicera eller dela agenter externt kan du välja ett fristående Copilot Studio-abonnemang. Och när du utvecklar agenter i Copilot Studio kan du nu dra nytta av expertisen hos Work IQ, ett informationslager med vars hjälp du kan skapa agenter skräddarsydda för just dina unika arbetsflöden och affärsbehov.
-
-### Microsoft 365 Copilot 
-
-[286,80 kr]
-
-[användare/månad, betalas årsvis]
-
-Omfattar tillgång till Copilot Studio för alla licenser -- perfekt för att ge medarbetare möjlighet att skapa och använda agenter internt.
-
-Pris exklusive moms.
-
-Köp nu[10]
-
-Mer information[11]
-
-Microsoft 365 Copilot är kanske inte tillgängligt för alla marknader och språk. Kunden måste ha ett kvalificerande Microsoft 365-abonnemang för stora organisationer eller företag för att kunna köpa.
-
-Omfattar tillgång till Copilot Studio för alla licenser -- perfekt för att ge medarbetare möjlighet att skapa och använda agenter internt.
-
-Pris exklusive moms.
-
-Köp nu[10] Mer information[11]
-
-*Se MS Learn för full dokumentation.*
-
-## MS Learn-källa
-[Copilot Studio for Microsoft 365](https://www.microsoft.com/microsoft-365-copilot/pricing/copilot-studio)
-
-## Relaterade notes
-- Copilot Index
+- [Microsoft 365 Copilot: security and governance](copilot-index.md)
+- [Microsoft Agent 365](../Agent%20365/README.md)
+- [Enterprise AI Governance](../Strategy/E7%20Solutions%20Architecture/enterprise-ai-governance.md)

@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-PPT-001"
 title: "Create a new presentation with Copilot in PowerPoint - Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/office/3222ee03-f5a4-4d27-8642-9c387ab4854d
 ms-learn: "https://support.microsoft.com/office/3222ee03-f5a4-4d27-8642-9c387ab4854d"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#apps"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#apps"]
 group: "apps"
 ---
 
@@ -17,7 +22,7 @@ group: "apps"
 
 ## Översikt
 
-Copilot in PowerPoint — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/office/3222ee03-f5a4-4d27-8642-9c387ab4854d) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/office/3222ee03-f5a4-4d27-8642-9c387ab4854d).
 
 ## Innehåll
 

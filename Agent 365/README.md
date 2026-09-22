@@ -1,55 +1,160 @@
-# Agent 365
+---
+layout:
+  width: wide
+domain: agent-365
+title: "Microsoft Agent 365"
+type: index
+status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [ciso, security, identity, compliance, platform]
+tags: ["#agent-365", "#agent-governance", "#entra", "#purview", "#defender"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/overview
+  - https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365
+  - https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id
+---
 
-Microsoft Agent 365 is the unified platform for building, managing, and securing AI agents within Microsoft 365. Introduced with M365 E7 (March 2026), it treats AI agents as first-class identities alongside users and devices.
+# Microsoft Agent 365
 
-## Capabilities
+Microsoft Agent 365 är Microsofts centrala kontrollplan för AI-agenter. Den
+samlar inventering, styrning och säkerhetsintegrationer för Microsoft-agenter och
+stödda agenter från andra plattformar.
 
-### Identity & Access
+Microsoft beskriver tjänsten i tre funktioner:
 
-| Capability | Description | Reference |
-|---|---|---|
-| [Conditional Access](Conditional-Access.md) | Attribute-driven and blueprint-level CA policies for agent identities | [MS Learn](https://learn.microsoft.com/entra/identity/conditional-access/agent-id) |
-| [Identity Governance](Identity-Governance.md) | Lifecycle and access governance for agent identities with sponsor accountability | [MS Learn](https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview) |
-| [ID Protection](ID-Protection.md) | Risk detection and automated response for agent identity anomalies | [MS Learn](https://learn.microsoft.com/entra/id-protection/concept-risky-agents) |
+- **Observe:** inventering, aktivitet och hälsa i ett centralt register.
+- **Govern:** livscykel, åtkomst, policy och compliance.
+- **Secure:** Entra, Purview, Defender och Intune för identitet, data, nätverk
+  och stödda runtime-scenarier.
 
-### Security
+Agent 365 gör inte en agent tillförlitlig av sig själv. Tenantens ägare måste
+fortfarande definiera minsta privilegium, datagränser, övervakning och
+avveckling.
 
-| Capability | Description | Reference |
-|---|---|---|
-| [Defender Integration](Defender-Integration.md) | Real-time protection, threat detection, and investigation for AI agents | [MS Learn](https://learn.microsoft.com/defender-xdr/security-for-ai/ai-agent-detection-protection) |
-| [Global Secure Access](Global-Secure-Access.md) | Network security controls for agent traffic via Secure Web and AI Gateway | [MS Learn](https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents) |
+## Agent 365 och Microsoft Entra Agent ID
 
-### Compliance
+De hänger ihop men är olika delar:
 
-| Capability | Description | Reference |
-|---|---|---|
-| [Purview for AI Agents](Purview-AI-Compliance.md) | DSPM, DLP, Communication Compliance, Insider Risk, Information Protection, and Data Lifecycle for AI interactions | [MS Learn](https://learn.microsoft.com/purview/ai-microsoft-purview) |
-
-### Management & APIs
-
-| Capability | Description | Reference |
-|---|---|---|
-| [Lifecycle Management](Lifecycle-Management.md) | Install, uninstall, block, delete, and assign ownership of agents | [MS Learn](https://learn.microsoft.com/microsoft-365/admin/manage/agent-actions) |
-| [Agent Map](Agent-Map.md) | Visual inventory of agents grouped by platform, with filters and drill-down | [MS Learn](https://learn.microsoft.com/microsoft-365/admin/manage/agent-map) |
-| [Registry Sync](Registry-Sync.md) | Synchronize agents from AWS Bedrock, Google Vertex, Salesforce, Databricks | [MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry) |
-| [Observability](Observability.md) | Agent monitoring, activity tracing, and business impact metrics | [MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/monitor-agents) |
-| [Graph API](Graph-API.md) | Programmatic agent registry access for automation and bulk management | [MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/graph-api) |
-| [Policy Templates](Policy-Templates.md) | Bundled governance policies from Entra, Purview, Defender, and SharePoint | [MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/agent-template) |
-| [Tool Controls](Tool-Controls.md) | Manage MCP servers and AI-powered tools available to agents | [MS Learn](https://learn.microsoft.com/microsoft-365/admin/manage/manage-tools-for-agent) |
-
-## Licensing
-
-| Feature | Required License |
+| Del | Roll |
 |---|---|
-| Agent identities (Agent ID) | Any Microsoft Entra (free) |
-| Agent 365 platform features | Microsoft Agent 365 (M365 E7) |
-| Conditional Access for agents | Microsoft Entra ID P1 |
-| ID Protection for agents | Microsoft Entra ID P2 |
-| ID Governance for agents | Microsoft Entra ID P1 |
-| Network controls (GSA) | Microsoft Entra Internet Access |
+| Microsoft Entra Agent ID | Identitetsramverk för agentidentiteter och blueprints. Plattformen är tillgänglig för Entra-kunder. |
+| Microsoft Agent 365 | M365-kontrollplan med agentinventering, governance och säkerhetsintegrationer. Ingår i Microsoft 365 E7 och finns även som separat tjänst för berättigade prenumerationer. |
+| Microsoft 365 admin center | Yta för Agent Registry, livscykelåtgärder, policytemplates och Agent Tools. |
+| Entra- och Purview-portaler | Ytor för identitet, åtkomst, data, compliance och livscykel. |
 
-## References
+Microsoft anger att ett kvalificerat Agent 365-entitlement krävs för att utöka
+Entra-säkerhets- och governancefunktioner till agentidentiteter. Kontrollera
+aktuell tjänstebeskrivning och Product Terms före inköp eller design.
 
-- [Agent 365 — Microsoft Learn](https://learn.microsoft.com/microsoft-agent-365/)
-- [M365 Maps E7](https://m365maps.com/files/Microsoft-365-E7.htm)
-- [M365 E7 Overview](../Strategy/m365-e7-overview.md)
+## Förmågekarta
+
+| Kontrollområde | Förmåga | Vad som ska dokumenteras |
+|---|---|---|
+| Inventering | Agent Registry och Agent Map | Agent, publisher, plattform, ägare och status |
+| Livscykel | Install, uninstall, block, unblock, delete, ägarbyte och distribution | Scope, godkännare, slutdatum och återkallning |
+| Policy | Policytemplates och villkorsstyrda livscykelregler | Underliggande policy, undantag och testfall |
+| Identitet | Agentidentiteter, blueprints, sponsorer och auditdata | Identitetsmönster och minsta scopes |
+| Åtkomst | Conditional Access, riskvillkor, access packages och security attributes | Autonom, delegerad eller användarliknande åtkomst |
+| Hot | Defender-detektion och utredning samt previewbaserat runtime-skydd | Plattform, publicering, telemetri och begränsningar |
+| Data | Purview labels, DLP, audit, eDiscovery, retention och riskkontroller | Datakällor, policyer och revisionsbevis |
+| Nätverk | Secure Web and AI Gateway för stödd Copilot Studio-trafik | Trafikmodell, region och policy |
+| Verktyg | Register för Microsoft- och BYO MCP-servrar | Publisher, scopes, secrets, beslut och loggar |
+| Externa plattformar | Connected platforms för stödda agentregister | Autentisering, synkstatus och plattformens egna loggar |
+| Automation | Graph-åtkomst till registrymetadata | API-version, scopes, felhantering och ändringsspår |
+
+Tjänstebeskrivningen skiljer mellan grundläggande inventering och mer avancerade
+funktioner. Policytemplates, observability, Agent Tools, Graph, access packages,
+Entra-, Purview- och Defender-kontroller listas för Microsoft 365 E7 och den
+separata Agent 365-tjänsten. Verifiera alltid den aktuella funktionsmatrisen.
+
+## Säkerhets- och governanceprocess
+
+### 1. Upptäck
+
+Använd Agent Registry och Agent Map för att hitta agenter, publishers,
+plattformar, ägare, identiteter, verktyg, datakällor och publiceringskanaler.
+Ta med anslutna externa register där stödet finns.
+
+### 2. Utse ansvar
+
+Varje agent ska ha en mänsklig ägare eller sponsor som kan svara för syfte,
+data, testning, åtkomst och avveckling. Ownerless är ett governancefynd.
+
+### 3. Begränsa identitet och åtkomst
+
+Använd Agent ID, Conditional Access, riskvillkor, access packages och custom
+security attributes där scenariot stöds. Modellera åtkomstmönstret först:
+
+- En autonom agent agerar som sig själv.
+- En delegerad agent använder användarens behörighet och kan bedömas i
+  användarens kontext i OBO-flöden.
+- En användarliknande agent har en annan identitets- och policygräns.
+
+En Conditional Access-policy för en modell täcker inte automatiskt de andra.
+
+### 4. Skydda data
+
+Använd Purview för labels, encryption, DLP, audit, retention, eDiscovery,
+Communication Compliance och Insider Risk Management där stödet finns. Rätta
+oversharing och gamla behörigheter innan agentens åtkomst breddas.
+
+### 5. Detektera och hantera
+
+Använd Defender för dokumenterade agentdetektioner och utredningar. Separera
+runtime-skydd från efterhandsdetektion. Incidentprocessen ska kunna blockera en
+agent, återkalla åtkomst, rotera credentials och bevara bevis.
+
+### 6. Avveckla
+
+Sätt review- eller expiry-datum. Ta bort oanvända agenter, verktyg, anslutningar
+och identiteter. Dokumentera om audit- eller affärsdata måste bevaras.
+
+## Microsoft 365 E7
+
+Microsoft 365 E7 innehåller Microsoft 365 Copilot, Microsoft Agent 365 och
+Microsoft Entra Suite ovanpå Microsoft 365 E5. Licensen ersätter inte
+konfiguration, testning eller separat verifiering av workloads och användare.
+
+Agent 365 finns också separat. Prerequisite-licenser för fristående köp kan
+ändras; kontrollera [tjänstebeskrivningen](https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365)
+och [Product Terms](https://www.microsoft.com/licensing/terms/) för aktuell
+tenant och inköpskanal.
+
+## Relaterade artiklar
+
+| Ämne | Artikel |
+|---|---|
+| Inventering | [Agent Map](agent-map.md) |
+| Conditional Access | [Conditional Access för agentidentiteter](Conditional-Access.md) |
+| Identitetsrisk | [ID Protection för agentidentiteter](ID-Protection.md) |
+| Identity governance | [Identity governance för agenter](Identity-Governance.md) |
+| Livscykel | [Agent lifecycle management](Lifecycle-Management.md) |
+| Detektion och utredning | [Defender for AI agents](Defender-Integration.md) |
+| Nätverk | [Global Secure Access](Global-Secure-Access.md) |
+| Data och compliance | [Purview för AI-agenter](Purview-AI-Compliance.md) |
+| Observability | [Agent observability](Observability.md) |
+| Policy | [Agent policy templates](Policy-Templates.md) |
+| Externa plattformar | [Connected platforms](Registry-Sync.md) |
+| Verktyg och MCP | [Agent tool controls](Tool-Controls.md) |
+| Graph | [Graph API för registret](Graph-API.md) |
+
+## Microsoft Learn
+
+- [Overview of Microsoft Agent 365](https://learn.microsoft.com/en-us/microsoft-agent-365/overview)
+- [Microsoft Agent 365 service description](https://learn.microsoft.com/en-us/office365/servicedescriptions/microsoft-agent-365/microsoft-agent-365)
+- [What is Microsoft Entra Agent ID?](https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id)
+- [Agent management in the Microsoft 365 admin center](https://learn.microsoft.com/en-us/microsoft-365/admin/manage/agent-365-overview)
+- [Microsoft Entra Agent ID best practices](https://learn.microsoft.com/en-us/entra/agent-id/best-practices-agent-id)
+- [Secure and govern Microsoft Copilot agents](https://learn.microsoft.com/en-us/purview/deploymentmodels/depmod-sc-agents-deployment)
+
+## Kontrollfrågor före implementation
+
+- Finns alla agentplattformar och anslutna register i inventeringen?
+- Har varje autonom agent ägare, sponsor, syfte och expiry-datum?
+- Vilket åtkomstmönster används: autonomt, delegerat eller användarlikt?
+- Vilka data, verktyg, MCP-servrar och utgående destinationer nås?
+- Vilka Purview- och Defenderkontroller täcker faktiskt plattformen?
+- Vem kan blockera, avinstallera, återkalla och utreda agenten?
+- Vilka previewfunktioner är förbjudna i produktion?

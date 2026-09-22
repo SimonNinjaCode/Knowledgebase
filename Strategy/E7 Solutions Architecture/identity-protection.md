@@ -2,119 +2,82 @@
 layout:
   width: wide
 domain: m365-e7
-title: "Identity Protection & Zero Trust — M365 E7"
-created: 2026-05-30
-updated: 2026-05-30
+title: "Identitetsskydd och Zero Trust i Microsoft 365 E7"
 type: concept
-tags: ["#m365-e7", "#solutions-architecture", "#ciso", "#identity", "#zero-trust"]
-sources: []
+status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [ciso, security, identity, compliance, architecture]
+tags: ["#m365-e7", "#entra", "#agent-id", "#conditional-access", "#zero-trust"]
+sources:
+  - https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id
+  - https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id
+  - https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents
+  - https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview
+  - https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-license-feature-overview
 ---
 
-# Identity Protection & Zero Trust
+# Identitetsskydd och Zero Trust i Microsoft 365 E7
 
-## E7:s identitetsförmågor
+Microsoft Entra Agent ID gör agentidentiteter och blueprints till en del av
+Entra-modellen. Plattformen är tillgänglig för Entra-kunder; Microsoft Agent
+365 krävs för att utöka Entra-säkerhetsfunktioner till agenter enligt Microsofts
+dokumentation. E7 innehåller Agent 365 och Entra Suite, men licensen aktiverar
+inte automatiskt någon policy.
 
-E7 utökar Entra ID P2 med AI-specifika identitetskontroller som inte finns i E5:
+## Tre åtkomstmönster
 
-| Förmåga | E5 | E7 |
-|---------|----|----|
-| Entra ID P2 (PIM, ID Protection) | ✅ Ja | ✅ Ja |
-| Entra ID Governance | ❌ Add-on | ✅ Inkluderat |
-| Entra Verified ID Premium | ❌ Nej | ✅ Inkluderat |
-| Entra Internet Access | ❌ Nej | ✅ Inkluderat |
-| Entra Private Access | ❌ Nej | ✅ Inkluderat |
-| Agent Conditional Access | ❌ Nej | ✅ Ja |
-| Agent ID Governance | ❌ Nej | ✅ Ja |
-| Agent ID Protection | ❌ Nej | ✅ Ja |
+| Mönster | Vad som måste verifieras |
+|---|---|
+| Autonom agent | Egen identitet, ägare, sponsor, scopes, verktyg, datakällor och slutdatum |
+| Delegerad agent | OBO-flöde, användarens risk och behörighet samt agentens tillåtna handlingar |
+| Användarliknande agent | Hur agenten presenteras, vilken identitet Conditional Access utvärderar och hur åtkomsten återkallas |
 
-## Zero Trust for AI — nytt paradigm
+Conditional Access för agentidentiteter har egna begränsningar och villkor.
+Microsoft beskriver bland annat att OBO-förfrågningar i vissa flöden bedöms i
+användarens kontext. Testa därför både agentens och användarens policyväg.
 
-Traditionell Zero Trust handlar om **users, devices, networks**. Zero Trust for AI lägger till:
+## Kontrollkedja
 
-### 1. Agent-identiteter som first-class citizens
-AI-agenter har egna workload-identiteter i Entra. Varje agent:
-- Har en unik agent identity (service principal)
-- Kan ha Conditional Access-policyer specifika för agenten
-- Hanteras via Agent Registry Sync
-- Har en blueprint som definierar dess livscykel och governance-modell
+1. **Inventera.** Hitta agenter och koppla varje rad till plattform, identitet,
+   ägare, sponsor och datakällor.
+2. **Minimera.** Ge bara de Graph-, API- och verktygsscopar som användningsfallet
+   kräver.
+3. **Villkora.** Använd Conditional Access, attribut och access packages där
+   scenariot stöds.
+4. **Övervaka.** Använd ID Protection och audit för risk, ovanliga mönster och
+   policyändringar. Dokumentera previewstatus och offline-detektioner.
+5. **Avveckla.** Blockera, stoppa eller ta bort agenten och återkalla secrets
+   när ägare, syfte eller avtal upphör.
 
-### 2. Agent Conditional Access — verifiera varje anrop
-Precis som en användare måste verifieras vid inloggning, måste varje agent som anropar en resurs verifieras:
-- **Agent-identitetens risknivå** — är den komprometterad?
-- **Agentens ursprung** — kommer den från rätt blueprint?
-- **Agentens access-mönster** — beter den sig normalt eller avvikande?
-- **Attribute-baserad policy** — agenthierarki, datasensitivity, ursprung
+## Vad E7 faktiskt ändrar
 
-### 3. Agent ID Protection — riskbedömning för agenter
-Entra ID Protection utökas till att täcka agent-identiteter:
-- Ovanliga agent-anropsmönster
-- Agent credentials som kan ha läckts
-- Risk-baserad åtkomstkontroll för agenter
+E7 samlar E5, Microsoft 365 Copilot, Agent 365 och Entra Suite. Det gör paketet
+intressant när samma population behöver Copilot, agentstyrning och Entra-nät-
+eller governancefunktioner. Det är inte bevis på att varje agent, extern SaaS-
+tjänst eller Graph-integration får samma skydd. Matcha kontroll mot identitet,
+plattform och licens.
 
-## Skydda identiteter i en multi-AI-miljö
+## Testfall före produktion
 
-| Scenario | Åtgärd |
-|----------|--------|
-| Copilot Studio-agent som behöver läsa SharePoint | Agent Conditional Access: verifiera blueprint + datasensitivity |
-| Utvecklare använder Codex med GitHub-inloggning | Entra ID Protection övervakar inloggningsmönster. Session Control begränsar vad Codex når |
-| Claude Enterprise med SSO | Entra blir IdP. Conditional Access kräver compliant device + MFA |
-| Anonym agent som försöker nå Microsoft Graph | Blockeras av Agent ID Protection + Agent Registry (finns inte i registryt) |
+- Autonom agent utan sponsor ska nekas eller hamna i undantagsflöde.
+- Delegerad OBO-förfrågan ska ge förväntat beslut när användaren är högrisk.
+- Agenten ska inte kunna använda ett verktyg eller en datakälla utanför sina
+  dokumenterade scopes.
+- Blockering, ägarbyte, stop/start och radering ska lämna revisionsspår.
+- En agent med inaktuell blueprint eller credential ska kunna isoleras snabbt.
 
-## Rekommenderad arkitektur
+## Microsoft Learn
 
-```
-Entra ID P2 (bas)
-├── Identity Protection — riskbedömning users + agents
-├── PIM — just-in-time admin access
-├── Conditional Access — policyer för users + agents
-│
-├── Entra ID Governance (add-on i E7)
-│   ├── Lifecycle Workflows
-│   ├── Entitlement Management
-│   └── ML Assisted Access Reviews
-│
-├── Agent 365 Identity
-│   ├── Agent ID Verification
-│   ├── Agent Registry Sync
-│   ├── Agent Conditional Access Integration
-│   └── Agent ID Protection
-│
-└── Entra Suite (add-on i E7)
-    ├── Internet Access (AI-gateway)
-    ├── Private Access (ZTNA)
-    ├── Verified ID Premium
-    └── Face Check
-```
+- [What is Microsoft Entra Agent ID?](https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id)
+- [Conditional Access for agent identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/agent-id)
+- [Risky agents in Microsoft Entra ID Protection](https://learn.microsoft.com/en-us/entra/id-protection/concept-risky-agents)
+- [Microsoft Entra ID Governance for agents](https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview)
+- [Microsoft 365 E3, E5 and E7 feature comparison](https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-license-feature-overview)
 
-## CISO-insikt: AI-agenter som tredje identitetspelaren
+## Relaterade knowledgebase-sidor
 
-Den största förändringen i identitetsarkitektur 2025-2026 är att **AI-agenter blir en tredje identitetstyp** — vid sidan av users och devices. Microsoft, IBM och andra etablerar nu ramverk för agent-identiteter som first-class citizens i Entra:
-
-Reza Sahebis video ["AI Agents: The Third Pillar of Identity in Microsoft Entra"](https://youtu.be/NDa3Jcsi2go) fångar skiftet: "Vi har haft user identities och device identities i årtionden. Nu tillkommer agent identities — och de kräver en helt ny governance-modell."
-
-**Vad detta betyder praktiskt:**
-- Varje agent måste ha en blueprint som definierar dess livscykel — från provisioning till offboarding
-- Agent Registry Sync blir lika kritisk som Active Directory-sync var
-- Non-human identity (NHI) governance är en ny kompetens som säkerhetsteam måste bygga
-
-> Microsoft Cloud IT Pro Podcast episode ["Non-Human Identities in Microsoft Entra"](https://youtu.be/rLN7WoDLT4U) (Mar 2026) ger en utmärkt introduktion till NHI i Entra — governance, lifecycle, och hur det skiljer sig från traditionell IAM.
-
-## Video-resurser (curated)
-
-| Video | Kanal | Datum | Varför? |
-|-------|-------|-------|---------|
-| [How Microsoft Agent 365 works](https://youtu.be/yWwYLbMvc3s) | Microsoft Mechanics ✓ | Dec 2025 | **68.9K views** — mest sedda videon om Agent 365. Start här |
-| [Explore Agent 365 security and governance \| BRK269](https://youtu.be/RsCz57M2SMc) | Microsoft Events | Nov 2025 | 40-min Ignite-deepdive i Agent governance |
-| [AI Agents: The Third Pillar of Identity in Microsoft Entra](https://youtu.be/NDa3Jcsi2go) | Reza Sahebi | Mar 2026 | Varför agenter kräver en tredje identitetskategori |
-| [Non-Human Identities in Microsoft Entra](https://youtu.be/rLN7WoDLT4U) | Microsoft Cloud IT Pro Podcast | Mar 2026 | NHI-governance och lifecycle i Entra — praktiskt |
-| [How to Automate AI Agent Offboarding in Entra ID](https://youtu.be/FJxgFuj_CTk) | Identity Digest | Maj 2026 | Agent lifecycle — offboarding automation (lab) |
-
-## Relaterade notes
-- Agent Conditional Access Integration
-- Agent Identity Governance
-- Agent ID Protection Integration
-- Agent Registry Sync
-- Agent Global Secure Access Integration
-- Entra Suite Index
-- Entra Internet Access
-- Entitlement Management
+- [Microsoft Agent 365](../../Agent%20365/README.md)
+- [Microsoft 365 E7: security and governance overview](../m365-e7-overview.md)
+- [Enterprise AI Governance](enterprise-ai-governance.md)

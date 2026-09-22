@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-ONEDRIVE-001"
 title: "Get started with Copilot in OneDrive - Microsoft Support"
-sources: ["m365maps E7"]
+sources:
+  - https://support.microsoft.com/office/7fc81e10-e0cf-4da8-af2e-9876a2770e5d
 ms-learn: "https://support.microsoft.com/office/7fc81e10-e0cf-4da8-af2e-9876a2770e5d"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#apps"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#apps"]
 group: "apps"
 ---
 
@@ -17,7 +22,7 @@ group: "apps"
 
 ## Översikt
 
-Copilot in OneDrive — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/office/7fc81e10-e0cf-4da8-af2e-9876a2770e5d) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://support.microsoft.com/office/7fc81e10-e0cf-4da8-af2e-9876a2770e5d).
 
 ## Innehåll
 
@@ -49,17 +54,17 @@ By integrating these capabilities, Copilot in OneDrive transforms your file mana
 
 ## Learn more 
 
-[Ask Copilot in OneDrive about your files](/en-us/topic/ask-about-a-topic-without-opening-your-files-8ea1bb0d-5ae7-4f81-8cb8-cd755862834b)
+[Ask Copilot in OneDrive about your files](https://support.microsoft.com/en-us/topic/ask-about-a-topic-without-opening-your-files-8ea1bb0d-5ae7-4f81-8cb8-cd755862834b)
 
-[Compare your files with Copilot in OneDrive](/en-us/office/compare-your-files-with-copilot-in-onedrive-794ab09c-c64a-45f3-bcbe-110a182a1806)
+[Compare your files with Copilot in OneDrive](https://support.microsoft.com/en-us/office/compare-your-files-with-copilot-in-onedrive-794ab09c-c64a-45f3-bcbe-110a182a1806)
 
-[Generate audio overviews with Copilot in OneDrive](/en-us/topic/generate-audio-overviews-with-copilot-in-onedrive-e5f2d98f-a53e-4242-aba7-d9b1d69f1089)
+[Generate audio overviews with Copilot in OneDrive](https://support.microsoft.com/en-us/topic/generate-audio-overviews-with-copilot-in-onedrive-e5f2d98f-a53e-4242-aba7-d9b1d69f1089)
 
-[Summarize your files with Copilot](/en-us/office/summarize-your-files-with-copilot-10dcbe50-467d-4a61-9d5e-c98c77fd33a4)
+[Summarize your files with Copilot](https://support.microsoft.com/en-us/office/summarize-your-files-with-copilot-10dcbe50-467d-4a61-9d5e-c98c77fd33a4)
 
-[Frequently asked questions about Copilot in OneDrive](/en-us/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947)
+[Frequently asked questions about Copilot in OneDrive](https://support.microsoft.com/en-us/office/frequently-asked-questions-about-copilot-in-onedrive-1bd55d10-7c46-417c-ab3d-e9c7be346947)
 
-[Review PDFs using Copilot context menu and AI actions](/en-us/office/review-pdfs-using-copilot-context-menu-and-ai-actions-2ffbdafc-34e0-4019-8f3a-aceb57e9498b)
+[Review PDFs using Copilot context menu and AI actions](https://support.microsoft.com/en-us/office/review-pdfs-using-copilot-context-menu-and-ai-actions-2ffbdafc-34e0-4019-8f3a-aceb57e9498b)
 
 ## MS Learn-källa
 [Copilot in OneDrive](https://support.microsoft.com/office/7fc81e10-e0cf-4da8-af2e-9876a2770e5d)

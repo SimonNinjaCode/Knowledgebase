@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-CW-001"
 title: "Copilot Cowork: A new way of getting work done"
-sources: ["m365maps E7"]
+sources:
+  - https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/copilot-cowork-a-new-way-of-getting-work-done/
 ms-learn: "https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/copilot-cowork-a-new-way-of-getting-work-done/"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#advanced"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#advanced"]
 group: "advanced"
 ---
 
@@ -17,7 +22,7 @@ group: "advanced"
 
 ## Översikt
 
-Copilot Cowork (frontier) — en del av Microsoft 365 E7. Se [Microsoft Learn](https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/copilot-cowork-a-new-way-of-getting-work-done/) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/copilot-cowork-a-new-way-of-getting-work-done/).
 
 ## Innehåll
 
@@ -39,7 +44,7 @@ Over the last year, we have been pushing Copilot toward taking action. That mean
 
 **Copilot Cowork is built for that: it helps Copilot take action, not just chat.**
 
-Cowork makes it easy to delegate work. Describe the outcome you want and Cowork automatically grounds the work in your emails, meetings, messages, files, and data. Powered by [Work IQ](https://techcommunity.microsoft.com/blog/microsoft365copilotblog/a-closer-look-at-work-iq/4499789), Cowork draws on signals across Outlook, Teams, Excel, and the rest of Microsoft 365 so it can act with the same understanding you bring to your job.
+Cowork makes it easy to delegate work. Describe the outcome you want and Cowork automatically grounds the work in your emails, meetings, messages, files, and data. Powered by [Work IQ](https://learn.microsoft.com/microsoft-365/copilot/extensibility/work-iq-api-overview), Cowork draws on signals across Outlook, Teams, Excel, and the rest of Microsoft 365 so it can act with the same understanding you bring to your job.
 
 [Join the Frontier program to be ready for Cowork](https://adoption.microsoft.com/en-us/copilot/frontier-program/)
 

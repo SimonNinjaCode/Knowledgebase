@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-GC-001"
 title: "Microsoft 365 Copilot connectors overview"
-sources: ["m365maps E7"]
+sources:
+  - https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector
 ms-learn: "https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#advanced"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#advanced"]
 group: "advanced"
 ---
 
@@ -17,7 +22,7 @@ group: "advanced"
 
 ## Översikt
 
-Graph and Connector Access — en del av Microsoft 365 E7. Se [Microsoft Learn](https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://learn.microsoft.com/microsoft-365/copilot/extensibility/overview-copilot-connector).
 
 ## Innehåll
 

@@ -1,66 +1,74 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-template
-last_verified: 2026-08-19
-ms_learn_updated: 2026-08-04
+domain: agent-365
+title: "Agent policy templates"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [security, identity, compliance, platform]
+tags: ["#agent-365", "#policy", "#entra", "#governance", "#access-packages"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/admin/agent-template
+  - https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview
 ---
 
-# Agent Policy Templates
+# Agent policy templates
 
-## Overview
+Policy templates samlar återanvändbara governanceinställningar för agenter.
+Microsoft skiljer mellan standardtemplates och egna templates. Kontrollera
+alltid vilka mallar som finns i den aktuella tenantens admincenter; namn,
+förhandsversioner och förutsättningar kan ändras.
 
-Agent 365 templates bundle predefined governance and security policies from Microsoft Entra, Purview, SharePoint Online, and Defender. Apply templates to agents to enforce organizational standards, reduce manual configuration, and ensure compliance.
+## Standardtemplates
 
-## Template Types
+Standardtemplates ger en utgångspunkt för återkommande styrning. De ska
+granskas och konfigureras innan de behandlas som en säkerhetsbaslinje. Kontroll-
+områden kan omfatta agentåtkomst, identitetsattribut, access packages,
+lifecycle, data- och compliancekontroller samt kopplingar till Defender och
+Purview där Microsoft stöder scenariot.
 
-### Default Templates
+En standardtemplate betyder inte att varje policy är aktiverad för varje agent
+eller att en extern agentplattform omfattas.
 
-Microsoft provides default policies that apply to all agents in the tenant. Some are automatically enabled; others require configuration.
+## Egna templates
 
-| Policy | Description | Source Product |
-|---|---|---|
-| Purview audit enabled | Audit trails log all agent activities | Purview |
-| Detect sensitive information (DSPM) | Safeguard against sensitive data leaks in AI interactions | Purview |
-| Purview AI compliance assessment | Continuous compliance gap monitoring | Purview |
-| Identity protection | Flag anomalous agent identity activities | Entra ID Protection |
-| Network visibility | Enable visibility into agent network traffic and external resources | Global Secure Access |
-| Lifecycle management | Govern agent identities at scale with lifecycle policies | Entra ID Governance |
-| Agent access insights | Track agents accessing SharePoint and OneDrive sites | SharePoint Online |
-| Restrict external sharing | Prevent agents and Copilot from discovering specific sites and content | SharePoint Online |
-| Access control for sites and OneDrive | Site-level access control for agents | SharePoint Online |
-| Content permissions insights | Report on content permission exposure to agents | SharePoint Online |
-| AI real-time protection | Detect and block suspicious agent activity during runtime | Defender |
-| Advanced hunting | Alerts on agent activity; investigate suspicious events with Advanced Hunting | Defender |
+Egna templates kan användas när organisationen behöver en definierad kombination
+av exempelvis:
 
-### Custom Templates
+- Conditional Access för en grupp agentidentiteter.
+- Access packages och godkännande för agentåtkomst.
+- Custom security attributes för att skilja agentklasser åt.
 
-Custom templates extend governance with Entra policies applied per agent. Available custom policies:
+Skapa och testa underliggande Entra-policyer först. Använd separata roller för
+policyförvaltning, attributtilldelning och godkännande av åtkomst.
 
-| Policy | Description |
-|---|---|
-| Conditional Access | CA policies scoped to specific agent identities |
-| Access packages | Govern agent access rights through entitlement management |
-| Custom security attributes | Assign org-specific metadata for fine-grained access control |
+## Livscykel för en template
 
-> **Note:** Custom template prerequisites: policies must be created in Entra first. AI admin needs Attribute Assignment Administrator role for custom security attributes.
+1. Beskriv kontrollmål, målgrupp, datakällor och undantag.
+2. Skapa eller välj underliggande policyer.
+3. Testa mot autonom, delegerad och användarliknande agent.
+4. Tilldela templaten med minsta möjliga scope.
+5. Följ upp träffar, tillåtanden, ägare, ändringar och avveckling.
+6. Ändra eller ta bort templaten först efter dokumenterad påverkanstest.
 
-## Template Operations
+## Granskningsfrågor
 
-| Action | Description |
-|---|---|
-| Create | Build a new template with selected policies |
-| Update | Modify policies within an existing template |
-| Delete | Remove a custom template (default templates cannot be deleted) |
-| Apply | Assign a template to one or more agents |
+- Vilken risk reducerar templaten och vilket bevis visar det?
+- Är kontrollen förebyggande, detekterande eller återställande?
+- Vilka agenter och plattformar ligger utanför scope?
+- Hur hanteras previewfunktioner, undantag och ägarbyte?
 
-## Related Documentation
+## Relaterade knowledgebase-sidor
 
-- [Conditional Access](Conditional-Access.md) — Attribute-based access policies
-- [Purview for AI Agents](Purview-AI-Compliance.md) — Data security and compliance
-- [Lifecycle Management](Lifecycle-Management.md) — Agent deployment and retirement
+- [Conditional Access för agentidentiteter](Conditional-Access.md)
+- [Agent identity governance](Identity-Governance.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
+- [Agent observability](Observability.md)
 
-## Source
+## Microsoft Learn
 
-- [Agent Templates — MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/agent-template)
+- [Create and manage agent policy templates](https://learn.microsoft.com/en-us/microsoft-agent-365/admin/agent-template)
+- [Microsoft Entra ID Governance for agents](https://learn.microsoft.com/en-us/entra/id-governance/agent-id-governance-overview)

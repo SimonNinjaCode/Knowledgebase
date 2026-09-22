@@ -1,62 +1,54 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents
-last_verified: 2026-08-19
-ms_learn_updated: 2026-06-15
+domain: agent-365
+title: "Global Secure Access för Copilot Studio-agenter"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [security, network, platform, identity]
+tags: ["#agent-365", "#global-secure-access", "#copilot-studio", "#network-security"]
+sources:
+  - https://learn.microsoft.com/en-us/entra/global-secure-access/concept-secure-web-ai-gateway-agents
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/overview
 ---
 
-# Global Secure Access for AI Agents
+# Global Secure Access för Copilot Studio-agenter
 
-## Overview
+Microsoft dokumenterar Secure Web and AI Gateway för **Copilot Studio-agenter**.
+Det är en nätverkskontroll för ett specifikt trafikscenario, inte en generell
+gateway för alla Agent 365-agenter eller externa AI-tjänster.
 
-Global Secure Access for agents provides network security controls for Microsoft Copilot Studio agents, applying the same security policies used for user traffic. It regulates how agents use knowledge, tools, and actions to access external resources.
+## Kontrollflöde
 
-## Capabilities
+1. Kontrollera att agentens Power Platform-miljö och trafiktyp stöds.
+2. Konfigurera den dokumenterade trafikforwardingen och nätverkspolicyn.
+3. Testa åtkomst till webbresurser, connectors och MCP där de ingår.
+4. Följ upp blockeringar, tillåtanden och loggar i nätverks- och
+   säkerhetsprocessen.
 
-| Capability | Description |
-|---|---|
-| Web content filtering | Block or allow agent access to specific web content categories |
-| Threat intelligence filtering | Block agent traffic to known malicious destinations |
-| Network file filtering | Inspect and control file transfers through agent connections |
-| Traffic forwarding | Route agent traffic through Global Secure Access proxy for inspection |
+## Arkitekturbeslut
 
-## How It Works
+- Vilken agent, miljö och utgående trafik omfattas?
+- Vilken identitet och vilket nätverksattribut används i beslutet?
+- Hur kombineras gatewayregeln med Entra Conditional Access, Purview och
+  leverantörens egna kontroller?
+- Vad händer när agenten använder en annan connector eller ett annat verktyg?
 
-1. **Traffic forwarding** is enabled in Power Platform Admin Center (per-environment or per-environment-group)
-2. Agent traffic routes through Global Secure Access's globally distributed proxy
-3. Security policies evaluate agent traffic the same way user traffic is evaluated
-4. Policies are configured via the **baseline profile** in Global Secure Access (tenant-level)
+Entra Suite och Agent 365 har separata licens- och förutsättningsfrågor. Bekräfta
+aktuell entitlement och regionstöd i Microsoft Learn och Product Terms; lägg
+inte in ett statiskt licenslöfte i en design.
 
-### Supported Traffic Types
+## Relaterade knowledgebase-sidor
 
-- HTTP Node traffic
-- Custom connectors
-- MCP Server Connector
+- [Conditional Access för agentidentiteter](Conditional-Access.md)
+- [Agent tool controls](Tool-Controls.md)
+- [Defender for AI agents](Defender-Integration.md)
+- [Enterprise AI Governance](../Strategy/E7%20Solutions%20Architecture/enterprise-ai-governance.md)
 
-## Licensing
+## Microsoft Learn
 
-| Feature | Required License |
-|---|---|
-| Agent ID platform | Any Microsoft Entra (free) |
-| Agent 365 integration | Microsoft Agent 365 (M365 E7) |
-| Conditional Access for agents | Microsoft Entra ID P1 |
-| Network controls for agents | Microsoft Entra Internet Access (included in Entra Suite or standalone). Agent 365 is included with M365 E7 and available as add-on to E5/A5/Business Premium |
-
-## Getting Started
-
-1. Ensure Microsoft Entra Internet Access is licensed and configured
-2. Enable traffic forwarding for target environments in Power Platform Admin Center
-3. Configure security policies in the Global Secure Access baseline profile
-4. Monitor agent traffic alongside user traffic in Global Secure Access reports
-
-## Related Documentation
-
-- [Conditional Access](Conditional-Access.md) — Access policies for agent identities
-- [Defender Integration](Defender-Integration.md) — Runtime threat protection
-- [Tool Controls](Tool-Controls.md) — Manage MCP servers available to agents
-
-## Source
-
-- [Secure Web and AI Gateway for Copilot Studio Agents — MS Learn](https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents)
+- [Secure Web and AI Gateway for Copilot Studio agents](https://learn.microsoft.com/en-us/entra/global-secure-access/concept-secure-web-ai-gateway-agents)
+- [Overview of Microsoft Agent 365](https://learn.microsoft.com/en-us/microsoft-agent-365/overview)

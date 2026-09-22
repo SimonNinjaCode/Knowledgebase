@@ -1,86 +1,59 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry
-last_verified: 2026-08-19
-ms_learn_updated: 2026-08-12
+domain: agent-365
+title: "Connected platforms: agent registry sync"
+type: reference
 status: preview
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [security, platform, compliance, procurement]
+tags: ["#agent-365", "#agent-registry", "#third-party", "#governance", "#preview"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/admin/agent-registry
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/overview
 ---
 
-# Agent Registry Sync
+# Connected platforms: agent registry sync
 
-> **Preview feature** — not intended for production use. Subject to supplemental terms of use.
+Connected platforms är en **Preview**-funktion för att ansluta externa
+agentplattformar till Agent 365-registret. Den kan ge centralare synlighet, men
+importerad metadata är inte samma sak som full säkerhets-, data- eller
+runtime-täckning.
 
-## Overview
+## Före anslutning
 
-Registry Sync enables administrators to connect external AI agent environments and synchronize agents into the Agent 365 registry for centralized visibility and governance. Without it, agents deployed across multiple platforms must be tracked manually.
+- Verifiera att plattformen och regionen finns i den aktuella Microsoft-listan.
+- Använd en separat service identity och minsta möjliga read/manage-scope.
+- Dokumentera secrets, rotation, ägare, incidentkontakt och avtal.
+- Bestäm om agenter importeras manuellt eller enligt aktuell syncmodell.
+- Kontrollera vilka attribut som faktiskt synkroniseras och hur fel rapporteras.
 
-## Supported Platforms
+Microsoft har dokumenterat anslutningar för bland annat AWS Bedrock, Google
+Vertex AI, Salesforce Agentforce, Databricks och andra plattformar. Listan och
+autentiseringsmetoderna kan ändras; använd admincentrets aktuella val som källa.
 
-| Platform | Authentication |
-|---|---|
-| Amazon Bedrock | AWS IAM access key + secret key |
-| Google Vertex AI | GCP service account key |
-| Salesforce Agentforce | OAuth (connected app) |
-| Databricks Genie | Service principal client ID + secret |
-| Anthropic Claude Managed Agents | Workspace-scoped API key (preview) |
-| Oracle Generative AI Agents | OCI API key + service user |
+## Kontroll efter sync
 
-Microsoft is actively expanding platform support.
+1. Matcha importerad agent mot plattformens eget register.
+2. Lägg till intern ägare, sponsor, dataklass, risk och slutdatum.
+3. Kontrollera identitet, tools, datakällor, scopes och telemetri separat.
+4. Hantera delvis lyckade eller uteblivna importer som ett governancefynd.
+5. Ta bort anslutningen och återkalla credentials när behovet upphör.
 
-> **Note:** The feature has been renamed from "Registry Sync" to "Connected platforms" in the admin center UI.
+Previewstatus och supplemental terms gör funktionen olämplig som enda
+produktionskontroll. Använd den tillsammans med plattformens egna loggar,
+Entra, Purview, Defender och ett manuellt kontrollspår.
 
-## Capabilities
+## Relaterade knowledgebase-sidor
 
-- Connect supported third-party AI platforms
-- Authenticate once per environment
-- Synchronize agents into the Agent 365 registry
-- Perform management actions supported by each platform's APIs
+- [Agent Map](agent-map.md)
+- [Graph API för Agent 365-registret](Graph-API.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
+- [Agent observability](Observability.md)
 
-## Create a Platform Connection
+## Microsoft Learn
 
-1. Open the [Microsoft 365 admin center](https://admin.microsoft.com)
-2. Navigate to **Agents** > **All Agents**
-3. In the **Registry sync** web part, select **Manage**
-4. Select **+ Connect a platform**
-5. Enter a connection name and description
-6. Select the external platform and region
-7. Choose whether to import agents automatically
-8. Enter authentication credentials
-9. Validate credentials
-10. Save the connection
-
-After setup, trigger a sync via the **Sync agents** button. Scheduled synchronization is planned for a future release.
-
-## Connection Details
-
-After a sync, view:
-
-| Detail | Description |
-|---|---|
-| Platform provider | AWS, GCP, Salesforce, Databricks |
-| Regions | Connected regions |
-| Last run date | When the last sync completed |
-| Last sync status | Success, partial, or failed |
-| Total synced agents | Number of agents imported |
-| Sync results | Per-agent import status |
-
-## Management Actions
-
-From the Registry Sync page:
-
-- Create new platform connections
-- View connection sync status
-- Monitor last sync activity
-- Review sync errors
-- Delete existing connections
-
-## Related Documentation
-
-- [Agent Map](Agent-Map.md) — Visual inventory including synced agents
-- [Lifecycle Management](Lifecycle-Management.md) — Manage imported agents
-- [Graph API](Graph-API.md) — Programmatic registry access
-
-## Source
-
-- [Registry Sync — MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry)
+- [Connected platforms and agent registry](https://learn.microsoft.com/en-us/microsoft-agent-365/admin/agent-registry)
+- [Overview of Microsoft Agent 365](https://learn.microsoft.com/en-us/microsoft-agent-365/overview)

@@ -1,15 +1,20 @@
 ---
 layout:
   width: wide
-domain: m365-e7
+domain: m365-copilot
 id: "M365-COP-WB-001"
 title: "Whiteboard help &amp; learning"
-sources: ["m365maps E7"]
-ms-learn: "https://support.microsoft.com/whiteboard"
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-365/whiteboard/manage-whiteboard-access-organizations
+ms-learn: "https://learn.microsoft.com/en-us/microsoft-365/whiteboard/manage-whiteboard-access-organizations"
 created: 2026-05-30
-updated: 2026-05-30
-type: concept
-tags: ["#m365-e7", "#copilot", "#apps"]
+updated: 2026-09-15
+last_verified: 2026-09-15
+verification_scope: "source URL and metadata checked; content remains reference material"
+type: reference
+status: reference
+audience: [m365-admin, security, compliance]
+tags: ["#microsoft-365-copilot", "#copilot", "#apps"]
 group: "apps"
 ---
 
@@ -17,7 +22,7 @@ group: "apps"
 
 ## Översikt
 
-Copilot in Whiteboard — en del av Microsoft 365 E7. Se [Microsoft Learn](https://support.microsoft.com/whiteboard) för full dokumentation.
+Det här är en funktionsreferens. Licens, roller och tillgänglighet kan ändras; se [Microsoft-dokumentationen](https://learn.microsoft.com/en-us/microsoft-365/whiteboard/manage-whiteboard-access-organizations).
 
 ## Innehåll
 
@@ -215,7 +220,7 @@ Creating, organizing, and understanding ideas has never been easier.
 *Se MS Learn för full dokumentation.*
 
 ## MS Learn-källa
-[Copilot in Whiteboard](https://support.microsoft.com/whiteboard)
+[Copilot in Whiteboard](https://learn.microsoft.com/en-us/microsoft-365/whiteboard/manage-whiteboard-access-organizations)
 
 ## Relaterade notes
 - Copilot Index

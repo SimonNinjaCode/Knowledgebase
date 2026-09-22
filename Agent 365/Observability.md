@@ -1,53 +1,70 @@
 ---
 layout:
   width: wide
-source: https://learn.microsoft.com/microsoft-agent-365/admin/monitor-agents
-last_verified: 2026-08-19
-ms_learn_updated: 2026-08-04
+domain: agent-365
+title: "Agent observability"
+type: reference
 status: current
+created: 2026-09-15
+updated: 2026-09-15
+last_verified: 2026-09-15
+audience: [security, soc, platform, compliance, ciso]
+tags: ["#agent-365", "#observability", "#audit", "#agent-governance"]
+sources:
+  - https://learn.microsoft.com/en-us/microsoft-agent-365/admin/monitor-agents
+  - https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-detection-protection
 ---
 
-# Agent Observability
+# Agent observability
 
-## Overview
+Observability gör agentens identitet, åtkomst och beteende möjligt att följa
+upp. Det är en förutsättning för säkerhet och governance, men inte ett
+ersättningsord för audit, DLP eller incidenthantering.
 
-Agent 365 provides advanced observability for enterprise-grade agent governance across agents built in Microsoft Copilot Studio, Azure Foundry, and third-party runtimes. Developers are required to implement observability — it is not optional.
+## Vad som bör kunna följas
 
-## Benefits
-
-| Area | Value |
+| Signal | Säkerhets- och governancefråga |
 |---|---|
-| **Security and threat detection** | Integrates with Microsoft Defender to identify anomalies, misuse, and risky behaviors; reduces exposure and strengthens agent security posture |
-| **Governance and compliance** | Monitors agent identity, tool usage, and AI model interactions to enforce policies and streamline audit readiness |
-| **Lifecycle control** | Ensures agents meet Agent 365 certification standards through traceability from development to deployment |
-| **Business impact metrics** | Provides insights into agent productivity, time savings, and interaction quality for ROI measurement |
+| Agent, ägare och plattform | Vet vi vem som ansvarar och var agenten körs? |
+| Sign-in och delegation | Var användes identiteten, och skedde OBO? |
+| Tool calls | Vilket verktyg kallades med vilket scope och resultat? |
+| Dataåtkomst | Vilka datakällor lästes eller ändrades? |
+| Policy- och lifecycle-händelser | Vem skapade, ändrade, blockerade eller tog bort agenten? |
+| Fel och avvikelser | Finns ett mönster som kräver triage eller avstängning? |
 
-## Key Monitoring Areas
+Microsofts täckning varierar mellan agentplattformar. Microsoft-byggda agenter
+kan ha inbyggd telemetri, medan andra plattformar kan kräva anslutning,
+instrumentering eller ett SDK. Verifiera datakällor och retention innan
+observability används som revisionsbevis.
 
-| What | Why |
-|---|---|
-| Agent sign-in activity | Detect unauthorized access or token replay |
-| Tool invocations | Track which tools agents call and at what frequency |
-| Data access patterns | Identify agents accessing sensitive resources |
-| User delegation events | Monitor on-behalf-of agent interactions |
-| Error rates and failures | Detect agents failing repeatedly (may indicate misconfiguration or attack) |
-| Business metrics | Measure time savings and task completion rates |
+## Operativ modell
 
-## Integration Points
+1. Definiera minsta signalpaket för varje agentklass.
+2. Koppla signalerna till Agent Map, Defender, Entra och Purview där stödet
+   finns.
+3. Sätt trösklar för ovanlig åtkomst, verktygsanrop, fel och ägarförändring.
+4. Skapa triage, eskalering och avveckling för saknad eller misstänkt telemetri.
+5. Spara bevis enligt organisationens retention- och eDiscovery-krav.
 
-| Product | Integration |
-|---|---|
-| Microsoft Defender XDR | Agent alerts appear in the unified incident queue |
-| ID Protection | Risky agent detections feed observability dashboards |
-| Purview | AI interaction audit logs and compliance reporting |
-| Agent Map | Visual correlation of observability data with agent inventory |
+## Mätetal som är relevanta för säkerhet
 
-## Related Documentation
+- Agenter utan ägare, sponsor eller slutdatum.
+- Agenter utan verifierad identitet, audit eller tool-telemetri.
+- Oväntade scopes, datakällor, verktygsanrop och OBO-händelser.
+- Tid från riskfynd till blockering, ägarbyte eller avveckling.
+- Previewfunktioner och undantag som saknar kompenserande kontroll.
 
-- [Agent Map](Agent-Map.md) — Visual agent inventory with observability data overlay
-- [Defender Integration](Defender-Integration.md) — Runtime threat detection
-- [Purview for AI Agents](Purview-AI-Compliance.md) — Compliance monitoring
+Produktivitets- och ROI-mått kan vara användbara, men de ersätter inte dessa
+kontroller.
 
-## Source
+## Relaterade knowledgebase-sidor
 
-- [Agent Observability — MS Learn](https://learn.microsoft.com/microsoft-agent-365/admin/monitor-agents)
+- [Agent Map](agent-map.md)
+- [Defender integration](Defender-Integration.md)
+- [ID Protection](ID-Protection.md)
+- [Agent lifecycle management](Lifecycle-Management.md)
+
+## Microsoft Learn
+
+- [Monitor agents with Microsoft Agent 365](https://learn.microsoft.com/en-us/microsoft-agent-365/admin/monitor-agents)
+- [Detect and investigate threats to AI agents](https://learn.microsoft.com/en-us/defender-xdr/security-for-ai/ai-agent-detection-protection)
