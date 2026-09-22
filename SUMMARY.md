@@ -11,6 +11,7 @@
 - [Cybersecurity Report — 2026-09-14](<Reports/Cybersecurity/CybersecurityReport-2026-09-14.md>)
 - [Threat Intelligence Report — 2026-09-21](<Reports/Threat Intelligence Digest/ThreatIntelligenceReport-2026-09-21.md>)
 - [Windows Update brief — 2026-09-15](<Reports/Windows Update/windows-update-brief-2026-09-15.md>)
+
 - [Conditional Access för agentidentiteter](<Agent 365/Conditional-Access.md>)
 - [Defender för AI-agenter](<Agent 365/Defender-Integration.md>)
 - [Global Secure Access för Copilot Studio-agenter](<Agent 365/Global-Secure-Access.md>)
@@ -215,9 +216,15 @@
 
 ## Purview
 
+<!-- reports:generative-ai -->
+- [Generative AI Enterprise Brief](<Reports/Generative AI/GenerativeAIReport-2026-09-21.md>)
+- [Generative AI Enterprise Brief — 2026-09-21](<Reports/Generative AI/GenerativeAIReport-2026-09-21.md>)
+
+<!-- reports:cybersecurity -->
+- [Cybersecurity Report — 2026-09-21](<Reports/Cybersecurity/CybersecurityReport-2026-09-21.md>)
+
 - [Restrict M365Copilot](<Purview/Restrict-M365Copilot.md>)
 
-## Reports
 
 ### Microsoft Security Whats New
 
